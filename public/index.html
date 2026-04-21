@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PBIT Pages</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f1e8;
+        color: #1f2933;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px 16px;
+        background:
+          radial-gradient(circle at top, rgba(219, 184, 102, 0.28), transparent 40%),
+          linear-gradient(180deg, #f8f4eb 0%, #efe6d6 100%);
+      }
+
+      main {
+        width: min(720px, 100%);
+        padding: 32px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 20px 60px rgba(31, 41, 51, 0.12);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+      }
+
+      p {
+        margin: 0 0 24px;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 12px;
+      }
+
+      li {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+      }
+
+      a {
+        display: block;
+        padding: 14px 18px;
+        border-radius: 14px;
+        text-decoration: none;
+        color: inherit;
+        background: #f8fafc;
+        border: 1px solid #d9e2ec;
+        transition:
+          transform 120ms ease,
+          box-shadow 120ms ease,
+          border-color 120ms ease;
+      }
+
+      a:hover,
+      a:focus-visible {
+        transform: translateY(-2px);
+        border-color: #b7791f;
+        box-shadow: 0 10px 24px rgba(183, 121, 31, 0.16);
+        outline: none;
+      }
+
+      .image-link {
+        white-space: nowrap;
+      }
+
+      @media (max-width: 640px) {
+        li {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>PBIT HTML Pages</h1>
+      <p>Select a page to open one of the sibling HTML files in this folder.</p>
+
+      <ul>
+        <li>
+          <a href="./dindigul.html">dindigul.html</a>
+          <a class="image-link" href="./dindigul.png">dindigul.png</a>
+        </li>
+        <li>
+          <a href="./five-village.html">five-village.html</a>
+          <a class="image-link" href="./five-village.png">five-village.png</a>
+        </li>
+        <li>
+          <a href="./groud-teaches.html">groud-teaches.html</a>
+          <a class="image-link" href="./groud-teaches.png">groud-teaches.png</a>
+        </li>
+        <li>
+          <a href="./header.html">header.html</a>
+          <a class="image-link" href="./header.png">header.png</a>
+        </li>
+        <li>
+          <a href="./heat-and-rain.html">heat-and-rain.html</a>
+          <a class="image-link" href="./heat-and-rain.png">heat-and-rain.png</a>
+        </li>
+        <li>
+          <a href="./in-practice.html">in-practice.html</a>
+          <a class="image-link" href="./in-practice.png">in-practice.png</a>
+        </li>
+        <li>
+          <a href="./map.html">map.html</a>
+          <a class="image-link" href="./map.png">map.png</a>
+        </li>
+        <li>
+          <a href="./mapping-highlighted.html">mapping-highlighted.html</a>
+          <a class="image-link" href="./mapping-highlighted.png">mapping-highlighted.png</a>
+        </li>
+        <li>
+          <a href="./practice-location.html">practice-location.html</a>
+          <a class="image-link" href="./practice-location.png">practice-location.png</a>
+        </li>
+        <li>
+          <a href="./strories.html">strories.html</a>
+          <a class="image-link" href="./stories.png">stories.png</a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
