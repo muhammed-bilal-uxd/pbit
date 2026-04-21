@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="pbjt-mapping-v1">
+      <div class="pbjt-mapping-v1__wrap">
+        <!-- LEFT CONTENT -->
+        <div class="pbjt-mapping-v1__left">
+          <div class="pbjt-mapping-v1__content-box">
+            <p>
+              Mapping highlighted each village’s needs and resources, guiding
+              actions like clearing dumpsites and planting trees for change that
+              truly fits the place. The process ensured locally relevant and
+              sustainable transformation.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT IMAGE GRID -->
+        <div class="pbjt-mapping-v1__right">
+          <div class="pbjt-mapping-v1__grid">
+            <img src="IMG1.png" alt="" />
+            <img src="IMG2.png" alt="" />
+
+            <img src="IMG3.png" alt="" />
+            <img src="IMG4.png" alt="" />
+
+            <img src="IMG5.png" alt="" />
+            <img src="IMG6.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .pbjt-mapping-v1,
+      .pbjt-mapping-v1 * {
+        box-sizing: border-box;
+      }
+
+      .pbjt-mapping-v1 {
+        --bg: #efefef;
+        --text: #ffffff;
+        --box: #7a7a7a;
+
+        background: var(--bg);
+        padding: 60px 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        isolation: isolate;
+      }
+
+      .pbjt-mapping-v1__wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      /* LEFT */
+      .pbjt-mapping-v1__content-box {
+        background: var(--box);
+        padding: 36px 32px;
+        max-width: 420px;
+      }
+
+      .pbjt-mapping-v1__content-box p {
+        margin: 0;
+        color: var(--text);
+        font-size: 22px;
+        line-height: 1.6;
+        font-weight: 600;
+      }
+
+      /* RIGHT GRID */
+      .pbjt-mapping-v1__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .pbjt-mapping-v1__grid img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        display: block;
+        border: 2px solid #000;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        .pbjt-mapping-v1__wrap {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .pbjt-mapping-v1__content-box {
+          max-width: 100%;
+        }
+
+        .pbjt-mapping-v1__grid img {
+          height: 140px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .pbjt-mapping-v1 {
+          padding: 40px 16px;
+        }
+
+        .pbjt-mapping-v1__content-box {
+          padding: 24px;
+        }
+
+        .pbjt-mapping-v1__content-box p {
+          font-size: 18px;
+        }
+
+        .pbjt-mapping-v1__grid {
+          gap: 12px;
+        }
+
+        .pbjt-mapping-v1__grid img {
+          height: 120px;
+        }
+      }
+    </style>
+  </body>
+</html>

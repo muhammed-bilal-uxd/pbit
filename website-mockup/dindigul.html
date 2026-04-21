@@ -1,0 +1,769 @@
+<!-- ============================================================
+     Dindigul PBJT: Before & After Journey — WordPress Block
+     Scope: All styles prefixed with .dpbjt__ to avoid conflicts
+     Compatible: WordPress Block Editor (Gutenberg) / Classic Editor
+     Usage: Paste inside an HTML/Custom HTML block
+     ============================================================ -->
+
+<style>
+  /* ── Reset scoped to this component only ─────────────────────── */
+  .dpbjt__wrap *,
+  .dpbjt__wrap *::before,
+  .dpbjt__wrap *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── Google Fonts ─────────────────────────────────────────────── */
+  @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,400&display=swap");
+
+  /* ── Design Tokens ────────────────────────────────────────────── */
+  .dpbjt__wrap {
+    --dpbjt-green-dark: #1b5e3b;
+    --dpbjt-green-mid: #2d7a55;
+    --dpbjt-green-light: #e8f5ee;
+    --dpbjt-green-accent: #4caf7d;
+    --dpbjt-amber: #f59e0b;
+    --dpbjt-red: #dc2626;
+    --dpbjt-blue: #3b82f6;
+    --dpbjt-blue-soft: #eff6ff;
+    --dpbjt-before-bg: #fff8f0;
+    --dpbjt-after-bg: #f0faf4;
+    --dpbjt-border: #e2e8f0;
+    --dpbjt-text-dark: #1a202c;
+    --dpbjt-text-mid: #4a5568;
+    --dpbjt-text-light: #718096;
+    --dpbjt-white: #ffffff;
+    --dpbjt-shadow-sm:
+      0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.05);
+    --dpbjt-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --dpbjt-shadow-lg: 0 10px 32px rgba(0, 0, 0, 0.12);
+    --dpbjt-radius-sm: 6px;
+    --dpbjt-radius-md: 12px;
+    --dpbjt-radius-lg: 18px;
+    --dpbjt-font-body: "DM Sans", sans-serif;
+    --dpbjt-font-display: "Fraunces", serif;
+
+    font-family: var(--dpbjt-font-body);
+    color: var(--dpbjt-text-dark);
+    background: #f8fafb;
+    padding: 0;
+    width: 100%;
+  }
+
+  /* ── Outer card ───────────────────────────────────────────────── */
+  .dpbjt__card {
+    background: var(--dpbjt-white);
+    border: 1px solid var(--dpbjt-border);
+    border-radius: var(--dpbjt-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--dpbjt-shadow-lg);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ───────────────────────────────────────────────────── */
+  .dpbjt__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 28px 20px;
+    background: linear-gradient(135deg, #0f3d24 0%, #1b5e3b 60%, #2d7a55 100%);
+    flex-wrap: wrap;
+  }
+
+  .dpbjt__header-left h1 {
+    font-family: var(--dpbjt-font-display);
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 600;
+    color: var(--dpbjt-white);
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+
+  .dpbjt__header-left h2 {
+    font-family: var(--dpbjt-font-display);
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 2px;
+    letter-spacing: 0.2px;
+  }
+
+  .dpbjt__header-left p {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.65);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .dpbjt__badge {
+    background: rgba(255, 255, 255, 0.13);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--dpbjt-radius-md);
+    padding: 10px 16px;
+    text-align: center;
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+
+  .dpbjt__badge-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .dpbjt__badge p {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+  }
+
+  /* ── Tab navigation ───────────────────────────────────────────── */
+  .dpbjt__tabs {
+    display: flex;
+    gap: 4px;
+    padding: 0 28px;
+    background: var(--dpbjt-green-dark);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .dpbjt__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dpbjt__tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    font-family: var(--dpbjt-font-body);
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    border: none;
+    background: transparent;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+    text-align: left;
+    line-height: 1.3;
+  }
+
+  .dpbjt__tab:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .dpbjt__tab--active {
+    color: var(--dpbjt-white);
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px 8px 0 0;
+    border-bottom-color: var(--dpbjt-green-accent);
+  }
+
+  .dpbjt__tab-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── Content area ─────────────────────────────────────────────── */
+  .dpbjt__content {
+    padding: 24px 28px 28px;
+  }
+
+  /* ── Section header ───────────────────────────────────────────── */
+  .dpbjt__section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .dpbjt__section-header h3 {
+    font-family: var(--dpbjt-font-display);
+    font-size: clamp(17px, 2.8vw, 22px);
+    font-weight: 600;
+    color: var(--dpbjt-text-dark);
+  }
+
+  .dpbjt__section-header p {
+    font-size: 13px;
+    color: var(--dpbjt-text-light);
+    margin-top: 3px;
+  }
+
+  .dpbjt__timeline-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--dpbjt-white);
+    border: 1px solid var(--dpbjt-border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dpbjt-text-mid);
+    white-space: nowrap;
+    box-shadow: var(--dpbjt-shadow-sm);
+  }
+
+  .dpbjt__timeline-pill span {
+    font-size: 14px;
+  }
+
+  /* ── Three-column grid ────────────────────────────────────────── */
+  .dpbjt__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+
+  /* ── Before / After panels ────────────────────────────────────── */
+  .dpbjt__panel {
+    border-radius: var(--dpbjt-radius-md);
+    overflow: hidden;
+    border: 1.5px solid var(--dpbjt-border);
+    box-shadow: var(--dpbjt-shadow-sm);
+    position: relative;
+  }
+
+  .dpbjt__panel--before {
+    background: var(--dpbjt-before-bg);
+    border-color: #fcd5ae;
+  }
+
+  .dpbjt__panel--after {
+    background: var(--dpbjt-after-bg);
+    border-color: #a7dfbb;
+  }
+
+  .dpbjt__panel-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px 10px;
+  }
+
+  .dpbjt__panel-head-icon {
+    font-size: 18px;
+  }
+
+  .dpbjt__panel-head h4 {
+    font-family: var(--dpbjt-font-display);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .dpbjt__panel--before .dpbjt__panel-head h4 {
+    color: var(--dpbjt-red);
+  }
+  .dpbjt__panel--after .dpbjt__panel-head h4 {
+    color: var(--dpbjt-green-dark);
+  }
+
+  /* ── Photo placeholder ────────────────────────────────────────── */
+  .dpbjt__photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    background: #dde5df;
+  }
+
+  .dpbjt__photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--dpbjt-text-light);
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dpbjt__panel--before .dpbjt__photo-placeholder {
+    background: linear-gradient(145deg, #c8b5a0, #a09080);
+  }
+
+  .dpbjt__panel--after .dpbjt__photo-placeholder {
+    background: linear-gradient(145deg, #8ec9a2, #5a9e72);
+  }
+
+  .dpbjt__photo-placeholder span {
+    font-size: 32px;
+  }
+
+  /* ── Arrow between panels ─────────────────────────────────────── */
+  .dpbjt__arrow-wrap {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    background: var(--dpbjt-white);
+    border: 2px solid var(--dpbjt-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--dpbjt-shadow-md);
+    font-size: 14px;
+    color: var(--dpbjt-text-mid);
+    flex-shrink: 0;
+  }
+
+  /* ── Bullet lists ─────────────────────────────────────────────── */
+  .dpbjt__bullet-list {
+    list-style: none;
+    padding: 12px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dpbjt__bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--dpbjt-text-mid);
+  }
+
+  .dpbjt__bullet-list li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-top: 5px;
+  }
+
+  .dpbjt__panel--before .dpbjt__bullet-list li::before {
+    background: var(--dpbjt-red);
+  }
+
+  .dpbjt__panel--after .dpbjt__bullet-list li::before {
+    background: var(--dpbjt-green-accent);
+  }
+
+  /* ── Impact column ────────────────────────────────────────────── */
+  .dpbjt__impact {
+    width: 180px;
+    flex-shrink: 0;
+  }
+
+  .dpbjt__impact-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .dpbjt__impact-title span {
+    font-size: 28px;
+  }
+
+  .dpbjt__impact-title h4 {
+    font-family: var(--dpbjt-font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dpbjt-blue);
+  }
+
+  .dpbjt__impact-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dpbjt__impact-item {
+    background: var(--dpbjt-blue-soft);
+    border: 1px solid #bfdbfe;
+    border-radius: var(--dpbjt-radius-sm);
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dpbjt-text-dark);
+    line-height: 1.35;
+  }
+
+  .dpbjt__impact-item-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+  }
+
+  /* ── Footer nav ───────────────────────────────────────────────── */
+  .dpbjt__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    border-top: 1px solid var(--dpbjt-border);
+    background: #f8fafb;
+  }
+
+  .dpbjt__nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--dpbjt-font-body);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--dpbjt-text-mid);
+    background: var(--dpbjt-white);
+    border: 1.5px solid var(--dpbjt-border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition:
+      background 0.18s,
+      border-color 0.18s,
+      color 0.18s;
+  }
+
+  .dpbjt__nav-btn:hover {
+    background: var(--dpbjt-green-light);
+    border-color: var(--dpbjt-green-accent);
+    color: var(--dpbjt-green-dark);
+  }
+
+  .dpbjt__nav-btn span {
+    font-size: 16px;
+  }
+
+  .dpbjt__nav-btn small {
+    font-size: 10.5px;
+    color: var(--dpbjt-text-light);
+    display: block;
+    margin-top: 1px;
+  }
+
+  .dpbjt__nav-btn-inner {
+    text-align: left;
+  }
+
+  .dpbjt__nav-btn--next .dpbjt__nav-btn-inner {
+    text-align: right;
+  }
+
+  .dpbjt__dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dpbjt__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dpbjt-border);
+    cursor: pointer;
+    transition:
+      background 0.18s,
+      transform 0.18s;
+    border: none;
+  }
+
+  .dpbjt__dot--active {
+    background: var(--dpbjt-green-mid);
+    transform: scale(1.3);
+  }
+
+  /* ── Responsive ───────────────────────────────────────────────── */
+  @media (max-width: 680px) {
+    .dpbjt__header {
+      padding: 20px 18px 16px;
+    }
+    .dpbjt__tabs {
+      padding: 0 12px;
+    }
+    .dpbjt__content {
+      padding: 18px 16px 22px;
+    }
+    .dpbjt__footer {
+      padding: 12px 16px;
+    }
+
+    .dpbjt__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .dpbjt__impact {
+      width: 100%;
+    }
+
+    .dpbjt__impact-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .dpbjt__arrow-wrap {
+      display: none;
+    }
+
+    .dpbjt__section-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .dpbjt__badge {
+      min-width: 120px;
+      padding: 8px 12px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .dpbjt__impact-cards {
+      grid-template-columns: 1fr;
+    }
+    .dpbjt__tab {
+      font-size: 11px;
+      padding: 8px 10px;
+    }
+  }
+</style>
+
+<div class="dpbjt__wrap">
+  <div class="dpbjt__card">
+    <!-- ── Header ── -->
+    <div class="dpbjt__header">
+      <div class="dpbjt__header-left">
+        <h1>Dindigul</h1>
+        <h2>PBJT: The Before and After Journey</h2>
+        <p>
+          Real changes. Rooted in collaboration. Measurable impact across seven
+          key themes.
+        </p>
+      </div>
+      <div class="dpbjt__badge">
+        <div class="dpbjt__badge-icon">🌿</div>
+        <p>Built by communities.<br />Sustained together.</p>
+      </div>
+    </div>
+
+    <!-- ── Tab bar ── -->
+    <nav class="dpbjt__tabs" role="tablist" aria-label="PBJT Themes">
+      <button
+        class="dpbjt__tab dpbjt__tab--active"
+        role="tab"
+        aria-selected="true"
+      >
+        <span class="dpbjt__tab-icon">🗑️</span>
+        <span>Waste System<br />Transformation</span>
+      </button>
+      <button class="dpbjt__tab" role="tab">
+        <span class="dpbjt__tab-icon">🧴</span>
+        <span>Plastic<br />Accountability Model</span>
+      </button>
+      <button class="dpbjt__tab" role="tab">
+        <span class="dpbjt__tab-icon">💧</span>
+        <span>Water &amp; Ecological<br />Restoration</span>
+      </button>
+      <button class="dpbjt__tab" role="tab">
+        <span class="dpbjt__tab-icon">☀️</span>
+        <span>Renewable Energy<br />&amp; Water Harvesting</span>
+      </button>
+      <button class="dpbjt__tab" role="tab">
+        <span class="dpbjt__tab-icon">🌿</span>
+        <span>Green Cultural<br />Practices</span>
+      </button>
+      <button class="dpbjt__tab" role="tab">
+        <span class="dpbjt__tab-icon">🛡️</span>
+        <span>Responsible Business<br />Norms</span>
+      </button>
+      <button class="dpbjt__tab" role="tab">
+        <span class="dpbjt__tab-icon">⚖️</span>
+        <span>Labour Dignity &amp;<br />Heat Response</span>
+      </button>
+      <button class="dpbjt__tab" role="tab">
+        <span class="dpbjt__tab-icon">🤝</span>
+        <span>Child Protection &amp;<br />Ethical Business</span>
+      </button>
+    </nav>
+
+    <!-- ── Content ── -->
+    <div class="dpbjt__content">
+      <!-- Section header -->
+      <div class="dpbjt__section-header">
+        <div>
+          <h3>Waste System Transformation</h3>
+          <p>From unmanaged waste to circular, accountable systems.</p>
+        </div>
+        <div class="dpbjt__timeline-pill">
+          <span>📅</span> Timeline: June 2025 → February 2026
+        </div>
+      </div>
+
+      <!-- Three-column grid -->
+      <div class="dpbjt__grid">
+        <!-- Before Panel -->
+        <div class="dpbjt__panel dpbjt__panel--before">
+          <div class="dpbjt__panel-head">
+            <span class="dpbjt__panel-head-icon">⚠️</span>
+            <h4>Before (June 2025)</h4>
+          </div>
+          <!-- Replace src with your actual image URL -->
+          <div class="dpbjt__photo-placeholder">
+            <span>🗑️</span>
+            <span>Before photo</span>
+          </div>
+          <!-- Arrow overlay (hidden on mobile) -->
+          <div class="dpbjt__arrow-wrap" aria-hidden="true">→</div>
+          <ul class="dpbjt__bullet-list" aria-label="Before conditions">
+            <li>Waste dump sites were identified across villages.</li>
+            <li>Mixed waste was disposed of without systematic segregation.</li>
+            <li>Meetings were conducted with vendors and households.</li>
+            <li>
+              A community pledge was initiated towards waste segregation and
+              responsible disposal.
+            </li>
+          </ul>
+        </div>
+
+        <!-- After Panel -->
+        <div class="dpbjt__panel dpbjt__panel--after">
+          <div class="dpbjt__panel-head">
+            <span class="dpbjt__panel-head-icon">✅</span>
+            <h4>After (February 2026)</h4>
+          </div>
+          <!-- Replace src with your actual image URL -->
+          <div class="dpbjt__photo-placeholder">
+            <span>♻️</span>
+            <span>After photo</span>
+          </div>
+          <ul class="dpbjt__bullet-list" aria-label="After achievements">
+            <li>
+              Households are properly segregating milk packets and other plastic
+              waste.
+            </li>
+            <li>
+              Plastic waste is responsibly disposed of through structured
+              collection systems.
+            </li>
+            <li>
+              Hair waste from salons is being segregated and sent to farmers for
+              use as organic manure.
+            </li>
+            <li>
+              Community-level awareness has translated into consistent waste
+              management practices.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Impact Column -->
+        <div class="dpbjt__impact">
+          <div class="dpbjt__impact-title">
+            <span>⭐</span>
+            <h4>Impact</h4>
+          </div>
+          <div class="dpbjt__impact-cards">
+            <div class="dpbjt__impact-item">
+              <span class="dpbjt__impact-item-icon">♻️</span>
+              <span>Reduced open dumping across villages</span>
+            </div>
+            <div class="dpbjt__impact-item">
+              <span class="dpbjt__impact-item-icon">👥</span>
+              <span>Stronger community participation</span>
+            </div>
+            <div class="dpbjt__impact-item">
+              <span class="dpbjt__impact-item-icon">🌿</span>
+              <span>Waste is now a resource, not a burden</span>
+            </div>
+            <div class="dpbjt__impact-item">
+              <span class="dpbjt__impact-item-icon">📈</span>
+              <span>A replicable model for sustainable transition</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.dpbjt__grid -->
+    </div>
+    <!-- /.dpbjt__content -->
+
+    <!-- ── Footer nav ── -->
+    <div class="dpbjt__footer">
+      <button class="dpbjt__nav-btn" aria-label="Previous section">
+        <span>‹</span>
+        <div class="dpbjt__nav-btn-inner">
+          <strong>Previous</strong>
+          <small>PBJT in Five Villages Across Dindigul</small>
+        </div>
+      </button>
+
+      <div class="dpbjt__dots" role="tablist" aria-label="Section pages">
+        <button
+          class="dpbjt__dot dpbjt__dot--active"
+          aria-label="Page 1"
+          aria-selected="true"
+        ></button>
+        <button class="dpbjt__dot" aria-label="Page 2"></button>
+        <button class="dpbjt__dot" aria-label="Page 3"></button>
+        <button class="dpbjt__dot" aria-label="Page 4"></button>
+      </div>
+
+      <button
+        class="dpbjt__nav-btn dpbjt__nav-btn--next"
+        aria-label="Next section"
+      >
+        <div class="dpbjt__nav-btn-inner">
+          <strong>Next</strong>
+          <small>Plastic Accountability Model</small>
+        </div>
+        <span>›</span>
+      </button>
+    </div>
+  </div>
+  <!-- /.dpbjt__card -->
+</div>
+<!-- /.dpbjt__wrap -->
+
+<script>
+  (function () {
+    "use strict";
+
+    /* ── Tab switching ── */
+    var tabs = document.querySelectorAll(".dpbjt__tab");
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tabs.forEach(function (t) {
+          t.classList.remove("dpbjt__tab--active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("dpbjt__tab--active");
+        tab.setAttribute("aria-selected", "true");
+      });
+    });
+
+    /* ── Dot navigation ── */
+    var dots = document.querySelectorAll(".dpbjt__dot");
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
+        dots.forEach(function (d) {
+          d.classList.remove("dpbjt__dot--active");
+        });
+        dot.classList.add("dpbjt__dot--active");
+      });
+    });
+  })();
+</script>

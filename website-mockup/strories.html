@@ -1,0 +1,1349 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stories from the Ground – PBJT Testimonials</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+   PBJT TESTIMONIALS SECTION — SCOPED STYLES
+   All selectors prefixed with .pbjt-section__ to avoid
+   conflicts with WordPress themes / block editor.
+   ============================================================ */
+
+      .pbjt-section__wrap *,
+      .pbjt-section__wrap *::before,
+      .pbjt-section__wrap *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pbjt-section__wrap {
+        --pbjt-red: #c0392b;
+        --pbjt-red-dark: #922b21;
+        --pbjt-red-light: #f5b7b1;
+        --pbjt-white: #ffffff;
+        --pbjt-off-white: #fdf8f6;
+        --pbjt-grey-50: #f9f9f9;
+        --pbjt-grey-100: #f0f0f0;
+        --pbjt-grey-200: #e0e0e0;
+        --pbjt-grey-400: #9e9e9e;
+        --pbjt-grey-600: #555555;
+        --pbjt-grey-800: #222222;
+        --pbjt-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --pbjt-shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+        --pbjt-radius: 10px;
+        --pbjt-ff-head: "Merriweather", Georgia, serif;
+        --pbjt-ff-body: "Source Sans 3", Arial, sans-serif;
+        font-family: var(--pbjt-ff-body);
+        color: var(--pbjt-grey-800);
+        background: var(--pbjt-white);
+        line-height: 1.6;
+      }
+
+      /* ── NAV ───────────────────────────────────────────────────── */
+      .pbjt-section__nav {
+        background: var(--pbjt-white);
+        border-bottom: 1px solid var(--pbjt-grey-200);
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .pbjt-nav__logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .pbjt-nav__logo-badge {
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+        font-family: var(--pbjt-ff-head);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.5px;
+        padding: 5px 7px;
+        line-height: 1.2;
+        border-radius: 3px;
+        text-align: center;
+      }
+
+      .pbjt-nav__logo-text {
+        font-family: var(--pbjt-ff-head);
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--pbjt-grey-800);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.3;
+      }
+
+      .pbjt-nav__links {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        align-items: center;
+      }
+
+      .pbjt-nav__links li a {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--pbjt-grey-600);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .pbjt-nav__links li a:hover,
+      .pbjt-nav__links li a.pbjt--active {
+        color: var(--pbjt-red);
+      }
+
+      .pbjt-nav__actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .pbjt-nav__actions a {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        text-decoration: none;
+        color: var(--pbjt-grey-800);
+        transition: color 0.2s;
+      }
+
+      .pbjt-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 20px;
+        border-radius: 4px;
+        font-family: var(--pbjt-ff-body);
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+
+      .pbjt-btn--red {
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+      }
+      .pbjt-btn--red:hover {
+        background: var(--pbjt-red-dark);
+        transform: translateY(-1px);
+      }
+
+      .pbjt-btn--outline {
+        background: transparent;
+        color: var(--pbjt-red);
+        border: 2px solid var(--pbjt-red);
+      }
+      .pbjt-btn--outline:hover {
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+      }
+
+      /* ── HERO BANNER ───────────────────────────────────────────── */
+      .pbjt-section__hero {
+        background: linear-gradient(
+          135deg,
+          #8b1a14 0%,
+          var(--pbjt-red) 50%,
+          #c0392b 100%
+        );
+        padding: 48px 32px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 32px;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pbjt-section__hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        pointer-events: none;
+      }
+
+      .pbjt-hero__label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--pbjt-red-light);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .pbjt-hero__label::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--pbjt-red-light);
+      }
+
+      .pbjt-hero__title {
+        font-family: var(--pbjt-ff-head);
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 900;
+        color: var(--pbjt-white);
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+
+      .pbjt-hero__tagline {
+        font-size: 15px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.88);
+        margin-bottom: 8px;
+      }
+
+      .pbjt-hero__desc {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.72);
+        max-width: 420px;
+        line-height: 1.65;
+      }
+
+      /* Stats strip */
+      .pbjt-hero__stats {
+        display: flex;
+        gap: 16px;
+        flex-shrink: 0;
+      }
+
+      .pbjt-stat-card {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--pbjt-radius);
+        padding: 16px 20px;
+        text-align: center;
+        min-width: 90px;
+        backdrop-filter: blur(4px);
+        transition: background 0.2s;
+      }
+
+      .pbjt-stat-card:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .pbjt-stat-card__icon {
+        font-size: 22px;
+        margin-bottom: 6px;
+        display: block;
+      }
+
+      .pbjt-stat-card__num {
+        font-family: var(--pbjt-ff-head);
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--pbjt-white);
+        line-height: 1;
+      }
+
+      .pbjt-stat-card__lbl {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.78);
+        margin-top: 4px;
+        letter-spacing: 0.3px;
+      }
+
+      /* ── FILTER TABS ───────────────────────────────────────────── */
+      .pbjt-section__filters {
+        background: var(--pbjt-white);
+        border-bottom: 1px solid var(--pbjt-grey-200);
+        padding: 14px 32px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        position: sticky;
+        top: 60px;
+        z-index: 90;
+      }
+
+      .pbjt-filter-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1.5px solid var(--pbjt-grey-200);
+        background: var(--pbjt-white);
+        color: var(--pbjt-grey-600);
+        transition: all 0.2s;
+        user-select: none;
+      }
+
+      .pbjt-filter-chip:hover {
+        border-color: var(--pbjt-red);
+        color: var(--pbjt-red);
+      }
+
+      .pbjt-filter-chip.pbjt--active {
+        background: var(--pbjt-red);
+        border-color: var(--pbjt-red);
+        color: var(--pbjt-white);
+      }
+
+      .pbjt-filter-chip__icon {
+        font-size: 14px;
+      }
+
+      /* ── MAIN CONTENT GRID ─────────────────────────────────────── */
+      .pbjt-section__body {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 0;
+        background: var(--pbjt-grey-50);
+      }
+
+      .pbjt-section__main {
+        padding: 32px;
+      }
+      .pbjt-section__sidebar {
+        background: var(--pbjt-white);
+        border-left: 1px solid var(--pbjt-grey-200);
+        padding: 28px 24px;
+      }
+
+      /* ── VOICES SECTION ────────────────────────────────────────── */
+      .pbjt-voices__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+
+      .pbjt-voices__header-left h2 {
+        font-family: var(--pbjt-ff-head);
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--pbjt-grey-800);
+        margin-bottom: 6px;
+      }
+
+      .pbjt-section__underline {
+        width: 32px;
+        height: 3px;
+        background: var(--pbjt-red);
+        border-radius: 2px;
+      }
+
+      .pbjt-voices__header-right {
+        font-size: 13px;
+        color: var(--pbjt-grey-400);
+        max-width: 260px;
+        text-align: right;
+        line-height: 1.55;
+      }
+
+      .pbjt-quotes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .pbjt-quote-card {
+        background: var(--pbjt-white);
+        border: 1px solid var(--pbjt-grey-200);
+        border-radius: var(--pbjt-radius);
+        padding: 20px;
+        position: relative;
+        transition:
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+
+      .pbjt-quote-card:hover {
+        box-shadow: var(--pbjt-shadow-md);
+        transform: translateY(-3px);
+      }
+
+      .pbjt-quote-card__mark {
+        font-size: 40px;
+        font-family: var(--pbjt-ff-head);
+        color: var(--pbjt-red);
+        line-height: 1;
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      .pbjt-quote-card__avatar {
+        width: 22px;
+        height: 22px;
+        background: var(--pbjt-red);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        color: var(--pbjt-white);
+        margin-right: 6px;
+        vertical-align: middle;
+        flex-shrink: 0;
+      }
+
+      .pbjt-quote-card__quote-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .pbjt-quote-card__text {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--pbjt-grey-800);
+        line-height: 1.45;
+      }
+
+      .pbjt-quote-card__body {
+        font-size: 13px;
+        color: var(--pbjt-grey-600);
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      .pbjt-quote-card__footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-top: 1px solid var(--pbjt-grey-100);
+        padding-top: 12px;
+      }
+
+      .pbjt-quote-card__img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: var(--pbjt-grey-200);
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+      }
+
+      .pbjt-quote-card__name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--pbjt-grey-800);
+      }
+
+      .pbjt-quote-card__role {
+        font-size: 11px;
+        color: var(--pbjt-grey-400);
+        margin-top: 1px;
+      }
+
+      /* ── MOMENTS SECTION ───────────────────────────────────────── */
+      .pbjt-moments {
+        margin-top: 36px;
+      }
+
+      .pbjt-moments__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .pbjt-moments__header h2 {
+        font-family: var(--pbjt-ff-head);
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--pbjt-grey-800);
+      }
+
+      .pbjt-moments__sub {
+        font-size: 13px;
+        color: var(--pbjt-grey-400);
+        margin-top: 4px;
+      }
+
+      .pbjt-link-red {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--pbjt-red);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: gap 0.2s;
+        white-space: nowrap;
+      }
+
+      .pbjt-link-red:hover {
+        gap: 8px;
+      }
+
+      .pbjt-moments-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+
+      .pbjt-moment-card {
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 4/3;
+        cursor: pointer;
+        background: var(--pbjt-grey-200);
+      }
+
+      .pbjt-moment-card__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s ease;
+      }
+
+      .pbjt-moment-card:hover .pbjt-moment-card__img {
+        transform: scale(1.08);
+      }
+
+      .pbjt-moment-card__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.6) 0%,
+          transparent 55%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 10px;
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .pbjt-moment-card:hover .pbjt-moment-card__overlay {
+        opacity: 1;
+      }
+
+      .pbjt-moment-card__duration {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.72);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 3px;
+        letter-spacing: 0.5px;
+      }
+
+      .pbjt-moment-card__caption {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--pbjt-white);
+        line-height: 1.35;
+        margin-bottom: 2px;
+      }
+
+      .pbjt-moment-card__loc {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      /* Photo placeholders */
+      .pbjt-photo-ph {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+      }
+
+      .pbjt-ph--green {
+        background: #abebc6;
+      }
+      .pbjt-ph--blue {
+        background: #aed6f1;
+      }
+      .pbjt-ph--yellow {
+        background: #fad7a0;
+      }
+      .pbjt-ph--pink {
+        background: #f1948a;
+      }
+      .pbjt-ph--purple {
+        background: #d7bde2;
+      }
+
+      /* ── SIDEBAR ─────────────────────────────────────────────────*/
+      .pbjt-sidebar__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      .pbjt-sidebar__header h3 {
+        font-family: var(--pbjt-ff-head);
+        font-size: 17px;
+        font-weight: 900;
+        color: var(--pbjt-grey-800);
+      }
+
+      .pbjt-video-featured {
+        border-radius: var(--pbjt-radius);
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 16/9;
+        background: #1a1a1a;
+        cursor: pointer;
+        margin-bottom: 12px;
+      }
+
+      .pbjt-video-featured__thumb {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #2c3e50, #4a235a);
+        position: relative;
+      }
+
+      .pbjt-video-featured__thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .pbjt-video-play {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.25);
+        transition: background 0.2s;
+      }
+
+      .pbjt-video-featured:hover .pbjt-video-play {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .pbjt-play-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: var(--pbjt-red);
+        transition: transform 0.2s;
+      }
+
+      .pbjt-video-featured:hover .pbjt-play-btn {
+        transform: scale(1.1);
+      }
+
+      .pbjt-video-featured__duration {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: 3px;
+      }
+
+      .pbjt-video-featured__caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+        padding: 28px 12px 10px;
+      }
+
+      .pbjt-video-featured__title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--pbjt-white);
+        line-height: 1.35;
+      }
+
+      .pbjt-video-featured__loc {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 2px;
+      }
+
+      .pbjt-video-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .pbjt-video-thumb {
+        border-radius: 7px;
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 16/9;
+        background: #1a1a1a;
+        cursor: pointer;
+      }
+
+      .pbjt-video-thumb__bg {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        transition: transform 0.3s;
+      }
+
+      .pbjt-video-thumb:hover .pbjt-video-thumb__bg {
+        transform: scale(1.05);
+      }
+
+      .pbjt-vt--teal {
+        background: linear-gradient(135deg, #117a65, #1abc9c);
+      }
+      .pbjt-vt--orange {
+        background: linear-gradient(135deg, #784212, #e67e22);
+      }
+
+      .pbjt-video-thumb__info {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.65),
+          transparent 55%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 8px;
+      }
+
+      .pbjt-video-thumb__duration {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        background: rgba(0, 0, 0, 0.65);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
+
+      .pbjt-video-thumb__title {
+        font-size: 11px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.3;
+      }
+
+      .pbjt-video-thumb__loc {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 1px;
+      }
+
+      /* ── CTA BANNER ────────────────────────────────────────────── */
+      .pbjt-section__cta {
+        background: var(--pbjt-off-white);
+        border-top: 1px solid var(--pbjt-grey-200);
+        padding: 40px 48px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .pbjt-cta__quote-mark {
+        font-family: var(--pbjt-ff-head);
+        font-size: 80px;
+        line-height: 0.7;
+        color: var(--pbjt-red);
+        opacity: 0.25;
+        flex-shrink: 0;
+        align-self: flex-start;
+      }
+
+      .pbjt-cta__text-wrap {
+        flex: 1;
+      }
+
+      .pbjt-cta__text {
+        font-family: var(--pbjt-ff-head);
+        font-size: clamp(16px, 2vw, 22px);
+        font-weight: 900;
+        color: var(--pbjt-grey-800);
+        line-height: 1.4;
+        margin-bottom: 6px;
+      }
+
+      .pbjt-cta__sub {
+        font-size: 14px;
+        color: var(--pbjt-grey-600);
+      }
+
+      /* ── RESPONSIVE ────────────────────────────────────────────── */
+      @media (max-width: 1024px) {
+        .pbjt-section__body {
+          grid-template-columns: 1fr;
+        }
+        .pbjt-section__sidebar {
+          border-left: none;
+          border-top: 1px solid var(--pbjt-grey-200);
+        }
+        .pbjt-video-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .pbjt-section__nav {
+          padding: 0 16px;
+        }
+        .pbjt-nav__links {
+          display: none;
+        }
+
+        .pbjt-section__hero {
+          grid-template-columns: 1fr;
+          padding: 32px 20px;
+        }
+
+        .pbjt-hero__stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+
+        .pbjt-section__filters {
+          padding: 12px 16px;
+        }
+
+        .pbjt-section__main {
+          padding: 24px 16px;
+        }
+        .pbjt-section__sidebar {
+          padding: 20px 16px;
+        }
+
+        .pbjt-quotes-grid {
+          grid-template-columns: 1fr;
+        }
+        .pbjt-moments-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .pbjt-video-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .pbjt-section__cta {
+          flex-direction: column;
+          text-align: center;
+          padding: 28px 20px;
+        }
+
+        .pbjt-cta__quote-mark {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .pbjt-hero__stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pbjt-stat-card {
+          min-width: unset;
+        }
+        .pbjt-moments-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+     PBJT TESTIMONIALS PAGE — WordPress-Ready Markup
+     Safe to paste into any WP page builder / block editor
+     ============================================================ -->
+    <div class="pbjt-section__wrap">
+      <!-- NAV -->
+      <nav class="pbjt-section__nav">
+        <a href="#" class="pbjt-nav__logo">
+          <div class="pbjt-nav__logo-badge">PB<br />JT</div>
+          <div class="pbjt-nav__logo-text">
+            Place<br />Based Just<br />Transition
+          </div>
+        </a>
+
+        <ul class="pbjt-nav__links">
+          <li><a href="#">In Practice</a></li>
+          <li><a href="#" class="pbjt--active">Testimonials</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Impact</a></li>
+          <li><a href="#">Framework</a></li>
+          <li><a href="#">Focus Areas</a></li>
+          <li><a href="#">Methodology</a></li>
+          <li><a href="#">Glossary</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="pbjt-nav__actions">
+          <a href="#">Partnerships</a>
+          <a href="#" class="pbjt-btn pbjt-btn--red">Funding</a>
+          <a href="#" class="pbjt-btn pbjt-btn--outline">Contact</a>
+        </div>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="pbjt-section__hero">
+        <div class="pbjt-hero__content">
+          <p class="pbjt-hero__label">Testimonials</p>
+          <h1 class="pbjt-hero__title">Stories from the Ground</h1>
+          <p class="pbjt-hero__tagline">
+            Real voices. Real experiences. Real change.
+          </p>
+          <p class="pbjt-hero__desc">
+            These are stories of workers, community members, and local leaders
+            who are living the transition every day.
+          </p>
+        </div>
+
+        <div class="pbjt-hero__stats">
+          <div class="pbjt-stat-card">
+            <span class="pbjt-stat-card__icon">👥</span>
+            <div class="pbjt-stat-card__num">250+</div>
+            <div class="pbjt-stat-card__lbl">People Engaged</div>
+          </div>
+          <div class="pbjt-stat-card">
+            <span class="pbjt-stat-card__icon">📍</span>
+            <div class="pbjt-stat-card__num">5</div>
+            <div class="pbjt-stat-card__lbl">Villages</div>
+          </div>
+          <div class="pbjt-stat-card">
+            <span class="pbjt-stat-card__icon">💬</span>
+            <div class="pbjt-stat-card__num">60+</div>
+            <div class="pbjt-stat-card__lbl">Stories Collected</div>
+          </div>
+          <div class="pbjt-stat-card">
+            <span class="pbjt-stat-card__icon">🎬</span>
+            <div class="pbjt-stat-card__num">12+</div>
+            <div class="pbjt-stat-card__lbl">Video Stories</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FILTER TABS -->
+      <div class="pbjt-section__filters">
+        <div class="pbjt-filter-chip pbjt--active">All Stories</div>
+        <div class="pbjt-filter-chip">
+          <span class="pbjt-filter-chip__icon">⚙️</span> Workers
+        </div>
+        <div class="pbjt-filter-chip">
+          <span class="pbjt-filter-chip__icon">♀️</span> Women
+        </div>
+        <div class="pbjt-filter-chip">
+          <span class="pbjt-filter-chip__icon">🌱</span> Youth
+        </div>
+        <div class="pbjt-filter-chip">
+          <span class="pbjt-filter-chip__icon">🏘️</span> Community Leaders
+        </div>
+        <div class="pbjt-filter-chip">
+          <span class="pbjt-filter-chip__icon">🏪</span> Small Businesses
+        </div>
+        <div class="pbjt-filter-chip">
+          <span class="pbjt-filter-chip__icon">🌿</span> Environment
+        </div>
+      </div>
+
+      <!-- BODY: MAIN + SIDEBAR -->
+      <div class="pbjt-section__body">
+        <!-- MAIN -->
+        <main class="pbjt-section__main">
+          <!-- VOICES THAT INSPIRE CHANGE -->
+          <div class="pbjt-voices__header">
+            <div class="pbjt-voices__header-left">
+              <h2>Voices that Inspire Change</h2>
+              <div class="pbjt-section__underline"></div>
+            </div>
+            <p class="pbjt-voices__header-right">
+              Every quote, every story, every image is a piece of the transition
+              puzzle.
+            </p>
+          </div>
+
+          <div class="pbjt-quotes-grid">
+            <!-- Card 1 -->
+            <div class="pbjt-quote-card">
+              <div class="pbjt-quote-card__quote-row">
+                <div class="pbjt-quote-card__avatar">👤</div>
+                <span class="pbjt-quote-card__mark">"</span>
+              </div>
+              <p class="pbjt-quote-card__text">
+                Green jobs meant little without wage security."
+              </p>
+              <p class="pbjt-quote-card__body">
+                We needed steady income, not just good intentions.
+              </p>
+              <div class="pbjt-quote-card__footer">
+                <div class="pbjt-quote-card__img">👷</div>
+                <div>
+                  <div class="pbjt-quote-card__name">Kumar</div>
+                  <div class="pbjt-quote-card__role">
+                    Waste Worker, Dindigul
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="pbjt-quote-card">
+              <div class="pbjt-quote-card__quote-row">
+                <div class="pbjt-quote-card__avatar">👤</div>
+                <span class="pbjt-quote-card__mark">"</span>
+              </div>
+              <p class="pbjt-quote-card__text">
+                Waste systems improved, but it also increased unpaid labour for
+                women."
+              </p>
+              <p class="pbjt-quote-card__body">
+                We do more, but it's not always visible.
+              </p>
+              <div class="pbjt-quote-card__footer">
+                <div class="pbjt-quote-card__img">👩</div>
+                <div>
+                  <div class="pbjt-quote-card__name">Mallika</div>
+                  <div class="pbjt-quote-card__role">Home-based Worker</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="pbjt-quote-card">
+              <div class="pbjt-quote-card__quote-row">
+                <div class="pbjt-quote-card__avatar">👤</div>
+                <span class="pbjt-quote-card__mark">"</span>
+              </div>
+              <p class="pbjt-quote-card__text">
+                We adapted sustainability to survive. Now, we're proud to lead
+                it."
+              </p>
+              <p class="pbjt-quote-card__body">
+                Small changes, together, made a big difference.
+              </p>
+              <div class="pbjt-quote-card__footer">
+                <div class="pbjt-quote-card__img">🙋</div>
+                <div>
+                  <div class="pbjt-quote-card__name">Ramesh</div>
+                  <div class="pbjt-quote-card__role">Youth Volunteer</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MOMENTS OF CHANGE -->
+          <div class="pbjt-moments">
+            <div class="pbjt-moments__header">
+              <div>
+                <h2>Moments of Change</h2>
+                <p class="pbjt-moments__sub">
+                  Snapshots from the ground that tell powerful stories.
+                </p>
+              </div>
+              <a href="#" class="pbjt-link-red">View All Photos →</a>
+            </div>
+
+            <div class="pbjt-moments-grid">
+              <div class="pbjt-moment-card">
+                <div class="pbjt-photo-ph pbjt-ph--green">♻️</div>
+                <div class="pbjt-moment-card__overlay">
+                  <div class="pbjt-moment-card__caption">
+                    Waste Segregation Drive
+                  </div>
+                  <div class="pbjt-moment-card__loc">Sanarpatty</div>
+                </div>
+              </div>
+              <div class="pbjt-moment-card">
+                <div class="pbjt-photo-ph pbjt-ph--blue">💧</div>
+                <div class="pbjt-moment-card__overlay">
+                  <div class="pbjt-moment-card__caption">
+                    Water Body Restoration
+                  </div>
+                  <div class="pbjt-moment-card__loc">Sivapatty</div>
+                </div>
+              </div>
+              <div class="pbjt-moment-card">
+                <div class="pbjt-photo-ph pbjt-ph--yellow">🌳</div>
+                <div class="pbjt-moment-card__overlay">
+                  <div class="pbjt-moment-card__caption">Tree Plantation</div>
+                  <div class="pbjt-moment-card__loc">Pallamapatty</div>
+                </div>
+              </div>
+              <div class="pbjt-moment-card">
+                <div class="pbjt-photo-ph pbjt-ph--pink">🏪</div>
+                <div class="pbjt-moment-card__duration">6:8:09</div>
+                <div class="pbjt-moment-card__overlay">
+                  <div class="pbjt-moment-card__caption">Plastic-Free Shop</div>
+                  <div class="pbjt-moment-card__loc">Avilpatty</div>
+                </div>
+              </div>
+              <div class="pbjt-moment-card">
+                <div class="pbjt-photo-ph pbjt-ph--purple">🤝</div>
+                <div class="pbjt-moment-card__overlay">
+                  <div class="pbjt-moment-card__caption">Community Meeting</div>
+                  <div class="pbjt-moment-card__loc">Sanarpatty</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- SIDEBAR -->
+        <aside class="pbjt-section__sidebar">
+          <div class="pbjt-sidebar__header">
+            <h3>Stories in Motion</h3>
+            <a href="#" class="pbjt-link-red">View All Videos →</a>
+          </div>
+
+          <p
+            style="
+              font-size: 13px;
+              color: var(--pbjt-grey-400);
+              margin-bottom: 14px;
+            "
+          >
+            Watch and listen to real experiences from the field.
+          </p>
+
+          <!-- Featured Video -->
+          <div class="pbjt-video-featured">
+            <div class="pbjt-video-featured__thumb">
+              <div
+                style="
+                  width: 100%;
+                  height: 100%;
+                  background: linear-gradient(135deg, #117a65, #2ecc71);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 48px;
+                "
+              >
+                🌿
+              </div>
+            </div>
+            <div class="pbjt-video-play">
+              <div class="pbjt-play-btn">▶</div>
+            </div>
+            <div class="pbjt-video-featured__duration">02:45</div>
+            <div class="pbjt-video-featured__caption">
+              <div class="pbjt-video-featured__title">
+                "From Waste to Worth: Our Village Journey"
+              </div>
+              <div class="pbjt-video-featured__loc">Samarpatty, Dindigul</div>
+            </div>
+          </div>
+
+          <!-- Thumbnail Grid -->
+          <div class="pbjt-video-grid">
+            <div class="pbjt-video-thumb">
+              <div class="pbjt-video-thumb__bg pbjt-vt--teal">💧</div>
+              <div class="pbjt-video-thumb__duration">01:58</div>
+              <div class="pbjt-video-thumb__info">
+                <div class="pbjt-video-thumb__title">
+                  "Water Changes Everything"
+                </div>
+                <div class="pbjt-video-thumb__loc">Gopalpatty, Dindigul</div>
+              </div>
+              <div
+                class="pbjt-video-play"
+                style="
+                  position: absolute;
+                  inset: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div
+                  class="pbjt-play-btn"
+                  style="width: 32px; height: 32px; font-size: 12px"
+                >
+                  ▶
+                </div>
+              </div>
+            </div>
+
+            <div class="pbjt-video-thumb">
+              <div class="pbjt-video-thumb__bg pbjt-vt--teal">♀️</div>
+              <div class="pbjt-video-thumb__duration">01:58</div>
+              <div class="pbjt-video-thumb__info">
+                <div class="pbjt-video-thumb__title">
+                  "Water Changes Everything"
+                </div>
+                <div class="pbjt-video-thumb__loc">Gopalpatty, Dindigul</div>
+              </div>
+              <div
+                class="pbjt-video-play"
+                style="
+                  position: absolute;
+                  inset: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div
+                  class="pbjt-play-btn"
+                  style="width: 32px; height: 32px; font-size: 12px"
+                >
+                  ▶
+                </div>
+              </div>
+            </div>
+
+            <div class="pbjt-video-thumb">
+              <div class="pbjt-video-thumb__bg pbjt-vt--orange">♻️</div>
+              <div class="pbjt-video-thumb__duration">02:12</div>
+              <div class="pbjt-video-thumb__info">
+                <div class="pbjt-video-thumb__title">
+                  "Women Leading Waste Management"
+                </div>
+                <div class="pbjt-video-thumb__loc">Avilpatty, Dindigul</div>
+              </div>
+              <div
+                class="pbjt-video-play"
+                style="
+                  position: absolute;
+                  inset: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div
+                  class="pbjt-play-btn"
+                  style="width: 32px; height: 32px; font-size: 12px"
+                >
+                  ▶
+                </div>
+              </div>
+            </div>
+
+            <div class="pbjt-video-thumb">
+              <div class="pbjt-video-thumb__bg pbjt-vt--orange">🌾</div>
+              <div class="pbjt-video-thumb__duration">02:12</div>
+              <div class="pbjt-video-thumb__info">
+                <div class="pbjt-video-thumb__title">
+                  "Women Leading Waste Management"
+                </div>
+                <div class="pbjt-video-thumb__loc">Avilpatty, Dindigul</div>
+              </div>
+              <div
+                class="pbjt-video-play"
+                style="
+                  position: absolute;
+                  inset: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div
+                  class="pbjt-play-btn"
+                  style="width: 32px; height: 32px; font-size: 12px"
+                >
+                  ▶
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- CTA BANNER -->
+      <section class="pbjt-section__cta">
+        <div class="pbjt-cta__quote-mark">"</div>
+        <div class="pbjt-cta__text-wrap">
+          <p class="pbjt-cta__text">
+            These are not just stories. They are the foundation of a just
+            transition.
+          </p>
+          <p class="pbjt-cta__sub">
+            Real people. Real challenges. Real progress.
+          </p>
+        </div>
+        <a
+          href="#"
+          class="pbjt-btn pbjt-btn--red"
+          style="white-space: nowrap; padding: 14px 28px; font-size: 15px"
+        >
+          Share Your Story &nbsp;›
+        </a>
+      </section>
+    </div>
+    <!-- /.pbjt-section__wrap -->
+
+    <script>
+      /* Filter chip toggling */
+      (function () {
+        var chips = document.querySelectorAll(".pbjt-filter-chip");
+        chips.forEach(function (chip) {
+          chip.addEventListener("click", function () {
+            chips.forEach(function (c) {
+              c.classList.remove("pbjt--active");
+            });
+            chip.classList.add("pbjt--active");
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

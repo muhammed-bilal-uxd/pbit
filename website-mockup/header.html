@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header class="pbjt-header-v1">
+      <div class="pbjt-header-v1__inner">
+        <a
+          href="/"
+          class="pbjt-header-v1__brand"
+          aria-label="Place Based Just Transition home"
+        >
+          <div class="pbjt-header-v1__brand-mark">
+            <span>PB</span>
+            <span>JT</span>
+          </div>
+
+          <div class="pbjt-header-v1__brand-text">
+            <span>PLACE</span>
+            <span>BASED JUST</span>
+            <span>TRANSITION</span>
+          </div>
+        </a>
+
+        <nav class="pbjt-header-v1__nav" aria-label="Main navigation">
+          <ul class="pbjt-header-v1__menu">
+            <li class="pbjt-header-v1__item pbjt-header-v1__item--active">
+              <a href="#">IN PRACTICE</a>
+            </li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item"><a href="#">TESTIMONIALS</a></li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item"><a href="#">ABOUT</a></li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item">
+              <a href="#">IMPACT PROPOSITION</a>
+            </li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item"><a href="#">FRAMEWORK</a></li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item"><a href="#">FOCUS AREAS</a></li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item">
+              <a href="#">METHODOLOGY &amp; EXPECTED CHANGES</a>
+            </li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item"><a href="#">GLOSSARY</a></li>
+            <li class="pbjt-header-v1__divider">|</li>
+
+            <li class="pbjt-header-v1__item">
+              <a href="#" id="contact">📞</a>
+            </li>
+          </ul>
+        </nav>
+
+        <button
+          class="pbjt-header-v1__toggle"
+          type="button"
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <style>
+      .pbjt-header-v1__item a#contact {
+        color: green !important;
+      }
+
+      .pbjt-header-v1,
+      .pbjt-header-v1 * {
+        box-sizing: border-box;
+      }
+
+      .pbjt-header-v1 {
+        --pbjt-header-bg: #ececec;
+        --pbjt-header-text: #1d2430;
+        --pbjt-header-muted: #6b7280;
+        --pbjt-header-red: #d71920;
+        --pbjt-header-border: #d71920;
+
+        width: 100%;
+        background: var(--pbjt-header-bg);
+        border-bottom: 1px solid var(--pbjt-header-border);
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;
+        z-index: 20;
+        isolation: isolate;
+      }
+
+      .pbjt-header-v1 a,
+      .pbjt-header-v1 a:hover,
+      .pbjt-header-v1 a:focus,
+      .pbjt-header-v1 a:visited {
+        text-decoration: none;
+      }
+
+      .pbjt-header-v1__inner {
+        max-width: 1220px;
+        margin: 0 auto;
+        padding: 24px 18px 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .pbjt-header-v1__brand {
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .pbjt-header-v1__brand-mark {
+        width: 42px;
+        min-width: 42px;
+        background: var(--pbjt-header-red);
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        line-height: 0.88;
+        letter-spacing: -0.04em;
+        padding: 4px 2px 3px;
+      }
+
+      .pbjt-header-v1__brand-mark span {
+        display: block;
+        font-size: 17px;
+      }
+
+      .pbjt-header-v1__brand-text {
+        display: flex;
+        flex-direction: column;
+        color: #5f6471;
+        font-weight: 800;
+        line-height: 0.83;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+        padding-top: 1px;
+      }
+
+      .pbjt-header-v1__brand-text span {
+        display: block;
+        font-size: 18px;
+      }
+
+      .pbjt-header-v1__nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .pbjt-header-v1__menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+      }
+
+      .pbjt-header-v1__item,
+      .pbjt-header-v1__divider {
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+
+      .pbjt-header-v1__item a {
+        color: var(--pbjt-header-text);
+        display: inline-block;
+        padding: 2px 6px;
+        transition:
+          color 0.2s ease,
+          opacity 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .pbjt-header-v1__item a:hover,
+      .pbjt-header-v1__item a:focus {
+        color: var(--pbjt-header-red);
+        outline: none;
+      }
+
+      .pbjt-header-v1__item--active a {
+        color: var(--pbjt-header-red);
+      }
+
+      .pbjt-header-v1__divider {
+        color: var(--pbjt-header-muted);
+        padding: 0 1px;
+        user-select: none;
+      }
+
+      .pbjt-header-v1__toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 1px solid #d7d7d7;
+        background: #ffffff;
+        border-radius: 6px;
+        padding: 0;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .pbjt-header-v1__toggle span {
+        width: 18px;
+        height: 2px;
+        background: var(--pbjt-header-text);
+        display: block;
+      }
+
+      @media (max-width: 991px) {
+        .pbjt-header-v1__inner {
+          padding: 20px 16px 12px;
+          gap: 14px;
+        }
+
+        .pbjt-header-v1__brand-text span {
+          font-size: 20px;
+        }
+
+        .pbjt-header-v1__menu {
+          gap: 6px 0;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .pbjt-header-v1__inner {
+          align-items: stretch;
+        }
+
+        .pbjt-header-v1__top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .pbjt-header-v1__brand {
+          justify-content: center;
+        }
+
+        .pbjt-header-v1__nav {
+          overflow-x: auto;
+          justify-content: flex-start;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: thin;
+          padding-bottom: 2px;
+        }
+
+        .pbjt-header-v1__nav::-webkit-scrollbar {
+          height: 4px;
+        }
+
+        .pbjt-header-v1__menu {
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          min-width: max-content;
+          padding: 0 0 4px;
+        }
+
+        .pbjt-header-v1__item,
+        .pbjt-header-v1__divider {
+          font-size: 10px;
+        }
+
+        .pbjt-header-v1__item a {
+          padding: 4px 6px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .pbjt-header-v1__brand-mark {
+          width: 36px;
+          min-width: 36px;
+        }
+
+        .pbjt-header-v1__brand-mark span {
+          font-size: 15px;
+        }
+
+        .pbjt-header-v1__brand-text span {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,309 @@
+<!-- ============================================================
+     PBJT IN PRACTICE IN TAMIL NADU — WordPress Safe HTML Block
+     All classes prefixed with "pbjtn__" — zero theme conflict
+     Paste into: WordPress > Custom HTML block
+     ============================================================ -->
+
+<style>
+  /* --- Scoped reset --- */
+  .pbjtn__wrap *,
+  .pbjtn__wrap *::before,
+  .pbjtn__wrap *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* --- Outer wrapper --- */
+  .pbjtn__wrap {
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #1a1a1a;
+    background: #ffffff;
+    width: 100%;
+    max-width: 100%;
+    padding: 40px 32px 52px;
+  }
+
+  /* --- Section title --- */
+  .pbjtn__title {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    font-weight: 400;
+    letter-spacing: 0.13em;
+    text-align: center;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    line-height: 1.2;
+  }
+
+  /* --- Two-column grid --- */
+  .pbjtn__grid {
+    display: flex;
+    gap: 32px;
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ============================================================
+           LEFT — Full TN state map
+           ============================================================ */
+  .pbjtn__map-col {
+    flex: 0 0 50%;
+    max-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pbjtn__map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* ============================================================
+           RIGHT — District blocks stacked vertically
+           ============================================================ */
+  .pbjtn__districts-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  /* ============================================================
+           DISTRICT BLOCK (shared)
+           ============================================================ */
+  .pbjtn__district {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Top spacer to push Dindigul header down ~10px from top */
+  .pbjtn__district--dindigul {
+    padding-top: 4px;
+    margin-bottom: 28px;
+  }
+
+  .pbjtn__district--virudhunagar {
+    padding-top: 0;
+  }
+
+  /* --- Header row: district name + optional inline button --- */
+  .pbjtn__district-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .pbjtn__district-name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    white-space: nowrap;
+  }
+
+  /* --- District map image wrapper --- */
+  .pbjtn__district-map-wrap {
+    width: 100%;
+    position: relative;
+  }
+
+  .pbjtn__district-img {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  /* --- Read More button (Dindigul: inline in header) --- */
+  .pbjtn__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #c0221b;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 5px 12px 5px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition:
+      background 0.2s ease,
+      transform 0.15s ease;
+    line-height: 1.4;
+  }
+
+  .pbjtn__btn:hover {
+    background: #9e1a14;
+    transform: translateX(2px);
+  }
+
+  .pbjtn__btn-arrow {
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  /* --- Virudhunagar: button sits below map, right-aligned under it --- */
+  .pbjtn__btn-row {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 340px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* ============================================================
+           RESPONSIVE — Tablet ≤ 860px
+           ============================================================ */
+  @media (max-width: 860px) {
+    .pbjtn__grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .pbjtn__map-col {
+      flex: 0 0 auto;
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .pbjtn__districts-col {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 24px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .pbjtn__district--dindigul,
+    .pbjtn__district--virudhunagar {
+      flex: 1 1 calc(50% - 12px);
+      min-width: 220px;
+      max-width: 360px;
+      padding-top: 0;
+      margin-bottom: 0;
+    }
+
+    .pbjtn__district-img,
+    .pbjtn__btn-row {
+      max-width: 100%;
+    }
+  }
+
+  /* ============================================================
+           RESPONSIVE — Mobile ≤ 540px
+           ============================================================ */
+  @media (max-width: 540px) {
+    .pbjtn__wrap {
+      padding: 28px 16px 36px;
+    }
+
+    .pbjtn__districts-col {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .pbjtn__district--dindigul,
+    .pbjtn__district--virudhunagar {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    .pbjtn__district-header {
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<!-- ============================================================
+             MARKUP
+             ============================================================ -->
+<div class="pbjtn__wrap">
+  <h2 class="pbjtn__title">PBJT In Practice In Tamil Nadu</h2>
+
+  <div class="pbjtn__grid">
+    <!-- LEFT: Full Tamil Nadu state map -->
+    <div class="pbjtn__map-col">
+      <!--
+                ⚠️ Replace src with your TN state map URL from WordPress Media Library
+              -->
+      <img
+        class="pbjtn__map-img"
+        src="YOUR_TN_STATE_MAP_IMAGE_URL"
+        alt="Tamil Nadu district map with location pins on Dindigul and Virudhunagar"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- RIGHT: District blocks -->
+    <div class="pbjtn__districts-col">
+      <!-- DINDIGUL: header row has inline Read More button -->
+      <div class="pbjtn__district pbjtn__district--dindigul">
+        <div class="pbjtn__district-header">
+          <span class="pbjtn__district-name">Dindigul District</span>
+          <a href="#" class="pbjtn__btn">
+            Read More&nbsp;<span class="pbjtn__btn-arrow">&#8250;</span>
+          </a>
+        </div>
+        <div class="pbjtn__district-map-wrap">
+          <!--
+                    ⚠️ Replace src with your Dindigul district map URL
+                  -->
+          <img
+            class="pbjtn__district-img"
+            src="YOUR_DINDIGUL_MAP_IMAGE_URL"
+            alt="Dindigul district taluk map"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- VIRUDHUNAGAR: label only at top, button below map (right-aligned) -->
+      <div class="pbjtn__district pbjtn__district--virudhunagar">
+        <div class="pbjtn__district-header">
+          <span class="pbjtn__district-name">Virudhunagar District</span>
+        </div>
+        <div class="pbjtn__district-map-wrap">
+          <!--
+                    ⚠️ Replace src with your Virudhunagar district map URL
+                  -->
+          <img
+            class="pbjtn__district-img"
+            src="YOUR_VIRUDHUNAGAR_MAP_IMAGE_URL"
+            alt="Virudhunagar district taluk map"
+            loading="lazy"
+          />
+        </div>
+        <div class="pbjtn__btn-row">
+          <a href="#" class="pbjtn__btn">
+            Read More&nbsp;<span class="pbjtn__btn-arrow">&#8250;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /.pbjtn__districts-col -->
+  </div>
+  <!-- /.pbjtn__grid -->
+</div>
+<!-- /.pbjtn__wrap -->
+<!-- END PBJT TAMIL NADU SECTION -->

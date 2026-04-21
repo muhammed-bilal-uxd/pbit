@@ -1,0 +1,110 @@
+<!-- PBJT Hero Banner — WordPress Safe Custom HTML Block -->
+<!-- Paste directly into a WordPress Custom HTML block -->
+
+<style>
+  /* ============================================================
+       PBJT HERO BANNER
+       Scoped under .pbjthero__ prefix — zero theme conflicts
+       ============================================================ */
+
+  .pbjthero__wrap *,
+  .pbjthero__wrap *::before,
+  .pbjthero__wrap *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .pbjthero__wrap {
+    width: 100%;
+    max-width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================================
+       BANNER BLOCK
+       ============================================================ */
+
+  .pbjthero__banner {
+    background-color: #c0221b; /* exact red from image */
+    width: 100%;
+    padding: 36px 48px 38px 48px;
+  }
+
+  /* ============================================================
+       CONTENT AREA — left-aligned with max-width cap
+       ============================================================ */
+
+  .pbjthero__content {
+    max-width: 820px;
+  }
+
+  /* Eyebrow: "PBJT in practice." */
+  .pbjthero__eyebrow {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(0.95rem, 1.8vw, 1.125rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+    margin-bottom: 4px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Main heading: "What the Ground Teaches Us." */
+  .pbjthero__heading {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  /* Body copy */
+  .pbjthero__body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+
+  @media (max-width: 768px) {
+    .pbjthero__banner {
+      padding: 28px 28px 30px 28px;
+    }
+
+    .pbjthero__heading {
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pbjthero__banner {
+      padding: 24px 20px 26px 20px;
+    }
+  }
+</style>
+
+<!-- PBJT HERO BANNER MARKUP -->
+<div class="pbjthero__wrap">
+  <div class="pbjthero__banner">
+    <div class="pbjthero__content">
+      <span class="pbjthero__eyebrow">PBJT in practice.</span>
+      <h2 class="pbjthero__heading">What the Ground Teaches Us.</h2>
+      <p class="pbjthero__body">
+        Learning emerges through real conversations - on worksites, in community
+        meetings, and in everyday informal spaces.
+      </p>
+    </div>
+  </div>
+</div>
+<!-- END PBJT HERO BANNER -->

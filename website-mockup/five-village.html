@@ -1,0 +1,1483 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PBJT Villages Dashboard</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =============================================
+   PBJT VILLAGES WIDGET — WordPress Safe Styles
+   All selectors scoped to .pbjt-widget
+   No resets that affect global WP elements
+   ============================================= */
+
+      .pbjt-widget *,
+      .pbjt-widget *::before,
+      .pbjt-widget *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pbjt-widget {
+        --pbjt-green-dark: #2d5a27;
+        --pbjt-green-mid: #4a7c3f;
+        --pbjt-green-light: #7bb369;
+        --pbjt-green-pale: #e8f5e4;
+        --pbjt-green-tint: #f2faf0;
+        --pbjt-accent: #3d7a34;
+        --pbjt-text-dark: #1a2e18;
+        --pbjt-text-mid: #3b5235;
+        --pbjt-text-muted: #6b8563;
+        --pbjt-border: #c8dfc3;
+        --pbjt-card-bg: #ffffff;
+        --pbjt-badge-bg: #eaf4e7;
+        --pbjt-radius-sm: 8px;
+        --pbjt-radius-md: 12px;
+        --pbjt-radius-lg: 16px;
+        --pbjt-shadow-sm: 0 2px 8px rgba(45, 90, 39, 0.08);
+        --pbjt-shadow-md: 0 4px 18px rgba(45, 90, 39, 0.13);
+        --pbjt-font-head: "Merriweather", Georgia, serif;
+        --pbjt-font-body: "Lato", Helvetica, Arial, sans-serif;
+
+        font-family: var(--pbjt-font-body);
+        color: var(--pbjt-text-dark);
+        background: var(--pbjt-green-tint);
+        border-radius: var(--pbjt-radius-lg);
+        padding: 32px 28px 28px;
+        max-width: 1100px;
+        margin: 0 auto;
+        line-height: 1.5;
+      }
+
+      /* ── Header ─────────────────────────────── */
+      .pbjt-widget__header {
+        margin-bottom: 24px;
+      }
+
+      .pbjt-widget__title {
+        font-family: var(--pbjt-font-head);
+        font-size: clamp(1.35rem, 3vw, 1.85rem);
+        font-weight: 700;
+        color: var(--pbjt-green-dark);
+        line-height: 1.25;
+        margin-bottom: 6px;
+      }
+
+      .pbjt-widget__subtitle {
+        font-size: 0.95rem;
+        color: var(--pbjt-text-muted);
+        font-weight: 400;
+      }
+
+      /* ── Village Cards Grid ──────────────────── */
+      .pbjt-village-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .pbjt-village-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 520px) {
+        .pbjt-village-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .pbjt-village-card {
+        background: var(--pbjt-card-bg);
+        border: 2px solid var(--pbjt-border);
+        border-radius: var(--pbjt-radius-md);
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          border-color 0.22s ease,
+          box-shadow 0.22s ease,
+          transform 0.18s ease;
+        box-shadow: var(--pbjt-shadow-sm);
+      }
+
+      .pbjt-village-card:hover {
+        border-color: var(--pbjt-green-mid);
+        box-shadow: var(--pbjt-shadow-md);
+        transform: translateY(-2px);
+      }
+
+      .pbjt-village-card--active {
+        border-color: var(--pbjt-green-dark) !important;
+        box-shadow:
+          0 0 0 3px rgba(45, 90, 39, 0.18),
+          var(--pbjt-shadow-md) !important;
+      }
+
+      /* Village image */
+      .pbjt-village-card__img-wrap {
+        position: relative;
+        height: 110px;
+        overflow: hidden;
+        background: var(--pbjt-green-pale);
+      }
+
+      .pbjt-village-card__img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.35s ease;
+      }
+
+      .pbjt-village-card:hover .pbjt-village-card__img-wrap img {
+        transform: scale(1.04);
+      }
+
+      .pbjt-village-card__name-badge {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(45, 90, 39, 0.88);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 20px;
+      }
+
+      .pbjt-village-card__name-badge svg {
+        width: 10px;
+        height: 10px;
+        flex-shrink: 0;
+      }
+
+      /* Village stats */
+      .pbjt-village-card__body {
+        padding: 12px 14px 14px;
+      }
+
+      .pbjt-village-card__stats {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+
+      .pbjt-stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .pbjt-stat__icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--pbjt-badge-bg);
+        border: 1px solid var(--pbjt-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 4px;
+      }
+
+      .pbjt-stat__icon svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .pbjt-stat__value {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--pbjt-green-dark);
+        line-height: 1;
+      }
+
+      .pbjt-stat__label {
+        font-size: 0.6rem;
+        color: var(--pbjt-text-muted);
+        text-align: center;
+        line-height: 1.2;
+        margin-top: 2px;
+      }
+
+      /* View Details button */
+      .pbjt-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        justify-content: center;
+        padding: 8px 12px;
+        border: 1.5px solid var(--pbjt-border);
+        border-radius: var(--pbjt-radius-sm);
+        background: transparent;
+        color: var(--pbjt-green-dark);
+        font-family: var(--pbjt-font-body);
+        font-size: 0.78rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        transition:
+          background 0.18s ease,
+          border-color 0.18s ease,
+          color 0.18s ease;
+        letter-spacing: 0.02em;
+      }
+
+      .pbjt-btn:hover {
+        background: var(--pbjt-green-dark);
+        border-color: var(--pbjt-green-dark);
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .pbjt-btn svg {
+        width: 13px;
+        height: 13px;
+        transition: transform 0.18s ease;
+      }
+
+      .pbjt-btn:hover svg {
+        transform: translateX(3px);
+      }
+
+      /* ── Hint row ────────────────────────────── */
+      .pbjt-hint {
+        font-size: 0.78rem;
+        color: var(--pbjt-text-muted);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 18px;
+      }
+
+      .pbjt-hint svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        color: var(--pbjt-green-mid);
+      }
+
+      /* ── Detail Panel ────────────────────────── */
+      .pbjt-detail-panel {
+        background: var(--pbjt-card-bg);
+        border: 1.5px solid var(--pbjt-border);
+        border-radius: var(--pbjt-radius-md);
+        padding: 24px;
+        display: none;
+        position: relative;
+        box-shadow: var(--pbjt-shadow-md);
+        animation: pbjt-fadeIn 0.28s ease;
+      }
+
+      .pbjt-detail-panel--visible {
+        display: block;
+      }
+
+      @keyframes pbjt-fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .pbjt-detail-panel__close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--pbjt-text-muted);
+        padding: 4px;
+        border-radius: 50%;
+        line-height: 1;
+        transition:
+          background 0.15s,
+          color 0.15s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+      }
+
+      .pbjt-detail-panel__close:hover {
+        background: var(--pbjt-green-pale);
+        color: var(--pbjt-green-dark);
+      }
+
+      .pbjt-detail-panel__close svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* Detail layout: sidebar + 3 columns */
+      .pbjt-detail-layout {
+        display: grid;
+        grid-template-columns: 200px 1fr 1fr 1fr;
+        gap: 24px;
+      }
+
+      @media (max-width: 860px) {
+        .pbjt-detail-layout {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .pbjt-detail-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Sidebar */
+      .pbjt-detail-sidebar__pin {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+
+      .pbjt-detail-sidebar__pin svg {
+        width: 16px;
+        height: 16px;
+        color: var(--pbjt-green-dark);
+        flex-shrink: 0;
+      }
+
+      .pbjt-detail-sidebar__name {
+        font-family: var(--pbjt-font-head);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--pbjt-green-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .pbjt-detail-sidebar__desc {
+        font-size: 0.8rem;
+        color: var(--pbjt-text-muted);
+        margin-bottom: 16px;
+        line-height: 1.5;
+      }
+
+      .pbjt-detail-sidebar__stats {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .pbjt-detail-sidebar-stat {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .pbjt-detail-sidebar-stat__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--pbjt-badge-bg);
+        border: 1px solid var(--pbjt-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .pbjt-detail-sidebar-stat__icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .pbjt-detail-sidebar-stat__value {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--pbjt-green-dark);
+        line-height: 1;
+      }
+
+      .pbjt-detail-sidebar-stat__label {
+        font-size: 0.72rem;
+        color: var(--pbjt-text-muted);
+      }
+
+      /* Detail columns */
+      .pbjt-detail-col__title {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--pbjt-text-muted);
+        margin-bottom: 12px;
+        border-bottom: 1.5px solid var(--pbjt-border);
+        padding-bottom: 6px;
+      }
+
+      /* Activities list */
+      .pbjt-activities-list {
+        list-style: none;
+        font-size: 0.82rem;
+        color: var(--pbjt-text-mid);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .pbjt-activities-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .pbjt-activities-list li::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--pbjt-green-light);
+        margin-top: 6px;
+        flex-shrink: 0;
+      }
+
+      .pbjt-activities-note {
+        margin-top: 12px;
+        background: var(--pbjt-green-pale);
+        border-radius: var(--pbjt-radius-sm);
+        padding: 10px 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 0.76rem;
+        color: var(--pbjt-text-mid);
+        line-height: 1.4;
+      }
+
+      .pbjt-activities-note svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: var(--pbjt-green-mid);
+        margin-top: 1px;
+      }
+
+      /* Restoration */
+      .pbjt-restoration-list {
+        list-style: none;
+        font-size: 0.82rem;
+        color: var(--pbjt-text-mid);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+
+      .pbjt-restoration-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .pbjt-restoration-list li::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--pbjt-green-light);
+        margin-top: 6px;
+        flex-shrink: 0;
+      }
+
+      .pbjt-restoration-img {
+        width: 100%;
+        border-radius: var(--pbjt-radius-sm);
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: var(--pbjt-green-pale);
+      }
+
+      .pbjt-restoration-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .pbjt-restoration-caption {
+        font-size: 0.7rem;
+        color: var(--pbjt-text-muted);
+        margin-top: 6px;
+        line-height: 1.35;
+      }
+
+      /* Groups table */
+      .pbjt-groups-intro {
+        font-size: 0.78rem;
+        color: var(--pbjt-text-muted);
+        margin-bottom: 10px;
+        line-height: 1.4;
+      }
+
+      .pbjt-groups-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.8rem;
+      }
+
+      .pbjt-groups-table thead th {
+        text-align: left;
+        font-weight: 700;
+        font-size: 0.72rem;
+        color: var(--pbjt-text-mid);
+        padding: 5px 8px;
+        background: var(--pbjt-green-pale);
+        border-bottom: 1.5px solid var(--pbjt-border);
+      }
+
+      .pbjt-groups-table tbody tr {
+        border-bottom: 1px solid var(--pbjt-border);
+        transition: background 0.12s;
+      }
+
+      .pbjt-groups-table tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      .pbjt-groups-table tbody tr:hover {
+        background: var(--pbjt-green-tint);
+      }
+
+      .pbjt-groups-table tbody td {
+        padding: 7px 8px;
+        color: var(--pbjt-text-dark);
+      }
+
+      .pbjt-groups-table tbody td:last-child {
+        font-weight: 700;
+        color: var(--pbjt-green-dark);
+      }
+
+      /* ── Footer Banner ───────────────────────── */
+      .pbjt-footer-banner {
+        margin-top: 20px;
+        background: var(--pbjt-green-pale);
+        border-radius: var(--pbjt-radius-sm);
+        padding: 13px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--pbjt-green-dark);
+        letter-spacing: 0.03em;
+      }
+
+      .pbjt-footer-banner svg {
+        width: 16px;
+        height: 16px;
+        color: var(--pbjt-green-mid);
+      }
+    </style>
+  </head>
+  <body style="background: #f0f0f0; padding: 30px">
+    <!-- ============================================================
+     PBJT WIDGET — Drop this entire block into WordPress
+     Works with Classic Editor, Gutenberg (HTML block), Elementor
+     ============================================================ -->
+    <div class="pbjt-widget" id="pbjt-villages-widget">
+      <!-- Header -->
+      <div class="pbjt-widget__header">
+        <h2 class="pbjt-widget__title">
+          PBJT in Five Villages Across Dindigul
+        </h2>
+        <p class="pbjt-widget__subtitle">
+          Community-led actions restoring ecosystems, reducing waste, and
+          building local livelihoods.
+        </p>
+      </div>
+
+      <!-- Village Cards -->
+      <div class="pbjt-village-grid" id="pbjt-village-grid">
+        <!-- Card: Avilipatti -->
+        <div
+          class="pbjt-village-card pbjt-village-card--active"
+          data-village="avilipatti"
+          role="button"
+          tabindex="0"
+          aria-label="View Avilipatti details"
+        >
+          <div class="pbjt-village-card__img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1567633215935-21af4ab5b4e3?w=400&q=80"
+              alt="Avilipatti village"
+              loading="lazy"
+            />
+            <span class="pbjt-village-card__name-badge">
+              <!-- Pin icon -->
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                />
+              </svg>
+              AVILIPATTI
+            </span>
+          </div>
+          <div class="pbjt-village-card__body">
+            <div class="pbjt-village-card__stats">
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4a7c3f"
+                    stroke-width="2"
+                  >
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14H6L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                    <path d="M9 6V4h6v2" />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">4</span>
+                <span class="pbjt-stat__label">Dump sites</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#4a7c3f">
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H8l4-8v4h3l-4 8z"
+                      opacity=".3"
+                    />
+                    <path
+                      d="M7 7.76C8.41 6.65 10.13 6 12 6c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8c0-1.87.65-3.59 1.76-4.94l1.42 1.42C6.43 11.53 6 12.71 6 14c0 3.31 2.69 6 6 6s6-2.69 6-6-2.69-6-6-6c-1.29 0-2.47.43-3.42 1.18L7 7.76z"
+                    />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">1</span>
+                <span class="pbjt-stat__label">Water body</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#4a7c3f">
+                    <path
+                      d="M17 8C8 10 5.9 16.17 3.82 19.33L5.6 21c1-1 2.27-2 4.4-2 4 0 4 2 8 2s4.33-1.3 5.09-3.22C26 12 17 8 17 8z"
+                    />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">120</span>
+                <span class="pbjt-stat__label">Trees planted</span>
+              </div>
+            </div>
+            <button class="pbjt-btn" data-village="avilipatti">
+              View Details
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card: Pethampatty -->
+        <div
+          class="pbjt-village-card"
+          data-village="pethampatty"
+          role="button"
+          tabindex="0"
+          aria-label="View Pethampatty details"
+        >
+          <div class="pbjt-village-card__img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80"
+              alt="Pethampatty village"
+              loading="lazy"
+            />
+            <span class="pbjt-village-card__name-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                />
+              </svg>
+              PETHAMPATTY
+            </span>
+          </div>
+          <div class="pbjt-village-card__body">
+            <div class="pbjt-village-card__stats">
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4a7c3f"
+                    stroke-width="2"
+                  >
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14H6L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                    <path d="M9 6V4h6v2" />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">2</span>
+                <span class="pbjt-stat__label">Dump sites</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#4a7c3f">
+                    <path
+                      d="M7 7.76C8.41 6.65 10.13 6 12 6c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8c0-1.87.65-3.59 1.76-4.94l1.42 1.42C6.43 11.53 6 12.71 6 14c0 3.31 2.69 6 6 6s6-2.69 6-6-2.69-6-6-6c-1.29 0-2.47.43-3.42 1.18L7 7.76z"
+                    />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">2</span>
+                <span class="pbjt-stat__label">Water bodies</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#4a7c3f">
+                    <path
+                      d="M17 8C8 10 5.9 16.17 3.82 19.33L5.6 21c1-1 2.27-2 4.4-2 4 0 4 2 8 2s4.33-1.3 5.09-3.22C26 12 17 8 17 8z"
+                    />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">50</span>
+                <span class="pbjt-stat__label">Trees planted</span>
+              </div>
+            </div>
+            <button class="pbjt-btn" data-village="pethampatty">
+              View Details
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card: Gopalpatti -->
+        <div
+          class="pbjt-village-card"
+          data-village="gopalpatti"
+          role="button"
+          tabindex="0"
+          aria-label="View Gopalpatti details"
+        >
+          <div class="pbjt-village-card__img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1444044205806-38f3ed106c10?w=400&q=80"
+              alt="Gopalpatti village"
+              loading="lazy"
+            />
+            <span class="pbjt-village-card__name-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                />
+              </svg>
+              GOPALPATTI
+            </span>
+          </div>
+          <div class="pbjt-village-card__body">
+            <div class="pbjt-village-card__stats">
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4a7c3f"
+                    stroke-width="2"
+                  >
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14H6L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                    <path d="M9 6V4h6v2" />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">6</span>
+                <span class="pbjt-stat__label">Dump sites</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#e6a817">
+                    <circle cx="12" cy="12" r="5" />
+                    <line
+                      x1="12"
+                      y1="1"
+                      x2="12"
+                      y2="3"
+                      stroke="#e6a817"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="12"
+                      y1="21"
+                      x2="12"
+                      y2="23"
+                      stroke="#e6a817"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="4.22"
+                      y1="4.22"
+                      x2="5.64"
+                      y2="5.64"
+                      stroke="#e6a817"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="18.36"
+                      y1="18.36"
+                      x2="19.78"
+                      y2="19.78"
+                      stroke="#e6a817"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="1"
+                      y1="12"
+                      x2="3"
+                      y2="12"
+                      stroke="#e6a817"
+                      stroke-width="2"
+                    />
+                    <line
+                      x1="21"
+                      y1="12"
+                      x2="23"
+                      y2="12"
+                      stroke="#e6a817"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">6</span>
+                <span class="pbjt-stat__label">Solar units</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#4a7c3f">
+                    <path
+                      d="M17 8C8 10 5.9 16.17 3.82 19.33L5.6 21c1-1 2.27-2 4.4-2 4 0 4 2 8 2s4.33-1.3 5.09-3.22C26 12 17 8 17 8z"
+                    />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">200</span>
+                <span class="pbjt-stat__label">Trees planted</span>
+              </div>
+            </div>
+            <button class="pbjt-btn" data-village="gopalpatti">
+              View Details
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card: Sanarpatty -->
+        <div
+          class="pbjt-village-card"
+          data-village="sanarpatty"
+          role="button"
+          tabindex="0"
+          aria-label="View Sanarpatty details"
+        >
+          <div class="pbjt-village-card__img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80"
+              alt="Sanarpatty village"
+              loading="lazy"
+            />
+            <span class="pbjt-village-card__name-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                />
+              </svg>
+              SANARPATTY
+            </span>
+          </div>
+          <div class="pbjt-village-card__body">
+            <div class="pbjt-village-card__stats">
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4a7c3f"
+                    stroke-width="2"
+                  >
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14H6L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                    <path d="M9 6V4h6v2" />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">6</span>
+                <span class="pbjt-stat__label">Dump sites</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4a7c3f"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M20 16V7a2 2 0 00-2-2H6a2 2 0 00-2 2v9m16 0H4m16 0 2 4H2l2-4"
+                    />
+                    <line x1="12" y1="12" x2="12" y2="12.01" />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">11</span>
+                <span class="pbjt-stat__label">Rainwater systems</span>
+              </div>
+              <div class="pbjt-stat">
+                <div class="pbjt-stat__icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4a7c3f"
+                    stroke-width="2"
+                  >
+                    <polyline points="23 7 13 17 8 12 1 19" />
+                    <polyline points="17 7 23 7 23 13" />
+                  </svg>
+                </div>
+                <span class="pbjt-stat__value">1</span>
+                <span class="pbjt-stat__label">Waste unit</span>
+              </div>
+            </div>
+            <button class="pbjt-btn" data-village="sanarpatty">
+              View Details
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- /pbjt-village-grid -->
+
+      <!-- Hint -->
+      <p class="pbjt-hint">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        Click on a village to explore activities, restoration work, and
+        community groups.
+      </p>
+
+      <!-- Detail Panel -->
+      <div
+        class="pbjt-detail-panel pbjt-detail-panel--visible"
+        id="pbjt-detail-panel"
+      >
+        <button
+          class="pbjt-detail-panel__close"
+          id="pbjt-panel-close"
+          aria-label="Close details"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+
+        <div class="pbjt-detail-layout">
+          <!-- Sidebar -->
+          <div class="pbjt-detail-sidebar">
+            <div class="pbjt-detail-sidebar__pin">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                />
+              </svg>
+              <span
+                class="pbjt-detail-sidebar__name"
+                id="pbjt-detail-village-name"
+                >AVILIPATTI</span
+              >
+            </div>
+            <p class="pbjt-detail-sidebar__desc" id="pbjt-detail-village-desc">
+              Local actions that turned waste into value and restored common
+              ecosystems.
+            </p>
+            <div
+              class="pbjt-detail-sidebar__stats"
+              id="pbjt-detail-sidebar-stats"
+            >
+              <div class="pbjt-detail-sidebar-stat">
+                <div class="pbjt-detail-sidebar-stat__icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4a7c3f"
+                    stroke-width="2"
+                  >
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6l-1 14H6L5 6" />
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                    <path d="M9 6V4h6v2" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="pbjt-detail-sidebar-stat__value">4</div>
+                  <div class="pbjt-detail-sidebar-stat__label">Dump sites</div>
+                </div>
+              </div>
+              <div class="pbjt-detail-sidebar-stat">
+                <div class="pbjt-detail-sidebar-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#4a7c3f">
+                    <path
+                      d="M7 7.76C8.41 6.65 10.13 6 12 6c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8c0-1.87.65-3.59 1.76-4.94l1.42 1.42C6.43 11.53 6 12.71 6 14c0 3.31 2.69 6 6 6s6-2.69 6-6-2.69-6-6-6c-1.29 0-2.47.43-3.42 1.18L7 7.76z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <div class="pbjt-detail-sidebar-stat__value">1</div>
+                  <div class="pbjt-detail-sidebar-stat__label">Water body</div>
+                </div>
+              </div>
+              <div class="pbjt-detail-sidebar-stat">
+                <div class="pbjt-detail-sidebar-stat__icon">
+                  <svg viewBox="0 0 24 24" fill="#4a7c3f">
+                    <path
+                      d="M17 8C8 10 5.9 16.17 3.82 19.33L5.6 21c1-1 2.27-2 4.4-2 4 0 4 2 8 2s4.33-1.3 5.09-3.22C26 12 17 8 17 8z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <div class="pbjt-detail-sidebar-stat__value">120</div>
+                  <div class="pbjt-detail-sidebar-stat__label">
+                    Trees planted
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activities -->
+          <div class="pbjt-detail-col">
+            <div class="pbjt-detail-col__title">Activities</div>
+            <ul class="pbjt-activities-list" id="pbjt-activities-list">
+              <li>Dump site: 4</li>
+              <li>Water bodies: 1</li>
+              <li>Tree planted: 120</li>
+              <li>Sanitation workers involved</li>
+              <li>
+                Waste collected properly and incentives received from Panchayat
+              </li>
+            </ul>
+            <div class="pbjt-activities-note">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17 8C8 10 5.9 16.17 3.82 19.33L5.6 21c1-1 2.27-2 4.4-2 4 0 4 2 8 2s4.33-1.3 5.09-3.22C26 12 17 8 17 8z"
+                />
+              </svg>
+              <span id="pbjt-activities-note"
+                >Community participation and incentives improved waste
+                management practices.</span
+              >
+            </div>
+          </div>
+
+          <!-- Restoration -->
+          <div class="pbjt-detail-col">
+            <div class="pbjt-detail-col__title">Restoration</div>
+            <ul class="pbjt-restoration-list" id="pbjt-restoration-list">
+              <li>Dump sites restored: 1</li>
+              <li>Water bodies restored: 1</li>
+            </ul>
+            <div class="pbjt-restoration-img">
+              <img
+                src="https://images.unsplash.com/photo-1504450874802-0ba2bcd9b5ae?w=400&q=80"
+                alt="Restored water body"
+                loading="lazy"
+                id="pbjt-restoration-img"
+              />
+            </div>
+            <p class="pbjt-restoration-caption" id="pbjt-restoration-caption">
+              A restored water body now supports biodiversity and community use.
+            </p>
+          </div>
+
+          <!-- Groups & Members -->
+          <div class="pbjt-detail-col">
+            <div class="pbjt-detail-col__title">Groups &amp; Members</div>
+            <p class="pbjt-groups-intro">
+              Local groups driving collective action in the village.
+            </p>
+            <table class="pbjt-groups-table">
+              <thead>
+                <tr>
+                  <th>Group</th>
+                  <th>Members</th>
+                </tr>
+              </thead>
+              <tbody id="pbjt-groups-tbody">
+                <tr>
+                  <td>Sanitation Workers</td>
+                  <td>15+</td>
+                </tr>
+                <tr>
+                  <td>Youth Group</td>
+                  <td>20+</td>
+                </tr>
+                <tr>
+                  <td>Women's Group</td>
+                  <td>18+</td>
+                </tr>
+                <tr>
+                  <td>Panchayat Committee</td>
+                  <td>10+</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /pbjt-detail-layout -->
+      </div>
+      <!-- /pbjt-detail-panel -->
+
+      <!-- Footer banner -->
+      <div class="pbjt-footer-banner">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+          />
+        </svg>
+        Small actions. Collective spirit. Lasting change.
+      </div>
+    </div>
+    <!-- /pbjt-widget -->
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ── Village data ─────────────────────────── */
+        var PBJT_DATA = {
+          avilipatti: {
+            name: "AVILIPATTI",
+            desc: "Local actions that turned waste into value and restored common ecosystems.",
+            sidebarStats: [
+              { icon: "trash", value: "4", label: "Dump sites" },
+              { icon: "water", value: "1", label: "Water body" },
+              { icon: "tree", value: "120", label: "Trees planted" },
+            ],
+            activities: [
+              "Dump site: 4",
+              "Water bodies: 1",
+              "Tree planted: 120",
+              "Sanitation workers involved",
+              "Waste collected properly and incentives received from Panchayat",
+            ],
+            activitiesNote:
+              "Community participation and incentives improved waste management practices.",
+            restoration: ["Dump sites restored: 1", "Water bodies restored: 1"],
+            restorationCaption:
+              "A restored water body now supports biodiversity and community use.",
+            restorationImg:
+              "https://images.unsplash.com/photo-1504450874802-0ba2bcd9b5ae?w=400&q=80",
+            groups: [
+              ["Sanitation Workers", "15+"],
+              ["Youth Group", "20+"],
+              ["Women's Group", "18+"],
+              ["Panchayat Committee", "10+"],
+            ],
+          },
+          pethampatty: {
+            name: "PETHAMPATTY",
+            desc: "Collective efforts to clean water bodies and restore green cover.",
+            sidebarStats: [
+              { icon: "trash", value: "2", label: "Dump sites" },
+              { icon: "water", value: "2", label: "Water bodies" },
+              { icon: "tree", value: "50", label: "Trees planted" },
+            ],
+            activities: [
+              "Dump site: 2",
+              "Water bodies: 2",
+              "Tree planted: 50",
+              "Community clean-up drives",
+              "Local youth participation in plantation",
+            ],
+            activitiesNote:
+              "Youth-led initiatives revitalised water bodies and green zones.",
+            restoration: ["Dump sites restored: 1", "Water bodies restored: 2"],
+            restorationCaption:
+              "Restored ponds now recharge groundwater and support local biodiversity.",
+            restorationImg:
+              "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80",
+            groups: [
+              ["Youth Group", "25+"],
+              ["Women's Group", "15+"],
+              ["Farmers' Collective", "12+"],
+              ["School Committee", "8+"],
+            ],
+          },
+          gopalpatti: {
+            name: "GOPALPATTI",
+            desc: "Solar energy adoption and large-scale tree planting drive transforming the village.",
+            sidebarStats: [
+              { icon: "trash", value: "6", label: "Dump sites" },
+              { icon: "sun", value: "6", label: "Solar units" },
+              { icon: "tree", value: "200", label: "Trees planted" },
+            ],
+            activities: [
+              "Dump site: 6",
+              "Solar units installed: 6",
+              "Tree planted: 200",
+              "Renewable energy awareness camps",
+              "Waste segregation at source initiated",
+            ],
+            activitiesNote:
+              "Solar installations reduced energy costs and improved livelihoods significantly.",
+            restoration: [
+              "Dump sites restored: 3",
+              "Green belts established: 2",
+            ],
+            restorationCaption:
+              "Solar-powered community spaces and lush green belts now define Gopalpatti.",
+            restorationImg:
+              "https://images.unsplash.com/photo-1444044205806-38f3ed106c10?w=400&q=80",
+            groups: [
+              ["Solar Users Group", "30+"],
+              ["Eco Warriors", "22+"],
+              ["Women's SHG", "20+"],
+              ["Panchayat Ward", "14+"],
+            ],
+          },
+          sanarpatty: {
+            name: "SANARPATTY",
+            desc: "Rainwater harvesting and waste management improving village resilience.",
+            sidebarStats: [
+              { icon: "trash", value: "6", label: "Dump sites" },
+              { icon: "rain", value: "11", label: "Rainwater systems" },
+              { icon: "recycle", value: "1", label: "Waste unit" },
+            ],
+            activities: [
+              "Dump site: 6",
+              "Rainwater systems: 11",
+              "Waste unit established: 1",
+              "Groundwater recharge monitoring",
+              "Household rainwater collection training",
+            ],
+            activitiesNote:
+              "Rainwater harvesting restored groundwater levels and reduced seasonal water scarcity.",
+            restoration: [
+              "Dump sites restored: 2",
+              "Rainwater structures active: 11",
+            ],
+            restorationCaption:
+              "Harvested rainwater now supports agriculture and daily household needs year-round.",
+            restorationImg:
+              "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80",
+            groups: [
+              ["Water Users Group", "18+"],
+              ["Women's Committee", "16+"],
+              ["Sanitation Team", "12+"],
+              ["Panchayat Board", "10+"],
+            ],
+          },
+        };
+
+        /* ── SVG helpers ──────────────────────────── */
+        function svgForIcon(icon) {
+          var icons = {
+            trash:
+              '<svg viewBox="0 0 24 24" fill="none" stroke="#4a7c3f" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>',
+            water:
+              '<svg viewBox="0 0 24 24" fill="#4a7c3f"><path d="M7 7.76C8.41 6.65 10.13 6 12 6c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8c0-1.87.65-3.59 1.76-4.94l1.42 1.42C6.43 11.53 6 12.71 6 14c0 3.31 2.69 6 6 6s6-2.69 6-6-2.69-6-6-6c-1.29 0-2.47.43-3.42 1.18L7 7.76z"/></svg>',
+            tree: '<svg viewBox="0 0 24 24" fill="#4a7c3f"><path d="M17 8C8 10 5.9 16.17 3.82 19.33L5.6 21c1-1 2.27-2 4.4-2 4 0 4 2 8 2s4.33-1.3 5.09-3.22C26 12 17 8 17 8z"/></svg>',
+            sun: '<svg viewBox="0 0 24 24" fill="#e6a817"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3" stroke="#e6a817" stroke-width="2"/><line x1="12" y1="21" x2="12" y2="23" stroke="#e6a817" stroke-width="2"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="#e6a817" stroke-width="2"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="#e6a817" stroke-width="2"/><line x1="1" y1="12" x2="3" y2="12" stroke="#e6a817" stroke-width="2"/><line x1="21" y1="12" x2="23" y2="12" stroke="#e6a817" stroke-width="2"/></svg>',
+            rain: '<svg viewBox="0 0 24 24" fill="none" stroke="#4a7c3f" stroke-width="2"><path d="M20 16V7a2 2 0 00-2-2H6a2 2 0 00-2 2v9m16 0H4m16 0 2 4H2l2-4"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg>',
+            recycle:
+              '<svg viewBox="0 0 24 24" fill="none" stroke="#4a7c3f" stroke-width="2"><polyline points="23 7 13 17 8 12 1 19"/><polyline points="17 7 23 7 23 13"/></svg>',
+          };
+          return icons[icon] || icons.trash;
+        }
+
+        /* ── DOM refs ─────────────────────────────── */
+        var panel = document.getElementById("pbjt-detail-panel");
+        var closeBtn = document.getElementById("pbjt-panel-close");
+        var villageName = document.getElementById("pbjt-detail-village-name");
+        var villageDesc = document.getElementById("pbjt-detail-village-desc");
+        var sidebarStats = document.getElementById("pbjt-detail-sidebar-stats");
+        var activitiesList = document.getElementById("pbjt-activities-list");
+        var activitiesNote = document.getElementById("pbjt-activities-note");
+        var restorationList = document.getElementById("pbjt-restoration-list");
+        var restorationImg = document.getElementById("pbjt-restoration-img");
+        var restorationCap = document.getElementById(
+          "pbjt-restoration-caption",
+        );
+        var groupsTbody = document.getElementById("pbjt-groups-tbody");
+        var allCards = document.querySelectorAll(".pbjt-village-card");
+
+        /* ── Render panel ─────────────────────────── */
+        function renderPanel(key) {
+          var d = PBJT_DATA[key];
+          if (!d) return;
+
+          villageName.textContent = d.name;
+          villageDesc.textContent = d.desc;
+
+          // Sidebar stats
+          sidebarStats.innerHTML = d.sidebarStats
+            .map(function (s) {
+              return (
+                '<div class="pbjt-detail-sidebar-stat">' +
+                '<div class="pbjt-detail-sidebar-stat__icon">' +
+                svgForIcon(s.icon) +
+                "</div>" +
+                "<div>" +
+                '<div class="pbjt-detail-sidebar-stat__value">' +
+                s.value +
+                "</div>" +
+                '<div class="pbjt-detail-sidebar-stat__label">' +
+                s.label +
+                "</div>" +
+                "</div></div>"
+              );
+            })
+            .join("");
+
+          // Activities
+          activitiesList.innerHTML = d.activities
+            .map(function (a) {
+              return "<li>" + a + "</li>";
+            })
+            .join("");
+          activitiesNote.textContent = d.activitiesNote;
+
+          // Restoration
+          restorationList.innerHTML = d.restoration
+            .map(function (r) {
+              return "<li>" + r + "</li>";
+            })
+            .join("");
+          restorationImg.src = d.restorationImg;
+          restorationImg.alt = "Restoration image for " + d.name;
+          restorationCap.textContent = d.restorationCaption;
+
+          // Groups
+          groupsTbody.innerHTML = d.groups
+            .map(function (g) {
+              return "<tr><td>" + g[0] + "</td><td>" + g[1] + "</td></tr>";
+            })
+            .join("");
+
+          // Show panel
+          panel.classList.add("pbjt-detail-panel--visible");
+
+          // Scroll panel into view smoothly
+          setTimeout(function () {
+            panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }, 50);
+        }
+
+        /* ── Activate card ────────────────────────── */
+        function activateCard(key) {
+          allCards.forEach(function (c) {
+            if (c.dataset.village === key) {
+              c.classList.add("pbjt-village-card--active");
+            } else {
+              c.classList.remove("pbjt-village-card--active");
+            }
+          });
+          renderPanel(key);
+        }
+
+        /* ── Events ───────────────────────────────── */
+        allCards.forEach(function (card) {
+          card.addEventListener("click", function () {
+            activateCard(card.dataset.village);
+          });
+          card.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              activateCard(card.dataset.village);
+            }
+          });
+        });
+
+        // Buttons inside cards
+        document.querySelectorAll(".pbjt-btn").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            activateCard(btn.dataset.village);
+          });
+        });
+
+        // Close button
+        closeBtn.addEventListener("click", function () {
+          panel.classList.remove("pbjt-detail-panel--visible");
+          allCards.forEach(function (c) {
+            c.classList.remove("pbjt-village-card--active");
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
