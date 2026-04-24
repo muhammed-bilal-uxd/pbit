@@ -1,11 +1,1192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PBJT – What the Ground Teaches Us</title>
+    <!--
+  =========================================================
+  WORDPRESS USAGE INSTRUCTIONS
+  =========================================================
+  1. Copy everything inside <style> … </style> into:
+       Appearance > Customize > Additional CSS
+     OR into your child-theme's style.css
+  2. Paste the HTML block (everything inside <body>) into a
+     WordPress page using the "Custom HTML" block in the
+     Block Editor (Gutenberg).
+  3. All class names are prefixed with "pbjt__" to prevent
+     any conflicts with theme or plugin CSS.
+  4. No JavaScript is required – layout is pure CSS.
+  =========================================================
+-->
+    <style>
+      /* ============================================================
+   PBJT SECTION – Scoped styles (prefix: pbjt__)
+   All rules use the .pbjt__wrap ancestor to stay isolated.
+   ============================================================ */
+
+      /* Google Fonts – loaded only when the section is on the page */
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@400;600;700&display=swap");
+
+      /* ---------- CSS Custom Properties (scoped) ---------- */
+      .pbjt__wrap {
+        --pbjt-red: #cc1f2b;
+        --pbjt-dark: #1a1a1a;
+        --pbjt-gray-bg: #4a4a4a;
+        --pbjt-light-bg: #f5f5f5;
+        --pbjt-white: #ffffff;
+        --pbjt-border: #d9d9d9;
+        --pbjt-font-head: "Playfair Display", Georgia, serif;
+        --pbjt-font-body: "Source Sans 3", Helvetica, Arial, sans-serif;
+        --pbjt-radius: 4px;
+        --pbjt-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        --pbjt-max: 960px;
+
+        /* Reset isolation */
+        all: revert;
+        box-sizing: border-box;
+        font-family: var(--pbjt-font-body);
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--pbjt-dark);
+        background: var(--pbjt-white);
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .pbjt__wrap *,
+      .pbjt__wrap *::before,
+      .pbjt__wrap *::after {
+        box-sizing: inherit;
+      }
+
+      /* ---------- NAV BAR ---------- */
+      .pbjt__nav {
+        background: var(--pbjt-white);
+        border-bottom: 1px solid var(--pbjt-border);
+        padding: 0 24px;
+      }
+
+      .pbjt__nav-inner {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px 0 0;
+      }
+
+      .pbjt__logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        margin-bottom: 14px;
+      }
+
+      .pbjt__logo-badge {
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+        font-family: var(--pbjt-font-body);
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1;
+        padding: 6px 8px;
+        letter-spacing: 0.5px;
+        border-radius: 2px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 2px;
+      }
+
+      .pbjt__logo-badge span {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .pbjt__logo-text {
+        font-family: var(--pbjt-font-body);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--pbjt-dark);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      .pbjt__menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid var(--pbjt-border);
+        width: 100%;
+      }
+
+      .pbjt__menu li a {
+        display: inline-block;
+        font-family: var(--pbjt-font-body);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--pbjt-dark);
+        text-decoration: none;
+        padding: 10px 10px;
+        transition: color 0.2s;
+      }
+
+      .pbjt__menu li a:hover,
+      .pbjt__menu li.pbjt__menu--active a {
+        color: var(--pbjt-red);
+      }
+
+      .pbjt__menu li + li::before {
+        content: "|";
+        color: var(--pbjt-border);
+        font-size: 11px;
+        line-height: 38px;
+      }
+
+      /* ---------- HERO BANNER ---------- */
+      .pbjt__hero {
+        background: var(--pbjt-red);
+        padding: 40px 24px 36px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pbjt__hero-eyebrow {
+        font-family: var(--pbjt-font-head);
+        font-style: italic;
+        font-size: clamp(20px, 3vw, 28px);
+        color: var(--pbjt-white);
+        display: block;
+        margin-bottom: -8px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .pbjt__hero-title {
+        font-family: var(--pbjt-font-head);
+        font-size: clamp(64px, 12vw, 120px);
+        font-weight: 900;
+        color: var(--pbjt-white);
+        line-height: 0.9;
+        margin: 0;
+        letter-spacing: -2px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .pbjt__hero-sub {
+        font-family: var(--pbjt-font-head);
+        font-style: italic;
+        font-size: clamp(22px, 3.5vw, 34px);
+        color: var(--pbjt-white);
+        display: block;
+        margin-top: 4px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .pbjt__hero-q {
+        font-size: clamp(80px, 14vw, 140px);
+        vertical-align: top;
+        line-height: 0.8;
+      }
+
+      /* ---------- INTRO SECTION ---------- */
+      .pbjt__intro {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        padding: 48px 24px 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .pbjt__intro-lead {
+        font-family: var(--pbjt-font-body);
+        font-size: clamp(17px, 2vw, 20px);
+        font-weight: 700;
+        line-height: 1.45;
+        color: var(--pbjt-dark);
+        margin: 0 0 20px;
+      }
+
+      .pbjt__intro-body {
+        font-size: 14.5px;
+        line-height: 1.7;
+        color: #333;
+        margin: 0 0 24px;
+      }
+
+      .pbjt__insights-label {
+        font-family: var(--pbjt-font-body);
+        font-size: 14px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0 0 16px;
+        color: var(--pbjt-dark);
+      }
+
+      .pbjt__insights-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background: var(--pbjt-light-bg);
+        border-radius: var(--pbjt-radius);
+        overflow: hidden;
+      }
+
+      .pbjt__insights-list li {
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: center;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--pbjt-border);
+        color: #333;
+      }
+
+      .pbjt__insights-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* ---------- PRACTICE IMAGE ---------- */
+      .pbjt__practice-img-wrap {
+        position: relative;
+        border-radius: var(--pbjt-radius);
+        overflow: hidden;
+        height: 100%;
+        min-height: 320px;
+        box-shadow: var(--pbjt-shadow);
+      }
+
+      .pbjt__practice-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        background: #c8c8c8;
+        min-height: 320px;
+      }
+
+      /* Placeholder visual when no real img src */
+      .pbjt__practice-img-placeholder {
+        background: linear-gradient(
+          135deg,
+          #d4a96a 0%,
+          #8a6a3a 50%,
+          #4a8a4a 100%
+        );
+        width: 100%;
+        min-height: 320px;
+        display: flex;
+        align-items: stretch;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pbjt__practice-label {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        font-family: var(--pbjt-font-head);
+        font-style: italic;
+        font-size: clamp(22px, 3.5vw, 32px);
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 2px;
+        padding: 16px 10px;
+        background: rgba(204, 31, 43, 0.55);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ---------- GROUNDED CALLOUT ---------- */
+      .pbjt__callout-row {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        padding: 0 24px 48px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        align-items: stretch;
+        border-radius: var(--pbjt-radius);
+        overflow: hidden;
+        box-shadow: var(--pbjt-shadow);
+      }
+
+      .pbjt__callout-photo {
+        min-height: 220px;
+        background: linear-gradient(
+          135deg,
+          #b0834a 0%,
+          #7a5c2a 60%,
+          #5a4a2a 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Decorative figures in the placeholder photo area */
+      .pbjt__callout-photo::before,
+      .pbjt__callout-photo::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .pbjt__callout-photo::before {
+        width: 160px;
+        height: 160px;
+        top: -40px;
+        left: -40px;
+      }
+      .pbjt__callout-photo::after {
+        width: 100px;
+        height: 100px;
+        bottom: -20px;
+        right: 20px;
+      }
+
+      .pbjt__callout-text {
+        background: var(--pbjt-gray-bg);
+        color: var(--pbjt-white);
+        padding: 32px 28px;
+        display: flex;
+        align-items: center;
+      }
+
+      .pbjt__callout-text p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--pbjt-white);
+      }
+
+      .pbjt__callout-text strong {
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      /* ---------- TAMIL NADU SECTION ---------- */
+      .pbjt__tn-section {
+        padding: 0 24px 56px;
+      }
+
+      .pbjt__tn-inner {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+      }
+
+      .pbjt__tn-heading {
+        font-family: var(--pbjt-font-body);
+        font-size: clamp(24px, 4vw, 36px);
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--pbjt-dark);
+        margin: 0 0 32px;
+        padding-bottom: 12px;
+        border-bottom: 3px solid var(--pbjt-red);
+      }
+
+      .pbjt__tn-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+
+      /* Main TN map placeholder */
+      .pbjt__map-main {
+        border-radius: var(--pbjt-radius);
+        overflow: hidden;
+        box-shadow: var(--pbjt-shadow);
+        background: #e8f0e8;
+        min-height: 400px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pbjt__map-main-svg {
+        width: 90%;
+        height: auto;
+        opacity: 0.85;
+      }
+
+      /* District cards */
+      .pbjt__districts {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .pbjt__district-card {
+        border: 1px solid var(--pbjt-border);
+        border-radius: var(--pbjt-radius);
+        overflow: hidden;
+        box-shadow: var(--pbjt-shadow);
+        background: var(--pbjt-white);
+      }
+
+      .pbjt__district-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        background: var(--pbjt-white);
+        border-bottom: 1px solid var(--pbjt-border);
+      }
+
+      .pbjt__district-name {
+        font-family: var(--pbjt-font-body);
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--pbjt-dark);
+        margin: 0;
+      }
+
+      .pbjt__district-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+        font-family: var(--pbjt-font-body);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 5px 12px;
+        border-radius: var(--pbjt-radius);
+        text-decoration: none;
+        transition: background 0.2s;
+        border: none;
+        cursor: pointer;
+      }
+
+      .pbjt__district-btn:hover {
+        background: #a51825;
+        color: var(--pbjt-white);
+      }
+
+      .pbjt__district-btn svg {
+        width: 10px;
+        height: 10px;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+
+      .pbjt__district-map {
+        width: 100%;
+        min-height: 160px;
+        background: #e8f4e8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+      }
+
+      .pbjt__district-map img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Colorful SVG-style placeholder blocks */
+      .pbjt__district-map-placeholder {
+        width: 100%;
+        min-height: 160px;
+        background: linear-gradient(
+          135deg,
+          #a8d5a8 0%,
+          #60b060 40%,
+          #d8e8a0 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--pbjt-font-body);
+        font-size: 13px;
+        font-weight: 600;
+        color: #2a5a2a;
+        letter-spacing: 0.5px;
+      }
+
+      /* ---------- FOOTER ---------- */
+      .pbjt__footer {
+        background: var(--pbjt-gray-bg);
+        padding: 28px 24px;
+      }
+
+      .pbjt__footer-inner {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      .pbjt__footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .pbjt__footer-logo .pbjt__logo-badge {
+        background: var(--pbjt-red);
+        font-size: 15px;
+      }
+
+      .pbjt__footer-logo .pbjt__logo-text {
+        color: var(--pbjt-white);
+        font-size: 12px;
+      }
+
+      .pbjt__footer-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pbjt__footer-links a {
+        font-family: var(--pbjt-font-body);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.75);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .pbjt__footer-links a:hover {
+        color: var(--pbjt-white);
+      }
+
+      /* ==========================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================== */
+      @media (max-width: 768px) {
+        .pbjt__menu li + li::before {
+          display: none;
+        }
+
+        .pbjt__intro {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 32px 16px 28px;
+        }
+
+        .pbjt__callout-row {
+          grid-template-columns: 1fr;
+          margin: 0 16px 40px;
+        }
+
+        .pbjt__callout-photo {
+          min-height: 180px;
+        }
+
+        .pbjt__tn-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .pbjt__map-main {
+          min-height: 280px;
+        }
+
+        .pbjt__footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .pbjt__footer-links {
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
+        .pbjt__tn-section {
+          padding: 0 16px 40px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .pbjt__hero {
+          padding: 28px 16px 24px;
+        }
+        .pbjt__hero-title {
+          letter-spacing: -1px;
+        }
+        .pbjt__intro {
+          padding: 24px 16px 20px;
+        }
+        .pbjt__callout-row {
+          margin: 0 0 32px;
+          border-radius: 0;
+        }
+        .pbjt__menu li a {
+          font-size: 10px;
+          padding: 8px 7px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =========================================================
+     PBJT SECTION – Paste this block into a WordPress
+     "Custom HTML" block in the Block Editor.
+     ========================================================= -->
+    <div class="pbjt__wrap">
+      <!-- NAV -->
+      <nav
+        class="pbjt__nav"
+        role="navigation"
+        aria-label="PBJT main navigation"
+      >
+        <div class="pbjt__nav-inner">
+          <a
+            href="#"
+            class="pbjt__logo"
+            aria-label="Place Based Just Transition home"
+          >
+            <div class="pbjt__logo-badge" aria-hidden="true">
+              <span>PB</span><span>JT</span>
+            </div>
+            <div class="pbjt__logo-text">
+              Place<br />Based Just<br />Transition
+            </div>
+          </a>
+          <ul class="pbjt__menu" role="list">
+            <li class="pbjt__menu--active"><a href="#">In Practice</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Impact Proposition</a></li>
+            <li><a href="#">Framework</a></li>
+            <li><a href="#">Focus Areas</a></li>
+            <li><a href="#">Methodology &amp; Expected Changes</a></li>
+            <li><a href="#">Glossary</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- HERO -->
+      <header class="pbjt__hero" role="banner">
+        <span class="pbjt__hero-eyebrow">What the</span>
+        <h1 class="pbjt__hero-title">
+          Ground<span class="pbjt__hero-q">?</span>
+        </h1>
+        <span class="pbjt__hero-sub">Teaches Us</span>
+      </header>
+
+      <!-- INTRO + IMAGE -->
+      <section class="pbjt__intro" aria-label="Learning from the ground">
+        <!-- Left: text -->
+        <div class="pbjt__intro-text">
+          <p class="pbjt__intro-lead">
+            Learning emerges through real conversations&nbsp;– on worksites, in
+            community meetings, and in everyday informal spaces.
+          </p>
+          <p class="pbjt__intro-body">
+            PBJT's learning emerges through real conversations – on worksites,
+            in community meetings, and in everyday informal spaces. In one
+            cluster, workers told us that "green jobs" meant little without wage
+            security. In another village, sustainability investments improved
+            waste management but quietly increased unpaid labour for women.
+            These experiences expose the gap between intention and lived impact.
+          </p>
+          <p class="pbjt__insights-label">Our field insights centre on:</p>
+          <ul class="pbjt__insights-list" role="list">
+            <li>How workers define dignity<br />in the midst of transition.</li>
+            <li>
+              How communities negotiate<br />responsibility with businesses.
+            </li>
+            <li>
+              How informal actors adapt<br />sustainability simply to survive.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: decorative image placeholder (replace src with actual image) -->
+        <div
+          class="pbjt__practice-img-wrap"
+          aria-label="PBJT in practice – field photograph"
+        >
+          <!-- Replace the div below with an <img> tag once you have the real photo -->
+          <div class="pbjt__practice-img-placeholder">
+            <!-- Placeholder simulates the field photo -->
+            <svg
+              viewBox="0 0 300 380"
+              xmlns="http://www.w3.org/2000/svg"
+              style="
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0.18;
+              "
+            >
+              <circle cx="150" cy="130" r="70" fill="#fff" />
+              <rect
+                x="60"
+                y="220"
+                width="180"
+                height="140"
+                rx="8"
+                fill="#fff"
+              />
+              <circle cx="80" cy="300" r="30" fill="#fff" opacity=".4" />
+              <circle cx="220" cy="260" r="50" fill="#fff" opacity=".3" />
+            </svg>
+            <span class="pbjt__practice-label">PBJT in practice.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- GROUNDED CALLOUT -->
+      <div
+        class="pbjt__callout-row"
+        role="region"
+        aria-label="Honest grounded accounts"
+      >
+        <div
+          class="pbjt__callout-photo"
+          aria-label="Community workers photograph placeholder"
+        >
+          <!-- Replace this div with an actual <img> of the workers photo -->
+          <svg
+            viewBox="0 0 400 240"
+            xmlns="http://www.w3.org/2000/svg"
+            style="width: 70%; opacity: 0.25"
+          >
+            <circle cx="100" cy="120" r="60" fill="#fff" />
+            <circle cx="200" cy="100" r="50" fill="#fff" />
+            <circle cx="300" cy="120" r="55" fill="#fff" />
+          </svg>
+        </div>
+        <div class="pbjt__callout-text">
+          <p>
+            <strong>These are not polished success stories.</strong> They are
+            honest, grounded accounts of transition – where power,
+            vulnerability, and hope meet.
+          </p>
+        </div>
+      </div>
+
+      <!-- TAMIL NADU -->
+      <section
+        class="pbjt__tn-section"
+        aria-label="PBJT in practice in Tamil Nadu"
+      >
+        <div class="pbjt__tn-inner">
+          <h2 class="pbjt__tn-heading">PBJT in Practice in Tamil Nadu</h2>
+
+          <div class="pbjt__tn-grid">
+            <!-- Main TN map placeholder -->
+            <div class="pbjt__map-main" aria-label="Tamil Nadu state map">
+              <!-- Simplified illustrative SVG map of Tamil Nadu -->
+              <svg
+                class="pbjt__map-main-svg"
+                viewBox="0 0 320 480"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient
+                    id="pbjt-tn-grad"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop
+                      offset="0%"
+                      style="stop-color: #a0c8a0; stop-opacity: 1"
+                    />
+                    <stop
+                      offset="100%"
+                      style="stop-color: #60a060; stop-opacity: 1"
+                    />
+                  </linearGradient>
+                </defs>
+                <!-- Rough Tamil Nadu silhouette blocks (decorative) -->
+                <rect
+                  x="60"
+                  y="20"
+                  width="200"
+                  height="60"
+                  rx="4"
+                  fill="#b8d4f0"
+                />
+                <rect
+                  x="40"
+                  y="75"
+                  width="220"
+                  height="60"
+                  rx="4"
+                  fill="#d0e8b8"
+                />
+                <rect
+                  x="50"
+                  y="130"
+                  width="210"
+                  height="60"
+                  rx="4"
+                  fill="#f0d8a0"
+                />
+                <rect
+                  x="60"
+                  y="185"
+                  width="190"
+                  height="55"
+                  rx="4"
+                  fill="#c8e0c8"
+                />
+                <rect
+                  x="70"
+                  y="235"
+                  width="170"
+                  height="55"
+                  rx="4"
+                  fill="#e8c8a0"
+                />
+                <rect
+                  x="80"
+                  y="285"
+                  width="150"
+                  height="55"
+                  rx="4"
+                  fill="#d0b8e0"
+                />
+                <rect
+                  x="90"
+                  y="335"
+                  width="130"
+                  height="55"
+                  rx="4"
+                  fill="#c0d8f0"
+                />
+                <rect
+                  x="100"
+                  y="385"
+                  width="100"
+                  height="55"
+                  rx="4"
+                  fill="#e8d0b0"
+                />
+                <rect
+                  x="110"
+                  y="435"
+                  width="80"
+                  height="30"
+                  rx="4"
+                  fill="#d8c8a8"
+                />
+                <!-- Location pins for Dindigul and Virudhunagar -->
+                <circle cx="140" cy="300" r="8" fill="#cc1f2b" />
+                <polygon points="140,285 146,300 134,300" fill="#cc1f2b" />
+                <circle cx="130" cy="355" r="8" fill="#cc1f2b" />
+                <polygon points="130,340 136,355 124,355" fill="#cc1f2b" />
+                <!-- District label hints -->
+                <text
+                  x="155"
+                  y="304"
+                  font-family="sans-serif"
+                  font-size="11"
+                  fill="#333"
+                  font-weight="600"
+                >
+                  Dindigul
+                </text>
+                <text
+                  x="145"
+                  y="359"
+                  font-family="sans-serif"
+                  font-size="10"
+                  fill="#333"
+                  font-weight="600"
+                >
+                  Virudhunagar
+                </text>
+              </svg>
+            </div>
+
+            <!-- District cards -->
+            <div class="pbjt__districts">
+              <!-- Dindigul -->
+              <div class="pbjt__district-card">
+                <div class="pbjt__district-header">
+                  <h3 class="pbjt__district-name">Dindigul District</h3>
+                  <a
+                    href="#"
+                    class="pbjt__district-btn"
+                    aria-label="Read more about Dindigul District"
+                  >
+                    Read More
+                    <svg viewBox="0 0 10 10" aria-hidden="true">
+                      <polygon points="3,1 8,5 3,9" />
+                    </svg>
+                  </a>
+                </div>
+                <div class="pbjt__district-map">
+                  <!-- Replace with actual district map image: <img src="dindigul-map.png" alt="Dindigul district map"> -->
+                  <div
+                    class="pbjt__district-map-placeholder"
+                    aria-label="Dindigul district map placeholder"
+                  >
+                    <svg
+                      viewBox="0 0 240 160"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="width: 100%; height: 100%"
+                    >
+                      <rect
+                        x="10"
+                        y="10"
+                        width="60"
+                        height="40"
+                        rx="3"
+                        fill="#90c090"
+                      />
+                      <rect
+                        x="75"
+                        y="8"
+                        width="70"
+                        height="45"
+                        rx="3"
+                        fill="#70b870"
+                      />
+                      <rect
+                        x="150"
+                        y="12"
+                        width="80"
+                        height="38"
+                        rx="3"
+                        fill="#b0d4a0"
+                      />
+                      <rect
+                        x="15"
+                        y="55"
+                        width="55"
+                        height="42"
+                        rx="3"
+                        fill="#a8cc90"
+                      />
+                      <rect
+                        x="75"
+                        y="58"
+                        width="65"
+                        height="40"
+                        rx="3"
+                        fill="#80c080"
+                      />
+                      <rect
+                        x="145"
+                        y="55"
+                        width="85"
+                        height="42"
+                        rx="3"
+                        fill="#98c878"
+                      />
+                      <rect
+                        x="20"
+                        y="102"
+                        width="50"
+                        height="45"
+                        rx="3"
+                        fill="#b8d8a0"
+                      />
+                      <rect
+                        x="75"
+                        y="104"
+                        width="60"
+                        height="43"
+                        rx="3"
+                        fill="#90c888"
+                      />
+                      <rect
+                        x="140"
+                        y="102"
+                        width="90"
+                        height="45"
+                        rx="3"
+                        fill="#78c070"
+                      />
+                      <circle cx="160" cy="85" r="6" fill="#cc1f2b" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Virudhunagar -->
+              <div class="pbjt__district-card">
+                <div class="pbjt__district-header">
+                  <h3 class="pbjt__district-name">Virudhunagar District</h3>
+                  <a
+                    href="#"
+                    class="pbjt__district-btn"
+                    aria-label="Read more about Virudhunagar District"
+                  >
+                    Read More
+                    <svg viewBox="0 0 10 10" aria-hidden="true">
+                      <polygon points="3,1 8,5 3,9" />
+                    </svg>
+                  </a>
+                </div>
+                <div class="pbjt__district-map">
+                  <!-- Replace with actual district map image: <img src="virudhunagar-map.png" alt="Virudhunagar district map"> -->
+                  <div
+                    class="pbjt__district-map-placeholder"
+                    aria-label="Virudhunagar district map placeholder"
+                    style="
+                      background: linear-gradient(
+                        135deg,
+                        #c0d890 0%,
+                        #78b060 40%,
+                        #e8e898 100%
+                      );
+                    "
+                  >
+                    <svg
+                      viewBox="0 0 240 160"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="width: 100%; height: 100%"
+                    >
+                      <rect
+                        x="12"
+                        y="12"
+                        width="70"
+                        height="38"
+                        rx="3"
+                        fill="#a0c880"
+                      />
+                      <rect
+                        x="88"
+                        y="10"
+                        width="65"
+                        height="42"
+                        rx="3"
+                        fill="#c0d898"
+                      />
+                      <rect
+                        x="158"
+                        y="14"
+                        width="70"
+                        height="36"
+                        rx="3"
+                        fill="#88b870"
+                      />
+                      <rect
+                        x="10"
+                        y="56"
+                        width="62"
+                        height="44"
+                        rx="3"
+                        fill="#b0cc88"
+                      />
+                      <rect
+                        x="78"
+                        y="58"
+                        width="70"
+                        height="42"
+                        rx="3"
+                        fill="#78b468"
+                      />
+                      <rect
+                        x="154"
+                        y="56"
+                        width="74"
+                        height="44"
+                        rx="3"
+                        fill="#c8d890"
+                      />
+                      <rect
+                        x="18"
+                        y="106"
+                        width="56"
+                        height="42"
+                        rx="3"
+                        fill="#a8c870"
+                      />
+                      <rect
+                        x="80"
+                        y="108"
+                        width="65"
+                        height="40"
+                        rx="3"
+                        fill="#90b878"
+                      />
+                      <rect
+                        x="150"
+                        y="106"
+                        width="78"
+                        height="42"
+                        rx="3"
+                        fill="#b8d080"
+                      />
+                      <circle cx="120" cy="78" r="6" fill="#cc1f2b" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /.pbjt__districts -->
+          </div>
+          <!-- /.pbjt__tn-grid -->
+        </div>
+        <!-- /.pbjt__tn-inner -->
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="pbjt__footer" role="contentinfo">
+        <div class="pbjt__footer-inner">
+          <a
+            href="#"
+            class="pbjt__footer-logo"
+            aria-label="Place Based Just Transition home"
+          >
+            <div class="pbjt__logo-badge" aria-hidden="true">
+              <span>PB</span><span>JT</span>
+            </div>
+            <div class="pbjt__logo-text">
+              Place<br />Based Just<br />Transition
+            </div>
+          </a>
+          <ul class="pbjt__footer-links" role="list">
+            <li><a href="#">Partnerships</a></li>
+            <li><a href="#">Funding</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+    <!-- /.pbjt__wrap -->
+  </body>
 </html>

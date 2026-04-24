@@ -1,11 +1,566 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <style>
+      /* =========================
+           PBJT PRINCIPLES - ISOLATED
+           ========================= */
+      .pbjtpv2-wrap,
+      .pbjtpv2-wrap * {
+        box-sizing: border-box;
+      }
+
+      .pbjtpv2-wrap {
+        --pbjtpv2-bg: #ececec;
+        --pbjtpv2-text: #575757;
+        --pbjtpv2-dark: #2f2a2c;
+        --pbjtpv2-red: #d81f26;
+        --pbjtpv2-white: #ffffff;
+        --pbjtpv2-card: #efefef;
+        --pbjtpv2-max: 1200px;
+        width: 100%;
+        background: var(--pbjtpv2-bg);
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--pbjtpv2-text);
+        line-height: 1.45;
+        overflow: hidden;
+      }
+
+      .pbjtpv2-container {
+        width: 100%;
+        max-width: var(--pbjtpv2-max);
+        margin: 0 auto;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      /* =========================
+           HEADER
+           ========================= */
+      .pbjtpv2-header {
+        background: #efefef;
+        padding-top: 8px;
+        padding-bottom: 10px;
+      }
+
+      .pbjtpv2-logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+
+      .pbjtpv2-logo img {
+        width: 215px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .pbjtpv2-nav {
+        text-align: center;
+        font-size: 10px;
+        line-height: 1.6;
+        text-transform: uppercase;
+        letter-spacing: 0.2px;
+        color: #666;
+      }
+
+      .pbjtpv2-nav a {
+        color: #666;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0 4px;
+      }
+
+      .pbjtpv2-nav a:hover,
+      .pbjtpv2-nav .pbjtpv2-active {
+        color: var(--pbjtpv2-red);
+      }
+
+      /* =========================
+           HERO
+           ========================= */
+      .pbjtpv2-hero {
+        position: relative;
+        min-height: 238px;
+        background: url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80")
+          center center / cover no-repeat;
+      }
+
+      .pbjtpv2-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(180, 130, 10, 0.1);
+      }
+
+      .pbjtpv2-hero-inner {
+        position: relative;
+        min-height: 238px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 175px;
+      }
+
+      .pbjtpv2-hero-kicker {
+        margin: 0 0 2px;
+        font-size: 32px;
+        font-weight: 800;
+        color: #222;
+        line-height: 1;
+      }
+
+      .pbjtpv2-hero-title {
+        margin: 0;
+        font-size: clamp(84px, 13vw, 150px);
+        line-height: 0.86;
+        font-weight: 900;
+        color: #fff;
+        letter-spacing: -3px;
+      }
+
+      .pbjtpv2-hero-sub {
+        margin: -2px 0 0 130px;
+        font-size: clamp(26px, 4vw, 34px);
+        line-height: 1;
+        font-weight: 800;
+        color: var(--pbjtpv2-red);
+      }
+
+      /* =========================
+           TOP CONTENT
+           ========================= */
+      .pbjtpv2-top {
+        padding-top: 24px;
+        padding-bottom: 32px;
+      }
+
+      .pbjtpv2-top-grid {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .pbjtpv2-copy {
+        max-width: 430px;
+        margin-left: 12px;
+      }
+
+      .pbjtpv2-copy p {
+        margin: 0 0 14px;
+        font-size: 15px;
+        color: #666;
+        line-height: 1.7;
+      }
+
+      .pbjtpv2-copy strong {
+        color: #333;
+        font-weight: 800;
+      }
+
+      .pbjtpv2-top-image {
+        width: 100%;
+        max-width: 390px;
+        margin-left: auto;
+        margin-right: 20px;
+      }
+
+      .pbjtpv2-top-image img {
+        width: 100%;
+        display: block;
+        height: auto;
+        object-fit: cover;
+      }
+
+      /* =========================
+           LARGE IMAGE / OVERLAY AREA
+           ========================= */
+      .pbjtpv2-stage {
+        position: relative;
+        background: url("https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=1800&q=80")
+          center center / cover no-repeat;
+        min-height: 1280px;
+        padding-top: 36px;
+        padding-bottom: 70px;
+      }
+
+      .pbjtpv2-stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.62) 0%,
+          rgba(255, 255, 255, 0.22) 18%,
+          rgba(0, 0, 0, 0.08) 60%,
+          rgba(0, 0, 0, 0.18) 100%
+        );
+        pointer-events: none;
+      }
+
+      .pbjtpv2-stage-inner {
+        position: relative;
+        z-index: 2;
+        min-height: 1180px;
+      }
+
+      /* fill empty space box area */
+      .pbjtpv2-gapfill {
+        width: 360px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.55);
+        margin-left: 0;
+        margin-bottom: 28px;
+      }
+
+      /* cards */
+      .pbjtpv2-card {
+        width: 360px;
+        background: rgba(245, 245, 245, 0.96);
+        padding: 20px 24px 18px;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02);
+      }
+
+      .pbjtpv2-card p {
+        margin: 0 0 12px;
+        font-size: 15px;
+        line-height: 1.68;
+        color: #5f5f5f;
+      }
+
+      .pbjtpv2-card strong {
+        color: #303030;
+        font-weight: 800;
+      }
+
+      .pbjtpv2-card-left {
+        margin-left: 12px;
+      }
+
+      .pbjtpv2-card-right {
+        margin-left: auto;
+        margin-right: 24px;
+        margin-top: 430px;
+      }
+
+      /* =========================
+           FOOTER
+           ========================= */
+      .pbjtpv2-footer {
+        background: var(--pbjtpv2-dark);
+        padding: 26px 0;
+      }
+
+      .pbjtpv2-footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .pbjtpv2-footer-logo img {
+        width: 165px;
+        max-width: 100%;
+        display: block;
+        height: auto;
+      }
+
+      .pbjtpv2-footer-nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .pbjtpv2-footer-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 0.2px;
+      }
+
+      /* =========================
+           RESPONSIVE
+           ========================= */
+      @media (max-width: 1100px) {
+        .pbjtpv2-hero-inner {
+          padding-left: 90px;
+        }
+
+        .pbjtpv2-hero-sub {
+          margin-left: 60px;
+        }
+
+        .pbjtpv2-top-image {
+          margin-right: 0;
+        }
+
+        .pbjtpv2-card,
+        .pbjtpv2-gapfill {
+          width: 330px;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .pbjtpv2-hero {
+          min-height: 200px;
+        }
+
+        .pbjtpv2-hero-inner {
+          min-height: 200px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        .pbjtpv2-hero-kicker {
+          font-size: 24px;
+        }
+
+        .pbjtpv2-hero-sub {
+          margin-left: 0;
+          margin-top: 8px;
+        }
+
+        .pbjtpv2-top-grid {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+
+        .pbjtpv2-copy {
+          max-width: 100%;
+          margin-left: 0;
+        }
+
+        .pbjtpv2-top-image {
+          max-width: 100%;
+          margin-left: 0;
+        }
+
+        .pbjtpv2-stage {
+          min-height: auto;
+          padding-top: 28px;
+          padding-bottom: 28px;
+        }
+
+        .pbjtpv2-stage-inner {
+          min-height: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .pbjtpv2-gapfill {
+          display: none;
+        }
+
+        .pbjtpv2-card,
+        .pbjtpv2-card-left,
+        .pbjtpv2-card-right {
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .pbjtpv2-container {
+          padding-left: 14px;
+          padding-right: 14px;
+        }
+
+        .pbjtpv2-nav {
+          font-size: 9px;
+        }
+
+        .pbjtpv2-hero-kicker {
+          font-size: 19px;
+        }
+
+        .pbjtpv2-hero-title {
+          font-size: 62px;
+          letter-spacing: -2px;
+        }
+
+        .pbjtpv2-hero-sub {
+          font-size: 18px;
+        }
+
+        .pbjtpv2-copy p,
+        .pbjtpv2-card p {
+          font-size: 14px;
+        }
+
+        .pbjtpv2-footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .pbjtpv2-footer-nav {
+          gap: 16px;
+        }
+      }
+    </style>
+
+    <div class="pbjtpv2-wrap">
+      <!-- Header -->
+      <header class="pbjtpv2-header">
+        <div class="pbjtpv2-container">
+          <div class="pbjtpv2-logo">
+            <img
+              src="https://placehold.co/215x60/f2f2f2/555555?text=PBJT+LOGO"
+              alt="Place Based Just Transition"
+            />
+          </div>
+
+          <nav class="pbjtpv2-nav">
+            <a href="#">IN PRACTICE</a> | <a href="#">TESTIMONIALS</a> |
+            <a href="#">ABOUT</a> | <a href="#">IMPACT PROPOSITION</a> |
+            <a href="#" class="pbjtpv2-active">FRAMEWORK</a> |
+            <a href="#">FOCUS AREAS</a> |
+            <a href="#">METHODOLOGY &amp; EXPECTED CHANGES</a> |
+            <a href="#">GLOSSARY</a> |
+            <a href="#">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="pbjtpv2-hero">
+        <div class="pbjtpv2-container pbjtpv2-hero-inner">
+          <p class="pbjtpv2-hero-kicker">PBJT - Framework</p>
+          <h1 class="pbjtpv2-hero-title">Principles</h1>
+          <p class="pbjtpv2-hero-sub">of Place-Based Just Transition</p>
+        </div>
+      </section>
+
+      <!-- Top section -->
+      <section class="pbjtpv2-top">
+        <div class="pbjtpv2-container">
+          <div class="pbjtpv2-top-grid">
+            <div class="pbjtpv2-copy">
+              <p>
+                To Make Place-Based Transition actionable, PBJT develops and
+                uses simple, practical tools that communities and practitioners
+                can actually use.
+              </p>
+
+              <p>
+                <strong>These include:</strong> Value Chain Mapping Tools that
+                identify informal and last-tier actors, Community Impact
+                Reflection Guides to assess environmental and social change,
+                Worker-Led Audit Formats that reflect lived labour conditions
+                and Collective Dialogue Templates for grievance redressal and
+                negotiation.
+              </p>
+
+              <p>
+                <strong
+                  >Each tool is designed to support discussion, not
+                  compliance.</strong
+                >
+                They help communities ask better questions, and help businesses
+                see what is usually invisible.
+                <br /><br />
+                Our approach prioritises strengthening existing structures.
+              </p>
+            </div>
+
+            <div class="pbjtpv2-top-image">
+              <img
+                src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80"
+                alt="PBJT field work"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Large stage section -->
+      <section class="pbjtpv2-stage">
+        <div class="pbjtpv2-container pbjtpv2-stage-inner">
+          <!-- optional empty fill block to balance layout -->
+          <div class="pbjtpv2-gapfill"></div>
+
+          <div class="pbjtpv2-card pbjtpv2-card-left">
+            <p>
+              <strong>Embedded in Business Responsibility:</strong><br />
+              A just transition must be part of everyday business
+              responsibility. All economic actors workers, vendors, MSMEs, and
+              communities are part of the business ecosystem, not just large
+              firms. Businesses have responsibilities toward the social and
+              environmental wellbeing of the places they operate in. Transition
+              efforts must strengthen existing livelihoods rather than
+              displacing or marginalising them. Responsibility moves beyond
+              compliance to active participation in community wellbeing.
+            </p>
+
+            <p><strong>Collectivisation and Collective Agency:</strong></p>
+
+            <p>
+              PBJT is built on collective strength. Transition processes are
+              more democratic, inclusive, and sustainable when communities act
+              together rather than as isolated individuals. Worker groups,
+              community collectives, and local associations enable shared
+              decision-making, collective bargaining, and problem-solving,
+              reducing vulnerability and increasing agency.
+            </p>
+          </div>
+
+          <div class="pbjtpv2-card pbjtpv2-card-right">
+            <p><strong>Starting from the Last Tier:</strong></p>
+            <p>
+              PBJT prioritises those most affected - informal workers, small
+              vendors, marginalised groups, and vulnerable communities.
+              Solutions are designed by starting with local realities,
+              addressing unequal power relations, and strengthening community
+              capacity to shape their own transition pathways.
+            </p>
+
+            <p><strong>Place-Based and Context-Driven:</strong></p>
+            <p>
+              Every place is different. PBJT is rooted in local social,
+              economic, cultural, and environmental contexts. Instead of
+              one-size-fits-all solutions, PBJT builds on local knowledge,
+              networks, and strengths to co-create relevant and dignified
+              transition strategies.
+            </p>
+
+            <p><strong>Equity and Redistribution of Power:</strong></p>
+            <p>
+              A just transition requires shifting decision-making power toward
+              those historically excluded. PBJT ensures meaningful participation
+              of workers, women, informal sector actors, and marginalised
+              communities in decisions that affect their livelihoods and
+              environment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="pbjtpv2-footer">
+        <div class="pbjtpv2-container pbjtpv2-footer-inner">
+          <div class="pbjtpv2-footer-logo">
+            <img
+              src="https://placehold.co/165x50/2f2a2c/ffffff?text=PBJT+LOGO"
+              alt="PBJT"
+            />
+          </div>
+
+          <nav class="pbjtpv2-footer-nav">
+            <a href="#">PARTNERSHIPS</a>
+            <a href="#">FUNDING</a>
+            <a href="#">CONTACT</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>

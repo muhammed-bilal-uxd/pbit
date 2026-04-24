@@ -1,11 +1,621 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <style>
+      /* ===== PBJT isolated wrapper ===== */
+      .pbjt-hw-wrap,
+      .pbjt-hw-wrap * {
+        box-sizing: border-box;
+      }
+
+      .pbjt-hw-wrap {
+        --pbjt-red: #d71920;
+        --pbjt-dark: #2f2b2c;
+        --pbjt-text: #4f4f4f;
+        --pbjt-light: #f2f2f2;
+        --pbjt-soft: #eadede;
+        --pbjt-white: #ffffff;
+        --pbjt-max: 1200px;
+        width: 100%;
+        background: #e9e9e9;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--pbjt-text);
+        line-height: 1.45;
+        overflow: hidden;
+      }
+
+      .pbjt-hw-container {
+        width: 100%;
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      /* ===== Header ===== */
+      .pbjt-hw-header {
+        background: #e9e9e9;
+        padding: 22px 0 10px;
+      }
+
+      .pbjt-hw-brand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+
+      .pbjt-hw-brand img {
+        max-width: 360px;
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .pbjt-hw-nav {
+        text-align: center;
+        font-size: 11px;
+        text-transform: uppercase;
+        color: #666;
+        letter-spacing: 0.2px;
+        line-height: 1.8;
+      }
+
+      .pbjt-hw-nav a {
+        color: #666;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0 6px;
+      }
+
+      .pbjt-hw-nav a:hover {
+        color: var(--pbjt-red);
+      }
+
+      /* ===== Hero ===== */
+      .pbjt-hw-hero {
+        position: relative;
+        min-height: 245px;
+        background: url("https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1400&q=80")
+          center center / cover no-repeat;
+        overflow: hidden;
+      }
+
+      .pbjt-hw-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 107, 184, 0.35),
+          rgba(0, 107, 184, 0.15)
+        );
+      }
+
+      .pbjt-hw-hero-inner {
+        position: relative;
+        z-index: 2;
+        min-height: 245px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pbjt-hw-hero-big {
+        font-size: clamp(72px, 15vw, 230px);
+        line-height: 0.9;
+        font-weight: 800;
+        color: #fff;
+        text-align: center;
+        letter-spacing: -3px;
+        margin: 0;
+      }
+
+      .pbjt-hw-hero-small-top {
+        position: absolute;
+        top: 28px;
+        left: 8%;
+        color: var(--pbjt-red);
+        font-size: clamp(22px, 3vw, 34px);
+        font-weight: 800;
+        margin: 0;
+      }
+
+      .pbjt-hw-hero-small-bottom {
+        position: absolute;
+        bottom: 22px;
+        right: 10%;
+        color: var(--pbjt-red);
+        font-size: clamp(26px, 4vw, 40px);
+        font-weight: 800;
+        margin: 0;
+      }
+
+      /* ===== Section common ===== */
+      .pbjt-hw-section {
+        padding: 26px 0 10px;
+      }
+
+      .pbjt-hw-grid-2 {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 34px;
+        align-items: start;
+      }
+
+      .pbjt-hw-grid-2.pbjt-hw-reverse {
+        grid-template-columns: 0.95fr 1.05fr;
+      }
+
+      .pbjt-hw-title-sm {
+        font-size: 20px;
+        font-weight: 800;
+        color: #555;
+        margin: 0 0 10px;
+      }
+
+      .pbjt-hw-copy-lg {
+        font-size: 22px;
+        line-height: 1.65;
+        font-weight: 800;
+        color: #5b5b5b;
+        margin: 0;
+      }
+
+      .pbjt-hw-copy {
+        font-size: 17px;
+        margin: 0 0 14px;
+      }
+
+      .pbjt-hw-card {
+        background: #e9dada;
+        padding: 18px 24px;
+      }
+
+      .pbjt-hw-card h3 {
+        margin: 0 0 16px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 800;
+        color: #555;
+      }
+
+      .pbjt-hw-key-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .pbjt-hw-key-list li {
+        text-align: center;
+        font-size: 16px;
+        color: #5a5a5a;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(80, 80, 80, 0.15);
+      }
+
+      .pbjt-hw-key-list li:last-child {
+        border-bottom: 0;
+      }
+
+      /* ===== Expected change ===== */
+      .pbjt-hw-expected {
+        padding-top: 8px;
+      }
+
+      .pbjt-hw-expected h4 {
+        font-size: 16px;
+        font-weight: 800;
+        margin: 0 0 8px;
+        color: #555;
+      }
+
+      .pbjt-hw-expected .pbjt-hw-sub {
+        font-size: 15px;
+        font-weight: 800;
+        margin: 18px 0 6px;
+        color: #555;
+      }
+
+      .pbjt-hw-expected p {
+        margin: 0 0 8px;
+        font-size: 15px;
+        color: #666;
+      }
+
+      .pbjt-hw-image-box img {
+        width: 100%;
+        display: block;
+        height: auto;
+        object-fit: cover;
+      }
+
+      /* ===== Red banner ===== */
+      .pbjt-hw-banner {
+        margin-top: 8px;
+        background: var(--pbjt-red);
+        color: #fff;
+        padding: 12px 0 16px;
+      }
+
+      .pbjt-hw-banner-inner {
+        position: relative;
+      }
+
+      .pbjt-hw-banner-top {
+        display: block;
+        font-size: clamp(24px, 4vw, 34px);
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .pbjt-hw-banner-main {
+        display: block;
+        font-size: clamp(44px, 8vw, 86px);
+        font-weight: 800;
+        line-height: 0.95;
+        margin-top: 4px;
+      }
+
+      .pbjt-hw-banner-sub {
+        display: block;
+        font-size: clamp(22px, 4vw, 56px);
+        font-weight: 800;
+        line-height: 1;
+        text-align: center;
+        margin-top: -6px;
+      }
+
+      /* ===== Lower content ===== */
+      .pbjt-hw-arch-copy .pbjt-hw-copy {
+        font-size: 16px;
+        color: #555;
+      }
+
+      .pbjt-hw-bullets {
+        margin: 8px 0 18px;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .pbjt-hw-bullets li {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 8px;
+      }
+
+      .pbjt-hw-bullets li::before {
+        content: "- ";
+      }
+
+      .pbjt-hw-stack-img {
+        display: grid;
+        gap: 16px;
+      }
+
+      .pbjt-hw-stack-img img {
+        width: 100%;
+        display: block;
+        height: auto;
+      }
+
+      /* ===== Footer ===== */
+      .pbjt-hw-footer {
+        margin-top: 18px;
+        background: #353132;
+        color: #fff;
+        padding: 28px 0;
+      }
+
+      .pbjt-hw-footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .pbjt-hw-footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .pbjt-hw-footer-logo img {
+        max-width: 170px;
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .pbjt-hw-footer-nav {
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .pbjt-hw-footer-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* ===== Responsive ===== */
+      @media (max-width: 991px) {
+        .pbjt-hw-grid-2,
+        .pbjt-hw-grid-2.pbjt-hw-reverse {
+          grid-template-columns: 1fr;
+        }
+
+        .pbjt-hw-copy-lg {
+          font-size: 18px;
+        }
+
+        .pbjt-hw-footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .pbjt-hw-footer-nav {
+          justify-content: flex-start;
+          gap: 18px;
+        }
+
+        .pbjt-hw-hero-small-top,
+        .pbjt-hw-hero-small-bottom {
+          position: static;
+          text-align: center;
+          display: block;
+        }
+
+        .pbjt-hw-hero-inner {
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px;
+          padding: 26px 0;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .pbjt-hw-container {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .pbjt-hw-header {
+          padding-top: 16px;
+        }
+
+        .pbjt-hw-nav {
+          font-size: 10px;
+        }
+
+        .pbjt-hw-copy-lg {
+          font-size: 16px;
+          line-height: 1.6;
+        }
+
+        .pbjt-hw-title-sm,
+        .pbjt-hw-card h3 {
+          font-size: 18px;
+        }
+
+        .pbjt-hw-card {
+          padding: 16px;
+        }
+
+        .pbjt-hw-banner-sub {
+          text-align: left;
+          margin-top: 6px;
+        }
+
+        .pbjt-hw-footer-nav a {
+          font-size: 15px;
+        }
+      }
+    </style>
+
+    <div class="pbjt-hw-wrap">
+      <header class="pbjt-hw-header">
+        <div class="pbjt-hw-container">
+          <div class="pbjt-hw-brand">
+            <img
+              src="https://placehold.co/360x90/efefef/444?text=PBJT+LOGO"
+              alt="Place Based Just Transition"
+            />
+          </div>
+
+          <nav class="pbjt-hw-nav">
+            <a href="#">IN PRACTICE</a> | <a href="#">TESTIMONIALS</a> |
+            <a href="#">ABOUT</a> | <a href="#">IMPACT PROPOSITION</a> |
+            <a href="#">FRAMEWORK</a> | <a href="#">FOCUS AREAS</a> |
+            <a href="#" style="color: #d71920"
+              >METHODOLOGY &amp; EXPECTED CHANGES</a
+            >
+            | <a href="#">GLOSSARY</a> |
+            <a href="#">CONTACT</a>
+          </nav>
+        </div>
+      </header>
+
+      <section class="pbjt-hw-hero">
+        <div class="pbjt-hw-container pbjt-hw-hero-inner">
+          <h2 class="pbjt-hw-hero-small-top">Methodology:</h2>
+          <h1 class="pbjt-hw-hero-big">How?</h1>
+          <h2 class="pbjt-hw-hero-small-bottom">PBJT works</h2>
+        </div>
+      </section>
+
+      <section class="pbjt-hw-section">
+        <div class="pbjt-hw-container">
+          <div class="pbjt-hw-grid-2">
+            <div>
+              <p class="pbjt-hw-copy-lg">
+                PBJT follows a participatory action study approach that
+                integrates social realities, environmental conditions, market
+                systems, village governance, and business value chains. The
+                focus is on strengthening existing groups rather than creating
+                parallel structures, ensuring long-term ownership and
+                sustainability.
+              </p>
+            </div>
+
+            <div class="pbjt-hw-card">
+              <h3>Key elements include:</h3>
+              <ul class="pbjt-hw-key-list">
+                <li>
+                  Supporting MSMEs to adopt green practices such as solarisation
+                  and waste reduction
+                </li>
+                <li>
+                  Worker think tanks that define green job standards based on
+                  lived realities
+                </li>
+                <li>
+                  Collective platforms that connect workers to green employment
+                </li>
+                <li>
+                  Community task groups addressing waste, water, climate
+                  adaptation, and stewardship
+                </li>
+                <li>
+                  A convener role that connects communities, businesses,
+                  institutions, and government schemes
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pbjt-hw-grid-2 pbjt-hw-expected" style="margin-top: 24px">
+            <div>
+              <div class="pbjt-hw-expected">
+                <h4>Expected Change - Of Place-Based Just Transition</h4>
+
+                <div class="pbjt-hw-sub">For Communities and Workers</div>
+                <p>
+                  Improved livelihoods, stronger collective power, increased
+                  participation in sustainability decisions, and access to green
+                  jobs.
+                </p>
+
+                <div class="pbjt-hw-sub">For MSMEs</div>
+                <p>
+                  Support for sustainable production, access to finance and
+                  markets, and reduced transition risks.
+                </p>
+
+                <div class="pbjt-hw-sub">For Businesses and Brands</div>
+                <p>
+                  Stronger value chains, improved ESG outcomes, deeper risk
+                  understanding, and more credible sustainability action.
+                </p>
+
+                <div class="pbjt-hw-sub">For Local Ecosystems</div>
+                <p>
+                  Better environmental outcomes, stronger local governance, and
+                  more equitable economic systems.
+                </p>
+              </div>
+            </div>
+
+            <div class="pbjt-hw-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+                alt="Community action"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pbjt-hw-banner">
+        <div class="pbjt-hw-container pbjt-hw-banner-inner">
+          <span class="pbjt-hw-banner-top">PBJT:</span>
+          <span class="pbjt-hw-banner-main">A New Architecture</span>
+          <span class="pbjt-hw-banner-sub">for Responsible Business</span>
+        </div>
+      </section>
+
+      <section
+        class="pbjt-hw-section"
+        style="padding-top: 26px; padding-bottom: 18px"
+      >
+        <div class="pbjt-hw-container">
+          <div class="pbjt-hw-grid-2 pbjt-hw-reverse">
+            <div class="pbjt-hw-arch-copy">
+              <p class="pbjt-hw-copy" style="font-weight: 800">
+                Place-Based Just Transition offers a model where sustainability
+                is co-created by workers, communities, MSMEs, and businesses.
+              </p>
+
+              <p
+                class="pbjt-hw-copy"
+                style="font-weight: 800; margin-bottom: 8px"
+              >
+                In this architecture:
+              </p>
+
+              <ul class="pbjt-hw-bullets">
+                <li>Local realities shape sustainability action</li>
+                <li>Businesses become accountable to communities</li>
+                <li>Workers become agents of transition</li>
+                <li>MSMEs become sustainability partners</li>
+                <li>
+                  Communities co-create their environmental and economic futures
+                </li>
+              </ul>
+
+              <p class="pbjt-hw-copy">
+                This process does not aim to audit companies, but to democratise
+                sustainability language. When communities understand what
+                companies promise, they are better positioned to engage,
+                negotiate, and hold systems accountable. Our work aligns with
+                emerging global conversations on responsible value chains,
+                including perspectives from organisations like the Institute for
+                Human Rights and Business and investor-led frameworks that
+                emphasise last-mile accountability.
+              </p>
+            </div>
+
+            <div class="pbjt-hw-stack-img">
+              <img
+                src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80"
+                alt="Workers"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80"
+                alt="Retail ecosystem"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=80"
+                alt="Community storefront"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="pbjt-hw-footer">
+        <div class="pbjt-hw-container pbjt-hw-footer-inner">
+          <div class="pbjt-hw-footer-logo">
+            <img
+              src="https://placehold.co/170x55/353132/ffffff?text=PBJT+LOGO"
+              alt="PBJT footer logo"
+            />
+          </div>
+
+          <nav class="pbjt-hw-footer-nav">
+            <a href="#">PARTNERSHIPS</a>
+            <a href="#">FUNDING</a>
+            <a href="#">CONTACT</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
