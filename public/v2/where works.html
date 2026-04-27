@@ -1,11 +1,359 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <style>
+      .pbjt-fa {
+        --pbjt-red: #d71920;
+        --pbjt-dark: #332f2e;
+        --pbjt-text: #333;
+        --pbjt-muted: #5f5f5f;
+        --pbjt-white: #fff;
+        --pbjt-max: 760px;
+
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--pbjt-white);
+        color: var(--pbjt-text);
+      }
+
+      .pbjt-fa * {
+        box-sizing: border-box;
+      }
+
+      .pbjt-fa__header {
+        padding: 28px 20px 14px;
+        text-align: center;
+      }
+
+      .pbjt-fa__logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        line-height: 0.85;
+      }
+
+      .pbjt-fa__logo span {
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+        font-weight: 900;
+        font-size: 18px;
+        padding: 7px 6px;
+        line-height: 0.85;
+      }
+
+      .pbjt-fa__logo strong {
+        text-align: left;
+        color: #555;
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+
+      .pbjt-fa__nav {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 10px;
+        color: #444;
+      }
+
+      .pbjt-fa__nav a {
+        padding: 0 6px;
+        border-right: 1px solid #777;
+      }
+
+      .pbjt-fa__nav a:last-child {
+        border-right: 0;
+      }
+
+      .pbjt-fa__nav .is-active {
+        color: var(--pbjt-red);
+        font-weight: 700;
+      }
+
+      .pbjt-fa__hero {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 21% 36% 43%;
+      }
+
+      .pbjt-fa__heroPanel {
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+          url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80");
+        background-size: cover;
+        background-position: center;
+        filter: grayscale(100%);
+      }
+
+      .pbjt-fa__heroPanel--color {
+        filter: none;
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+          url("https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .pbjt-fa__heroText {
+        position: absolute;
+        inset: 0;
+        max-width: var(--pbjt-max);
+        margin: auto;
+        left: 0;
+        right: 0;
+        padding-top: 22px;
+      }
+
+      .pbjt-fa__heroText span {
+        position: absolute;
+        top: 34px;
+        left: 8px;
+        color: var(--pbjt-red);
+        font-size: 36px;
+        font-weight: 900;
+        z-index: 2;
+      }
+
+      .pbjt-fa__heroText h1 {
+        margin: 0;
+        color: var(--pbjt-white);
+        font-size: clamp(90px, 17vw, 172px);
+        line-height: 0.76;
+        font-weight: 900;
+        letter-spacing: -7px;
+      }
+
+      .pbjt-fa__heroText h1 span {
+        position: static;
+        color: var(--pbjt-white);
+        font-size: 1.2em;
+      }
+
+      .pbjt-fa__heroText h2 {
+        margin: -14px 0 0 185px;
+        color: var(--pbjt-red);
+        font-size: clamp(48px, 8vw, 74px);
+        line-height: 0.9;
+        font-weight: 900;
+        letter-spacing: -2px;
+      }
+
+      .pbjt-fa__main {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        padding: 28px 20px 36px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+      }
+
+      .pbjt-fa__content h2 {
+        color: var(--pbjt-red);
+        font-size: 22px;
+        line-height: 1.45;
+        margin: 0 0 8px;
+      }
+
+      .pbjt-fa__lead {
+        font-size: 18px !important;
+        line-height: 1.45 !important;
+        margin-bottom: 24px !important;
+        letter-spacing: 0.4px;
+      }
+
+      .pbjt-fa__content p {
+        margin: 0 0 18px;
+        font-size: 13.5px;
+        line-height: 1.45;
+        color: var(--pbjt-muted);
+        letter-spacing: 0.3px;
+      }
+
+      .pbjt-fa__content strong {
+        display: block;
+        color: #3d3d3d;
+        font-size: 13.5px;
+      }
+
+      .pbjt-fa__images {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .pbjt-fa__images img {
+        width: 100%;
+        height: 330px;
+        object-fit: cover;
+      }
+
+      .pbjt-fa__footer {
+        background: var(--pbjt-dark);
+        color: var(--pbjt-white);
+        padding: 48px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 300px;
+      }
+
+      .pbjt-fa__logo--footer span {
+        font-size: 14px;
+      }
+
+      .pbjt-fa__logo--footer strong {
+        color: var(--pbjt-white);
+        font-size: 17px;
+      }
+
+      .pbjt-fa__footer nav {
+        display: flex;
+        gap: 26px;
+      }
+
+      .pbjt-fa__footer a {
+        color: var(--pbjt-white);
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      @media (max-width: 768px) {
+        .pbjt-fa__hero {
+          height: 260px;
+        }
+
+        .pbjt-fa__heroText {
+          padding: 36px 20px 0;
+        }
+
+        .pbjt-fa__heroText span {
+          left: 20px;
+          top: 26px;
+          font-size: 28px;
+        }
+
+        .pbjt-fa__heroText h2 {
+          margin-left: 0;
+          margin-top: 0;
+        }
+
+        .pbjt-fa__main {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .pbjt-fa__images img {
+          height: 260px;
+        }
+
+        .pbjt-fa__footer {
+          flex-direction: column;
+          gap: 28px;
+        }
+
+        .pbjt-fa__footer nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+    <section class="pbjt-fa">
+      <header class="pbjt-fa__header">
+        <div class="pbjt-fa__logo">
+          <span>PB<br />JT</span>
+          <strong>PLACE<br />BASED JUST<br />TRANSITION</strong>
+        </div>
+
+        <nav class="pbjt-fa__nav">
+          <a>IN PRACTICE</a><a>TESTIMONIALS</a><a>ABOUT</a>
+          <a>IMPACT PROPOSITION</a><a>FRAMEWORK</a>
+          <a class="is-active">FOCUS AREAS</a>
+          <a>METHODOLOGY & EXPECTED CHANGES</a><a>GLOSSARY</a><a>CONTACT</a>
+        </nav>
+      </header>
+
+      <section class="pbjt-fa__hero">
+        <div class="pbjt-fa__heroPanel pbjt-fa__heroPanel--color"></div>
+        <div class="pbjt-fa__heroPanel"></div>
+        <div class="pbjt-fa__heroPanel"></div>
+
+        <div class="pbjt-fa__heroText">
+          <span>Focus Areas:</span>
+          <h1>Where<span>?</span></h1>
+          <h2>PBJT works</h2>
+        </div>
+      </section>
+
+      <main class="pbjt-fa__main">
+        <div class="pbjt-fa__content">
+          <h2>Strengthening Local Groups and Collectives</h2>
+
+          <p class="pbjt-fa__lead">
+            PBJT works through existing collectives worker groups, vendor
+            associations, MSMEs, women's collectives and SHGs, youth and farmer
+            groups, recognising them as the foundation of democratic
+            participation and accountability.
+          </p>
+
+          <p>
+            <strong>Understanding Corporate Footprints on Local Lives:</strong>
+            We examine how business operations shape livelihoods, resource use,
+            labour relations, informal economies, and everyday life along with
+            consumption shifts within communities.
+          </p>
+
+          <p>
+            <strong>Brand-Level Value Chain Analysis:</strong>
+            PBJT looks beyond the final product to examine sourcing, production,
+            labour practices, vendor relationships, and waste generation and
+            disposal.
+          </p>
+
+          <p>
+            <strong>Corporate Accountability at the Village Level:</strong>
+            Accountability goes beyond compliance. It includes transparent
+            engagement, grievance mechanisms, ethical sourcing, fair labour
+            conditions, and continuous dialogue with local collectives.
+          </p>
+
+          <p>
+            <strong>Ground-Level Reflection on BRSR Disclosures:</strong>
+            Global markets, climate policies, and sustainability standards
+            reshape local work and wages. PBJT anticipates these pressures while
+            protecting local resilience.
+          </p>
+        </div>
+
+        <div class="pbjt-fa__images">
+          <img
+            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=900&q=80"
+            alt=""
+          />
+        </div>
+      </main>
+
+      <footer class="pbjt-fa__footer">
+        <div class="pbjt-fa__logo pbjt-fa__logo--footer">
+          <span>PB<br />JT</span>
+          <strong>PLACE<br />BASED JUST<br />TRANSITION</strong>
+        </div>
+
+        <nav>
+          <a>PARTNERSHIPS</a>
+          <a>FUNDING</a>
+          <a>CONTACT</a>
+        </nav>
+      </footer>
+    </section>
+  </body>
 </html>

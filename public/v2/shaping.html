@@ -1,11 +1,497 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <style>
+      .pbjt-mock {
+        --pbjt-red: #df151d;
+        --pbjt-dark: #33302f;
+        --pbjt-text: #444;
+        --pbjt-muted: #777;
+        --pbjt-light: #f5f5f5;
+        --pbjt-grey: #d8d8d8;
+        --pbjt-white: #fff;
+        --pbjt-max: 760px;
+
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--pbjt-text);
+        background: var(--pbjt-white);
+      }
+
+      .pbjt-mock * {
+        box-sizing: border-box;
+      }
+
+      .pbjt-mock__header {
+        text-align: center;
+        padding: 28px 20px 14px;
+      }
+
+      .pbjt-mock__logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        line-height: 0.85;
+        color: #555;
+      }
+
+      .pbjt-mock__logo span {
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+        font-weight: 900;
+        padding: 7px 6px;
+        line-height: 0.85;
+        font-size: 18px;
+      }
+
+      .pbjt-mock__logo strong {
+        text-align: left;
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: -1px;
+      }
+
+      .pbjt-mock__nav {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0;
+        font-size: 10px;
+        color: #555;
+      }
+
+      .pbjt-mock__nav a {
+        padding: 0 6px;
+        border-right: 1px solid #777;
+      }
+
+      .pbjt-mock__nav a:last-child {
+        border-right: 0;
+      }
+
+      .pbjt-mock__hero,
+      .pbjt-mock__what {
+        position: relative;
+        height: 230px;
+        overflow: hidden;
+      }
+
+      .pbjt-mock__hero img,
+      .pbjt-mock__what img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .pbjt-mock__heroText {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: var(--pbjt-max);
+        margin: auto;
+        left: 0;
+        right: 0;
+        color: var(--pbjt-white);
+      }
+
+      .pbjt-mock__heroText h1 {
+        margin: 0;
+        color: var(--pbjt-red);
+        font-size: clamp(90px, 16vw, 180px);
+        line-height: 0.75;
+        font-weight: 900;
+        letter-spacing: -8px;
+      }
+
+      .pbjt-mock__heroText h2 {
+        margin: 0;
+        font-size: clamp(34px, 5vw, 58px);
+        line-height: 0.95;
+        font-weight: 900;
+      }
+
+      .pbjt-mock__intro {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        padding: 28px 20px 44px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 42px;
+      }
+
+      .pbjt-mock__copy h2 {
+        font-size: 28px;
+        line-height: 1.05;
+        margin: 0 0 18px;
+        color: #333;
+      }
+
+      .pbjt-mock__copy p {
+        font-size: 14px;
+        line-height: 1.55;
+        margin: 0 0 14px;
+      }
+
+      .pbjt-mock__images {
+        display: flex;
+        flex-direction: column;
+        gap: 42px;
+      }
+
+      .pbjt-mock__images img {
+        width: 100%;
+        height: 270px;
+        object-fit: cover;
+      }
+
+      .pbjt-mock__question {
+        background: var(--pbjt-grey);
+        padding: 34px 20px;
+        text-align: left;
+      }
+
+      .pbjt-mock__question p,
+      .pbjt-mock__question strong {
+        display: block;
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        font-size: 22px;
+      }
+
+      .pbjt-mock__question strong {
+        color: var(--pbjt-red);
+        margin-top: 6px;
+      }
+
+      .pbjt-mock__what div {
+        position: absolute;
+        inset: 0;
+        max-width: var(--pbjt-max);
+        margin: auto;
+        left: 0;
+        right: 0;
+        color: var(--pbjt-white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .pbjt-mock__what h2 {
+        margin: 0;
+        font-size: clamp(86px, 15vw, 165px);
+        line-height: 0.72;
+        font-weight: 900;
+        letter-spacing: -6px;
+      }
+
+      .pbjt-mock__what h2 span {
+        color: var(--pbjt-red);
+        font-size: 1.25em;
+      }
+
+      .pbjt-mock__what h3 {
+        margin: 0;
+        font-size: clamp(34px, 5vw, 56px);
+        line-height: 0.9;
+        font-weight: 900;
+      }
+
+      .pbjt-mock__definition {
+        max-width: var(--pbjt-max);
+        margin: 0 auto;
+        padding: 38px 20px 62px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 42px;
+      }
+
+      .pbjt-mock__definitionCopy h2 {
+        font-size: 22px;
+        line-height: 1.35;
+        margin: 0 0 26px;
+        color: #333;
+      }
+
+      .pbjt-mock__definitionCopy p {
+        font-size: 14px;
+        line-height: 1.65;
+        margin: 0 0 20px;
+      }
+
+      .pbjt-mock__definitionCopy blockquote {
+        margin: 32px 0 0;
+        font-size: 25px;
+        line-height: 1.45;
+        color: #666;
+      }
+
+      .pbjt-mock__diagram {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pbjt-mock__circle {
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        background: #d1ced2;
+        color: #333;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-weight: 800;
+        margin-bottom: 38px;
+        position: relative;
+      }
+
+      .pbjt-mock__circle::before,
+      .pbjt-mock__circle::after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 2px;
+        background: #c2bec3;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(28deg);
+        z-index: -1;
+      }
+
+      .pbjt-mock__circle::after {
+        transform: translate(-50%, -50%) rotate(-28deg);
+      }
+
+      .pbjt-mock__redbox {
+        width: 100%;
+        background: var(--pbjt-red);
+        color: var(--pbjt-white);
+        text-align: center;
+        padding: 28px 34px;
+      }
+
+      .pbjt-mock__redbox h3 {
+        font-size: 20px;
+        line-height: 1.15;
+        margin: 0 0 20px;
+      }
+
+      .pbjt-mock__redbox p {
+        margin: 14px 0;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .pbjt-mock__redbox p::before {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 1px;
+        background: var(--pbjt-white);
+        margin: 0 auto 10px;
+      }
+
+      .pbjt-mock__footer {
+        background: var(--pbjt-dark);
+        color: var(--pbjt-white);
+        padding: 54px 20px;
+        display: flex;
+        justify-content: center;
+        gap: 300px;
+        align-items: center;
+      }
+
+      .pbjt-mock__logo--footer span {
+        font-size: 14px;
+      }
+
+      .pbjt-mock__logo--footer strong {
+        color: var(--pbjt-white);
+        font-size: 17px;
+      }
+
+      .pbjt-mock__footer nav {
+        display: flex;
+        gap: 26px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      @media (max-width: 768px) {
+        .pbjt-mock__intro,
+        .pbjt-mock__definition {
+          grid-template-columns: 1fr;
+        }
+
+        .pbjt-mock__hero,
+        .pbjt-mock__what {
+          height: 260px;
+        }
+
+        .pbjt-mock__heroText,
+        .pbjt-mock__what div {
+          padding: 0 20px;
+        }
+
+        .pbjt-mock__footer {
+          flex-direction: column;
+          gap: 28px;
+        }
+
+        .pbjt-mock__footer nav {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+    <section class="pbjt-mock">
+      <header class="pbjt-mock__header">
+        <div class="pbjt-mock__logo">
+          <span>PB<br />JT</span>
+          <strong>PLACE<br />BASED JUST<br />TRANSITION</strong>
+        </div>
+
+        <nav class="pbjt-mock__nav">
+          <a>IN PRACTICE</a>
+          <a>TESTIMONIALS</a>
+          <a>ABOUT</a>
+          <a>IMPACT PROPOSITION</a>
+          <a>FRAMEWORK</a>
+          <a>FOCUS AREAS</a>
+          <a>METHODOLOGY & EXPECTED CHANGES</a>
+          <a>GLOSSARY</a>
+          <a>CONTACT</a>
+        </nav>
+      </header>
+
+      <section class="pbjt-mock__hero">
+        <img
+          src="https://images.unsplash.com/photo-1595932875275-f6a6a3a63bf7?auto=format&fit=crop&w=1600&q=80"
+          alt=""
+        />
+        <div class="pbjt-mock__heroText">
+          <h1>Shaping</h1>
+          <h2>Place-Based<br />Just Transition</h2>
+        </div>
+      </section>
+
+      <section class="pbjt-mock__intro">
+        <div class="pbjt-mock__copy">
+          <h2>No one-size-fits-all approach exists.</h2>
+          <p>
+            Just Transition often appears in global discussions as a policy
+            framework for meeting climate goals, shifting energy systems, or
+            channelling green investments.
+          </p>
+          <p>
+            Yet for workers and communities on the ground, it unfolds more
+            intimately: in the quiet shifts to daily income, working conditions,
+            ebb and flow of access to essential resources, and dignity that
+            holds it all together.
+          </p>
+          <p>
+            <strong>
+              Who carries the cost of transition, and who decides how it
+              happens?
+            </strong>
+          </p>
+          <p>
+            Across most value chains, the heaviest burdens fall on those at the
+            last tier: informal workers, MSMEs, vendors, and marginalised
+            communities.
+          </p>
+        </div>
+
+        <div class="pbjt-mock__images">
+          <img
+            src="https://images.unsplash.com/photo-1590693397691-3f936f9713bb?auto=format&fit=crop&w=900&q=80"
+            alt=""
+          />
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+            alt=""
+          />
+        </div>
+      </section>
+
+      <section class="pbjt-mock__question">
+        <p>
+          A Place-Based Just Transition begins with a simple but critical
+          question:
+        </p>
+        <strong>
+          Who carries the cost of transition, and who decides how it happens?
+        </strong>
+      </section>
+
+      <section class="pbjt-mock__what">
+        <img
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80"
+          alt=""
+        />
+        <div>
+          <h2>What is<span>?</span></h2>
+          <h3>Place-Based Just Transition</h3>
+        </div>
+      </section>
+
+      <section class="pbjt-mock__definition">
+        <div class="pbjt-mock__definitionCopy">
+          <h2>
+            Place-Based Just Transition (PBJT)<br />
+            is an approach to sustainability that<br />
+            starts from the ground up.
+          </h2>
+
+          <p>
+            PBJT recognises that environmental change and economic transition
+            are not abstract ideas. They are lived every day in villages,
+            neighbourhoods, worksites, and local production clusters.
+          </p>
+
+          <p>
+            PBJT focuses on how workers, MSMEs, vendors, informal labour, and
+            communities experience climate action, sustainability policies, and
+            business practices.
+          </p>
+
+          <blockquote>
+            A transition can only be called “green” when it also protects
+            people.
+          </blockquote>
+        </div>
+
+        <div class="pbjt-mock__diagram">
+          <div class="pbjt-mock__circle">Placed<br />Based<br />Transition</div>
+
+          <div class="pbjt-mock__redbox">
+            <h3>PBJT ensures that the shift to greener economies:</h3>
+            <p>Protects both people and the planet</p>
+            <p>Strengthens local livelihoods</p>
+            <p>Builds resilient and responsible local economic ecosystems</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="pbjt-mock__footer">
+        <div class="pbjt-mock__logo pbjt-mock__logo--footer">
+          <span>PB<br />JT</span>
+          <strong>PLACE<br />BASED JUST<br />TRANSITION</strong>
+        </div>
+
+        <nav>
+          <a>PARTNERSHIPS</a>
+          <a>FUNDING</a>
+          <a>CONTACT</a>
+        </nav>
+      </footer>
+    </section>
+  </body>
 </html>
