@@ -1,3 +1,1 @@
-generate image to html mockup unique class name and css, 
-pixel perfect & responsive
-it should not affect the theme or other html elements it should put into wordpress pages and it also supported by wordpress elements editor
+generate image to html mockup unique class name and css,  pixel perfect & responsive it should not affect the theme or other html elements it should put into wordpress pages and it also supported by wordpress elements editor

@@ -1,0 +1,1318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PBJT in Dindigul, Tamil Nadu</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Oswald:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+
+
+      .pbjt-dn__wrap *,
+      .pbjt-dn__wrap *::before,
+      .pbjt-dn__wrap *::after {
+        box-sizing: border-box;
+      }
+
+      .pbjt-dn__wrap {
+        --pbjt-red: #c8102e;
+        --pbjt-dark: #1a1a1a;
+        --pbjt-mid: #3d3d3d;
+        --pbjt-light: #f5f2ee;
+        --pbjt-white: #ffffff;
+        --pbjt-border: #ddd8d0;
+        --pbjt-accent: #e8a020;
+        --pbjt-table-head: #2c2c2c;
+        --pbjt-village1: #8b3a3a;
+        --pbjt-village2: #2d5a8e;
+        --pbjt-village3: #3a6b3a;
+        --pbjt-village4: #7a4f1e;
+
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--pbjt-dark);
+        background: var(--pbjt-white);
+        max-width: 100%;
+        margin: 0 auto;
+        overflow-x: hidden;
+      }
+
+      /* ── NAV BAR ─────────────────────────────────────── */
+      .pbjt-dn__topnav {
+        background: var(--pbjt-white);
+        border-bottom: 2px solid var(--pbjt-red);
+        padding: 10px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .pbjt-dn__topnav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .pbjt-dn__logo-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--pbjt-red);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pbjt-dn__logo-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+      }
+
+      .pbjt-dn__logo-text {
+        font-family: "Oswald", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--pbjt-dark);
+        line-height: 1.2;
+        letter-spacing: 0.5px;
+      }
+
+      .pbjt-dn__logo-text span {
+        display: block;
+        font-weight: 300;
+        font-size: 10px;
+        color: var(--pbjt-mid);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .pbjt-dn__topnav-links {
+        display: flex;
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+      }
+
+      .pbjt-dn__topnav-links li a {
+        display: block;
+        padding: 6px 12px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--pbjt-mid);
+        text-decoration: none;
+        border-right: 1px solid var(--pbjt-border);
+        transition:
+          color 0.2s,
+          background 0.2s;
+      }
+
+      .pbjt-dn__topnav-links li:last-child a {
+        border-right: none;
+      }
+      .pbjt-dn__topnav-links li a:hover {
+        color: var(--pbjt-red);
+      }
+      .pbjt-dn__topnav-links li a.pbjt-dn__active {
+        color: var(--pbjt-red);
+      }
+
+      /* ── HERO ─────────────────────────────────────────── */
+      .pbjt-dn__hero {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 0;
+        min-height: 320px;
+      }
+
+      .pbjt-dn__hero-img {
+        position: relative;
+        overflow: hidden;
+        min-height: 280px;
+      }
+
+      .pbjt-dn__hero-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .pbjt-dn__hero-badge {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: var(--pbjt-red);
+        color: white;
+        padding: 14px 18px 18px;
+        font-family: "Oswald", sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+        line-height: 1.15;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        max-width: 180px;
+      }
+
+      .pbjt-dn__hero-badge span {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        opacity: 0.85;
+        margin-top: 6px;
+      }
+
+      .pbjt-dn__hero-content {
+        padding: 36px 40px;
+        background: var(--pbjt-light);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .pbjt-dn__hero-content h1 {
+        font-family: "Merriweather", Georgia, serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--pbjt-dark);
+        line-height: 1.35;
+        margin: 0 0 14px;
+      }
+
+      .pbjt-dn__hero-content h1 em {
+        color: var(--pbjt-red);
+        font-style: normal;
+      }
+
+      .pbjt-dn__hero-content p {
+        font-size: 14px;
+        color: var(--pbjt-mid);
+        line-height: 1.75;
+        margin: 0;
+      }
+
+      /* ── RAIN TABLE ───────────────────────────────────── */
+      .pbjt-dn__climate {
+        background: var(--pbjt-white);
+        padding: 28px 40px;
+        border-top: 1px solid var(--pbjt-border);
+      }
+
+      .pbjt-dn__climate h3 {
+        font-family: "Oswald", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--pbjt-mid);
+        margin: 0 0 14px;
+      }
+
+      .pbjt-dn__table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .pbjt-dn__table thead tr {
+        background: var(--pbjt-table-head);
+        color: white;
+      }
+
+      .pbjt-dn__table thead th {
+        padding: 9px 14px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      .pbjt-dn__table tbody tr {
+        border-bottom: 1px solid var(--pbjt-border);
+        transition: background 0.15s;
+      }
+
+      .pbjt-dn__table tbody tr:hover {
+        background: #faf8f5;
+      }
+
+      .pbjt-dn__table tbody td {
+        padding: 8px 14px;
+        color: var(--pbjt-mid);
+      }
+
+      .pbjt-dn__table tbody td:first-child {
+        font-weight: 700;
+        color: var(--pbjt-dark);
+      }
+
+      /* ── SECTION HEADER (RED BAND) ────────────────────── */
+      .pbjt-dn__section-header {
+        background: var(--pbjt-red);
+        color: white;
+        padding: 22px 40px;
+        margin-top: 0;
+      }
+
+      .pbjt-dn__section-header h2 {
+        font-family: "Oswald", sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0 0 2px;
+      }
+
+      .pbjt-dn__section-header p {
+        font-size: 13px;
+        opacity: 0.82;
+        margin: 0;
+        letter-spacing: 0.5px;
+      }
+
+      /* ── VILLAGES SECTION ─────────────────────────────── */
+      .pbjt-dn__villages {
+        background: var(--pbjt-white);
+      }
+
+      .pbjt-dn__village-block {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        border-bottom: 3px solid var(--pbjt-border);
+        overflow: hidden;
+      }
+
+      .pbjt-dn__village-block:last-child {
+        border-bottom: none;
+      }
+
+      .pbjt-dn__village-img {
+        position: relative;
+        overflow: hidden;
+        min-height: 220px;
+      }
+
+      .pbjt-dn__village-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.88) saturate(1.1);
+        transition: transform 0.4s ease;
+      }
+
+      .pbjt-dn__village-block:hover .pbjt-dn__village-img img {
+        transform: scale(1.03);
+      }
+
+      .pbjt-dn__village-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px 14px;
+        font-family: "Oswald", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        letter-spacing: 0.5px;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+      }
+
+      .pbjt-dn__village-label::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+        z-index: -1;
+      }
+
+      .pbjt-dn__village-data {
+        padding: 24px 28px;
+        background: var(--pbjt-light);
+      }
+
+      .pbjt-dn__village-title {
+        font-family: "Oswald", sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid;
+      }
+
+      .pbjt-dn__vt-1 {
+        color: var(--pbjt-village1);
+        border-color: var(--pbjt-village1);
+      }
+      .pbjt-dn__vt-2 {
+        color: var(--pbjt-village2);
+        border-color: var(--pbjt-village2);
+      }
+      .pbjt-dn__vt-3 {
+        color: var(--pbjt-village3);
+        border-color: var(--pbjt-village3);
+      }
+      .pbjt-dn__vt-4 {
+        color: var(--pbjt-village4);
+        border-color: var(--pbjt-village4);
+      }
+
+      .pbjt-dn__two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .pbjt-dn__mini-table-wrap h4 {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--pbjt-mid);
+        margin: 0 0 8px;
+      }
+
+      .pbjt-dn__mini-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12.5px;
+      }
+
+      .pbjt-dn__mini-table thead tr {
+        background: var(--pbjt-dark);
+        color: white;
+      }
+
+      .pbjt-dn__mini-table thead th {
+        padding: 6px 10px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 0.4px;
+      }
+
+      .pbjt-dn__mini-table tbody tr {
+        border-bottom: 1px solid var(--pbjt-border);
+      }
+
+      .pbjt-dn__mini-table tbody tr:hover {
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .pbjt-dn__mini-table tbody td {
+        padding: 5px 10px;
+        color: var(--pbjt-mid);
+        vertical-align: top;
+      }
+
+      .pbjt-dn__mini-table tbody td:first-child {
+        font-weight: 600;
+        color: var(--pbjt-dark);
+      }
+
+      .pbjt-dn__note {
+        font-size: 11px;
+        color: #888;
+        font-style: italic;
+        margin-top: 6px;
+        padding: 6px 10px;
+        border-left: 3px solid var(--pbjt-accent);
+        background: rgba(232, 160, 32, 0.07);
+      }
+
+      /* ── JOURNEY SECTION ──────────────────────────────── */
+      .pbjt-dn__journey {
+        background: var(--pbjt-dark);
+        padding: 40px;
+        text-align: center;
+      }
+
+      .pbjt-dn__journey-header {
+        margin-bottom: 32px;
+      }
+
+      .pbjt-dn__journey-header h2 {
+        font-family: "Merriweather", Georgia, serif;
+        font-size: 30px;
+        font-weight: 700;
+        color: white;
+        margin: 0 0 6px;
+        line-height: 1.3;
+      }
+
+      .pbjt-dn__journey-header h2 span {
+        color: var(--pbjt-red);
+      }
+
+      .pbjt-dn__journey-header p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.55);
+        margin: 0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      .pbjt-dn__cards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      .pbjt-dn__card {
+        background: #252525;
+        border: 1px solid #333;
+        border-radius: 3px;
+        overflow: hidden;
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease;
+        text-align: left;
+      }
+
+      .pbjt-dn__card:hover {
+        transform: translateY(-4px);
+        border-color: var(--pbjt-red);
+      }
+
+      .pbjt-dn__card-img {
+        height: 130px;
+        overflow: hidden;
+        background: #333;
+        position: relative;
+      }
+
+      .pbjt-dn__card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.85) saturate(0.9);
+        transition: filter 0.3s;
+      }
+
+      .pbjt-dn__card:hover .pbjt-dn__card-img img {
+        filter: brightness(1) saturate(1.1);
+      }
+
+      .pbjt-dn__card-img-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #333 0%, #444 50%, #333 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pbjt-dn__card-img-placeholder svg {
+        width: 36px;
+        height: 36px;
+        fill: rgba(255, 255, 255, 0.15);
+      }
+
+      .pbjt-dn__card-body {
+        padding: 14px 16px;
+      }
+
+      .pbjt-dn__card-body h3 {
+        font-family: "Source Sans 3", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: white;
+        margin: 0 0 10px;
+        line-height: 1.4;
+      }
+
+      .pbjt-dn__card-link {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--pbjt-red);
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s;
+      }
+
+      .pbjt-dn__card-link:hover {
+        border-color: var(--pbjt-red);
+      }
+
+      /* ── FOOTER ───────────────────────────────────────── */
+      .pbjt-dn__footer {
+        background: #111;
+        padding: 18px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-top: 3px solid var(--pbjt-red);
+      }
+
+      .pbjt-dn__footer-links {
+        display: flex;
+        gap: 0;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pbjt-dn__footer-links li a {
+        display: block;
+        padding: 4px 14px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+        text-decoration: none;
+        border-right: 1px solid #333;
+        transition: color 0.2s;
+      }
+
+      .pbjt-dn__footer-links li:last-child a {
+        border-right: none;
+      }
+      .pbjt-dn__footer-links li a:hover {
+        color: white;
+      }
+
+      /* ── RESPONSIVE ───────────────────────────────────── */
+      @media (max-width: 900px) {
+        .pbjt-dn__hero {
+          grid-template-columns: 1fr;
+        }
+        .pbjt-dn__hero-img {
+          min-height: 200px;
+        }
+        .pbjt-dn__hero-content {
+          padding: 24px 24px;
+        }
+        .pbjt-dn__village-block {
+          grid-template-columns: 1fr;
+        }
+        .pbjt-dn__village-img {
+          min-height: 180px;
+        }
+        .pbjt-dn__two-col {
+          grid-template-columns: 1fr;
+        }
+        .pbjt-dn__cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .pbjt-dn__section-header,
+        .pbjt-dn__climate,
+        .pbjt-dn__journey {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        .pbjt-dn__village-data {
+          padding: 20px 18px;
+        }
+      }
+
+      @media (max-width: 540px) {
+        .pbjt-dn__cards-grid {
+          grid-template-columns: 1fr;
+        }
+        .pbjt-dn__topnav-links {
+          display: none;
+        }
+        .pbjt-dn__section-header h2 {
+          font-size: 20px;
+        }
+        .pbjt-dn__journey-header h2 {
+          font-size: 22px;
+        }
+        .pbjt-dn__footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ====================================================
+     PBJT DINDIGUL — WordPress-compatible HTML block
+     Copy everything inside .pbjt-dn__wrap into the
+     WordPress Custom HTML block or page builder
+     ==================================================== -->
+
+    <div class="pbjt-dn__wrap">
+      <!-- NAV -->
+      <nav class="pbjt-dn__topnav">
+        <a href="#" class="pbjt-dn__topnav-logo">
+          <div class="pbjt-dn__logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"
+              />
+            </svg>
+          </div>
+          <div class="pbjt-dn__logo-text">
+            PLACE BASED JUST TRANSITION
+            <span>In Practice</span>
+          </div>
+        </a>
+        <ul class="pbjt-dn__topnav-links">
+          <li><a href="#" class="pbjt-dn__active">In Practice</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Impact Proposition</a></li>
+          <li><a href="#">Framework</a></li>
+          <li><a href="#">Food Menu</a></li>
+          <li><a href="#">Methodology</a></li>
+          <li><a href="#">Glossary</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- HERO -->
+      <section class="pbjt-dn__hero">
+        <div class="pbjt-dn__hero-img">
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&q=80"
+            alt="Dindigul landscape — hills meeting plains"
+          />
+          <div class="pbjt-dn__hero-badge">
+            PBJT<br />in Dindigul,<br />Tamilnadu
+            <span>Southern India</span>
+          </div>
+        </div>
+        <div class="pbjt-dn__hero-content">
+          <h1>
+            Dindigul district, in the southern part of Tamil Nadu, sits at a
+            unique <em>ecological crossroads</em>
+          </h1>
+          <p>
+            Where fertile plains meet the hill ecosystems of the Palani and
+            Sirumalai ranges. These landscapes play a defining role in shaping
+            the district's climate, water systems, and biodiversity. The plains
+            experience a semi-arid tropical monsoon climate, while hill areas
+            such as Kodaikanal enjoy a cooler, more temperate environment. With
+            an average annual rainfall of around 806 mm, largely dependent on
+            the North East Monsoon, both agriculture and water availability
+            remain highly climate-sensitive.
+          </p>
+          <p style="margin-top: 10px">
+            The district's varied soils—ranging from red loamy to black—support
+            the cultivation of crops like onions, groundnuts, grapes, flowers,
+            and vegetables. Nearly 70% of the population relies on agriculture
+            and related activities for their livelihoods. Beyond farming,
+            Dindigul has a strong base of traditional industries, including iron
+            lock making, leather tanning, and textile production—especially the
+            Arni Silk and Sungudi sarees of Chinnalapatti.
+          </p>
+        </div>
+      </section>
+
+      <!-- CLIMATE TABLE -->
+      <div class="pbjt-dn__climate">
+        <h3>Heat and Rain Fall Table</h3>
+        <table class="pbjt-dn__table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Annual Rainfall (mm)</th>
+              <th>Min Temperature (°C)</th>
+              <th>Max Temperature (°C)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2021</td>
+              <td>240.5 mm</td>
+              <td>19.5</td>
+              <td>37.5</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td>1303.6 mm</td>
+              <td>19.8</td>
+              <td>38.2</td>
+            </tr>
+            <tr>
+              <td>2023</td>
+              <td>—</td>
+              <td>19</td>
+              <td>38.7</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td>—</td>
+              <td>20</td>
+              <td>38</td>
+            </tr>
+            <tr>
+              <td>2025</td>
+              <td>—</td>
+              <td>19.1</td>
+              <td>39</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- VILLAGES HEADER -->
+      <div class="pbjt-dn__section-header">
+        <h2>PBJT in Five Villages across Dindigul</h2>
+        <p>Community-led ecological and economic transformation</p>
+      </div>
+
+      <!-- VILLAGES -->
+      <div class="pbjt-dn__villages">
+        <!-- Village 1 -->
+        <div class="pbjt-dn__village-block">
+          <div class="pbjt-dn__village-img">
+            <img
+              src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400&q=80"
+              alt="Avilipatti village"
+            />
+            <div class="pbjt-dn__village-label">Village 1 — Avilipatti</div>
+          </div>
+          <div class="pbjt-dn__village-data">
+            <h3 class="pbjt-dn__village-title pbjt-dn__vt-1">
+              Village 1 — Avilipatti
+            </h3>
+            <div class="pbjt-dn__two-col">
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Groups</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Groups</th>
+                      <th>Members</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Gethu Group</td>
+                      <td>13</td>
+                    </tr>
+                    <tr>
+                      <td>Adolescent Boys and Girls</td>
+                      <td>27</td>
+                    </tr>
+                    <tr>
+                      <td>MSME</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>Vendors Association</td>
+                      <td>13</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Activities</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Activity</th>
+                      <th>Total</th>
+                      <th>Restored</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Dump site</td>
+                      <td>4</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>Water bodies</td>
+                      <td>1</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>Tree planted</td>
+                      <td>120</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Sanitation workers</td>
+                      <td colspan="2">
+                        Collected waste properly and received incentives from
+                        the Panchayat
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Village 2 -->
+        <div class="pbjt-dn__village-block">
+          <div class="pbjt-dn__village-img">
+            <img
+              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80"
+              alt="Pthampatty village"
+            />
+            <div class="pbjt-dn__village-label">Village 2 — Pthampatty</div>
+          </div>
+          <div class="pbjt-dn__village-data">
+            <h3 class="pbjt-dn__village-title pbjt-dn__vt-2">
+              Village 2 — Pthampatty
+            </h3>
+            <div class="pbjt-dn__two-col">
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Groups</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Groups</th>
+                      <th>Members</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Gethu Group</td>
+                      <td>13</td>
+                    </tr>
+                    <tr>
+                      <td>Adolescent Boys and Girls</td>
+                      <td>25</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Activities</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Activity</th>
+                      <th>Total</th>
+                      <th>Restored</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Dump site</td>
+                      <td>2</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>Water bodies</td>
+                      <td>2</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>Petty shops</td>
+                      <td colspan="2">
+                        2 shops — Collecting empty milk packets and dosa batter
+                        packets
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Village 3 -->
+        <div class="pbjt-dn__village-block">
+          <div class="pbjt-dn__village-img">
+            <img
+              src="https://images.unsplash.com/photo-1464983953574-0892a716854b?w=400&q=80"
+              alt="Gopalpatty village"
+            />
+            <div class="pbjt-dn__village-label">Village 3 — Gopalpatty</div>
+          </div>
+          <div class="pbjt-dn__village-data">
+            <h3 class="pbjt-dn__village-title pbjt-dn__vt-3">
+              Village 3 — Gopalpatty
+            </h3>
+            <div class="pbjt-dn__two-col">
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Groups B</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Groups</th>
+                      <th>Members</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Babers Association</td>
+                      <td>13</td>
+                    </tr>
+                    <tr>
+                      <td>Auto drivers association</td>
+                      <td>11</td>
+                    </tr>
+                    <tr>
+                      <td>MSME Group</td>
+                      <td>4</td>
+                    </tr>
+                    <tr>
+                      <td>Green workers</td>
+                      <td>15</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Activities</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Activity</th>
+                      <th>Total</th>
+                      <th>Restored</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Dump site</td>
+                      <td>6</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>Water bodies</td>
+                      <td>3</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>Solar</td>
+                      <td>8</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Rain water</td>
+                      <td>400</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Tree Plantation</td>
+                      <td>100</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Waste recycle unit</td>
+                      <td colspan="2">1 — Run by the Panchayat</td>
+                    </tr>
+                    <tr>
+                      <td>Barber saloon</td>
+                      <td colspan="2">
+                        6 segregating waste and giving hair to produce manure
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="pbjt-dn__note">
+                  Vendors commitment displayed on Zero usage of plastic
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Village 4 -->
+        <div class="pbjt-dn__village-block">
+          <div class="pbjt-dn__village-img">
+            <img
+              src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400&q=80"
+              alt="Sanarpatty village"
+            />
+            <div class="pbjt-dn__village-label">Village 4 — Sanarpatty</div>
+          </div>
+          <div class="pbjt-dn__village-data">
+            <h3 class="pbjt-dn__village-title pbjt-dn__vt-4">
+              Village 4 — Sanarpatty
+            </h3>
+            <div class="pbjt-dn__two-col">
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Groups</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Groups</th>
+                      <th>Members</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Babers Association</td>
+                      <td>70</td>
+                    </tr>
+                    <tr>
+                      <td>Environmental Protection Committee</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td>MSME Group</td>
+                      <td>27</td>
+                    </tr>
+                    <tr>
+                      <td>Small vendors Association</td>
+                      <td>19</td>
+                    </tr>
+                    <tr>
+                      <td>Auto Drivers Association</td>
+                      <td>45</td>
+                    </tr>
+                    <tr>
+                      <td>Youth Groups</td>
+                      <td>26</td>
+                    </tr>
+                    <tr>
+                      <td>Adolescent Groups</td>
+                      <td>60</td>
+                    </tr>
+                    <tr>
+                      <td>Green gethu workers group</td>
+                      <td>60</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pbjt-dn__mini-table-wrap">
+                <h4>Activities</h4>
+                <table class="pbjt-dn__mini-table">
+                  <thead>
+                    <tr>
+                      <th>Activity</th>
+                      <th>Total</th>
+                      <th>Restored</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Dump site</td>
+                      <td>8</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Water bodies</td>
+                      <td>5</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>Solar</td>
+                      <td>6</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Rain water</td>
+                      <td>11</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Tree Plantation</td>
+                      <td>200</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Waste recycle unit</td>
+                      <td colspan="2">1 — Run by the Panchayat</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Vendors commitment displayed on Zero usage of plastic
+                      </td>
+                      <td colspan="2">51</td>
+                    </tr>
+                    <tr>
+                      <td>Shops Best plastic free practices</td>
+                      <td colspan="2">
+                        Tea shop – 6, Chicken and Mutton shop – 2
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /villages -->
+
+      <!-- JOURNEY SECTION -->
+      <section class="pbjt-dn__journey">
+        <div class="pbjt-dn__journey-header">
+          <p>Dindigul</p>
+          <h2>PBJT &amp; The Before and <span>After Journey</span></h2>
+        </div>
+        <div class="pbjt-dn__cards-grid">
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Waste System Transformation</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M17 8C8 10 5.9 16.17 3.82 19.82L5.71 21l1-2.3A5.49 5.49 0 008 19c7 0 10-7 10-7s2 3 0 5c2 0 4-2.5 4-2.5S22 8 17 8z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Plastic Accountability Model</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 3a9 9 0 100 18A9 9 0 0012 3zm0 16a7 7 0 110-14 7 7 0 010 14zm-1-9V7h2v3h3v2h-3v3h-2v-3H8v-2h3z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Water and Ecological Restoration</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Renewable Energy and Water Harvesting</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M17 8C8 10 5.9 16.17 3.82 19.82L5.71 21l1-2.3A5.49 5.49 0 008 19c7 0 10-7 10-7s2 3 0 5c2 0 4-2.5 4-2.5S22 8 17 8z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Green Cultural Practices</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Responsible Business Norms</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2a5 5 0 100 10A5 5 0 0012 2zM2 21a10 10 0 0120 0H2z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Labour Dignity &amp; Heat Response</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+
+          <div class="pbjt-dn__card">
+            <div class="pbjt-dn__card-img">
+              <div class="pbjt-dn__card-img-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="pbjt-dn__card-body">
+              <h3>Child Protection &amp; Ethical Business</h3>
+              <a href="#" class="pbjt-dn__card-link">Read More &rsaquo;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="pbjt-dn__footer">
+        <div class="pbjt-dn__topnav-logo">
+          <div class="pbjt-dn__logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18L20 8.5v7L12 19.82 4 15.5v-7L12 4.18z"
+              />
+            </svg>
+          </div>
+          <div
+            class="pbjt-dn__logo-text"
+            style="color: rgba(255, 255, 255, 0.6)"
+          >
+            PLACE BASED JUST TRANSITION
+            <span>In Practice</span>
+          </div>
+        </div>
+        <ul class="pbjt-dn__footer-links">
+          <li><a href="#">Partnerships</a></li>
+          <li><a href="#">Funding</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </footer>
+    </div>
+    <!-- /.pbjt-dn__wrap -->
+  </body>
+</html>

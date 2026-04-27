@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Before & After Journey – Place Based Just Transition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =====================================================
+   PBJT BEFORE-AFTER MODULE — Scoped CSS
+   All classes prefixed: pbjt-baj__
+   Safe for WordPress / Elementor / block editor
+   ===================================================== */
+
+      /* Reset scoped to module only */
+      .pbjt-baj__wrap,
+      .pbjt-baj__wrap *,
+      .pbjt-baj__wrap *::before,
+      .pbjt-baj__wrap *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* ── CSS Variables ── */
+      .pbjt-baj__wrap {
+        --pbjt-red: #c0392b;
+        --pbjt-dark-red: #96281b;
+        --pbjt-black: #1a1a1a;
+        --pbjt-dark: #2c2c2c;
+        --pbjt-footer-bg: #333333;
+        --pbjt-light-gray: #f5f5f5;
+        --pbjt-mid-gray: #e0e0e0;
+        --pbjt-text-dark: #222222;
+        --pbjt-text-mid: #444444;
+        --pbjt-text-light: #ffffff;
+        --pbjt-font-display: "Playfair Display", Georgia, serif;
+        --pbjt-font-body: "Source Sans 3", Arial, sans-serif;
+        font-family: var(--pbjt-font-body);
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--pbjt-text-dark);
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* ── TOP NAV BAR ── */
+      .pbjt-baj__topnav {
+        background: #ffffff;
+        border-bottom: 1px solid var(--pbjt-mid-gray);
+        padding: 8px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .pbjt-baj__topnav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+
+      .pbjt-baj__logo-badge {
+        width: 40px;
+        height: 40px;
+        background: var(--pbjt-red);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4px;
+      }
+
+      .pbjt-baj__logo-badge span {
+        display: block;
+        color: #fff;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: center;
+        font-family: var(--pbjt-font-body);
+        letter-spacing: 0.5px;
+      }
+
+      .pbjt-baj__topnav-links {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px 14px;
+        list-style: none;
+      }
+
+      .pbjt-baj__topnav-links li a {
+        font-family: var(--pbjt-font-body);
+        font-size: 10.5px;
+        font-weight: 600;
+        color: var(--pbjt-text-mid);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        transition: color 0.2s;
+      }
+
+      .pbjt-baj__topnav-links li a:hover,
+      .pbjt-baj__topnav-links li a.pbjt-baj__active {
+        color: var(--pbjt-red);
+      }
+
+      /* ── HERO BANNER ── */
+      .pbjt-baj__hero {
+        position: relative;
+        background: var(--pbjt-red);
+        overflow: hidden;
+        min-height: 120px;
+        display: flex;
+        align-items: center;
+      }
+
+      .pbjt-baj__hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url("https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=1200&q=60");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.25;
+      }
+
+      .pbjt-baj__hero-inner {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 28px 24px 28px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .pbjt-baj__hero-vertical {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        font-family: var(--pbjt-font-body);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+        flex-shrink: 0;
+      }
+
+      .pbjt-baj__hero-text {
+        flex: 1;
+      }
+
+      .pbjt-baj__hero-pretext {
+        font-family: var(--pbjt-font-display);
+        font-size: 22px;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 400;
+        display: block;
+        line-height: 1;
+        margin-bottom: 2px;
+      }
+
+      .pbjt-baj__hero-title {
+        font-family: var(--pbjt-font-display);
+        font-size: clamp(36px, 6vw, 62px);
+        font-weight: 900;
+        color: #ffffff;
+        line-height: 1;
+        letter-spacing: -1px;
+      }
+
+      .pbjt-baj__hero-title .pbjt-baj__amp {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .pbjt-baj__hero-subtitle {
+        font-family: var(--pbjt-font-display);
+        font-size: clamp(20px, 3.5vw, 32px);
+        font-style: italic;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.88);
+        display: block;
+        margin-top: 2px;
+      }
+
+      .pbjt-baj__hero-exclaim {
+        color: #fff;
+        font-style: normal;
+      }
+
+      /* ── MAIN CONTENT ── */
+      .pbjt-baj__main {
+        background: #ffffff;
+        padding: 40px 0;
+      }
+
+      .pbjt-baj__container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ── WASTE SYSTEM SECTION ── */
+      .pbjt-baj__section-waste {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+        align-items: start;
+      }
+
+      /* Left column */
+      .pbjt-baj__col-left {
+      }
+
+      .pbjt-baj__section-title {
+        font-family: var(--pbjt-font-display);
+        font-size: 26px;
+        font-weight: 900;
+        color: var(--pbjt-text-dark);
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .pbjt-baj__period-label {
+        font-family: var(--pbjt-font-body);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--pbjt-text-dark);
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .pbjt-baj__bullet-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+      }
+
+      .pbjt-baj__bullet-list li {
+        font-family: var(--pbjt-font-body);
+        font-size: 13.5px;
+        color: var(--pbjt-text-mid);
+        line-height: 1.6;
+        padding-left: 14px;
+        position: relative;
+        margin-bottom: 4px;
+      }
+
+      .pbjt-baj__bullet-list li::before {
+        content: "–";
+        position: absolute;
+        left: 0;
+        color: var(--pbjt-text-mid);
+      }
+
+      /* Thumbnail grid left */
+      .pbjt-baj__thumbs-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .pbjt-baj__thumb {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 3px;
+        display: block;
+        background: var(--pbjt-mid-gray);
+      }
+
+      /* Placeholder thumb images using gradient */
+      .pbjt-baj__thumb-ph {
+        width: 100%;
+        aspect-ratio: 4/3;
+        border-radius: 3px;
+        background: linear-gradient(135deg, #b0b0b0 0%, #d8d8d8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .pbjt-baj__thumb-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Right column */
+      .pbjt-baj__col-right {
+      }
+
+      .pbjt-baj__hero-photo {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 3px;
+        background: var(--pbjt-mid-gray);
+        margin-bottom: 12px;
+        display: block;
+      }
+
+      .pbjt-baj__hero-photo-ph {
+        width: 100%;
+        aspect-ratio: 4/3;
+        border-radius: 3px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #888 0%, #bbb 100%);
+      }
+
+      .pbjt-baj__hero-photo-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Secondary photo */
+      .pbjt-baj__secondary-photo-ph {
+        width: 100%;
+        aspect-ratio: 4/3;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #666 0%, #999 100%);
+      }
+
+      .pbjt-baj__secondary-photo-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* ── IMPACT BOX ── */
+      .pbjt-baj__impact-box {
+        background: var(--pbjt-red);
+        color: #ffffff;
+        padding: 14px 18px;
+        border-radius: 3px;
+        margin-top: 16px;
+      }
+
+      .pbjt-baj__impact-box p {
+        font-family: var(--pbjt-font-body);
+        font-size: 13px;
+        line-height: 1.55;
+        color: #ffffff;
+      }
+
+      .pbjt-baj__impact-box strong {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+
+      /* ── CARD GRID SECTION ── */
+      .pbjt-baj__cards-section {
+        background: var(--pbjt-footer-bg);
+        padding: 30px 0;
+        margin-top: 0;
+      }
+
+      .pbjt-baj__cards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .pbjt-baj__card {
+        background: var(--pbjt-dark);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      .pbjt-baj__card-img-ph {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #555 0%, #888 100%);
+        overflow: hidden;
+      }
+
+      .pbjt-baj__card-img-ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .pbjt-baj__card-body {
+        padding: 10px 10px 12px;
+      }
+
+      .pbjt-baj__card-title {
+        font-family: var(--pbjt-font-body);
+        font-size: 11px;
+        font-weight: 700;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.35;
+        margin-bottom: 6px;
+      }
+
+      .pbjt-baj__card-link {
+        display: inline-block;
+        font-family: var(--pbjt-font-body);
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--pbjt-red);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        transition: color 0.2s;
+      }
+
+      .pbjt-baj__card-link:hover {
+        color: #e74c3c;
+      }
+
+      /* ── FOOTER ── */
+      .pbjt-baj__footer {
+        background: var(--pbjt-footer-bg);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 18px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .pbjt-baj__footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .pbjt-baj__footer-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+      }
+
+      .pbjt-baj__footer-links li a {
+        font-family: var(--pbjt-font-body);
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.65);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        transition: color 0.2s;
+      }
+
+      .pbjt-baj__footer-links li a:hover {
+        color: #ffffff;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .pbjt-baj__section-waste {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .pbjt-baj__cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .pbjt-baj__hero-inner {
+          padding: 24px 20px;
+        }
+
+        .pbjt-baj__hero-vertical {
+          display: none;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .pbjt-baj__topnav-links {
+          display: none;
+        }
+
+        .pbjt-baj__cards-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .pbjt-baj__hero-title {
+          font-size: 32px;
+        }
+
+        .pbjt-baj__section-title {
+          font-size: 22px;
+        }
+
+        .pbjt-baj__footer {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .pbjt-baj__footer-links {
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .pbjt-baj__cards-grid {
+          grid-template-columns: 1fr;
+        }
+        .pbjt-baj__thumbs-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+     PBJT BEFORE & AFTER MODULE
+     WordPress-safe: all classes scoped with pbjt-baj__ prefix
+     Drop into any page builder / block / shortcode container
+     ============================================================ -->
+
+    <div class="pbjt-baj__wrap">
+      <!-- TOP NAVIGATION -->
+      <nav class="pbjt-baj__topnav">
+        <a href="#" class="pbjt-baj__topnav-logo">
+          <div class="pbjt-baj__logo-badge">
+            <span>PLACE</span>
+            <span>BASED</span>
+            <span>JUST</span>
+            <span>TRANS.</span>
+          </div>
+        </a>
+        <ul class="pbjt-baj__topnav-links">
+          <li><a href="#" class="pbjt-baj__active">In Practice</a></li>
+          <li><a href="#">Testimonials</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Impact Proposition</a></li>
+          <li><a href="#">Framework</a></li>
+          <li><a href="#">POCA Areas</a></li>
+          <li><a href="#">Methodology &amp; Systemic Changes</a></li>
+          <li><a href="#">Glossary</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- HERO BANNER -->
+      <section class="pbjt-baj__hero">
+        <div class="pbjt-baj__hero-bg" aria-hidden="true"></div>
+        <div class="pbjt-baj__hero-inner">
+          <div class="pbjt-baj__hero-vertical">DINDIGUL</div>
+          <div class="pbjt-baj__hero-text">
+            <span class="pbjt-baj__hero-pretext">The</span>
+            <h1 class="pbjt-baj__hero-title">
+              Before <span class="pbjt-baj__amp">&amp;</span> After<span
+                class="pbjt-baj__hero-exclaim"
+                >!</span
+              >
+            </h1>
+            <span class="pbjt-baj__hero-subtitle">Journey!</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN CONTENT -->
+      <section class="pbjt-baj__main">
+        <div class="pbjt-baj__container">
+          <div class="pbjt-baj__section-waste">
+            <!-- LEFT COLUMN -->
+            <div class="pbjt-baj__col-left">
+              <h2 class="pbjt-baj__section-title">
+                Waste System<br />Transformation
+              </h2>
+
+              <span class="pbjt-baj__period-label">Before (June 2025)</span>
+              <ul class="pbjt-baj__bullet-list">
+                <li>Waste dump sites were identified across villages.</li>
+                <li>
+                  Mixed waste was disposed of without systematic segregation.
+                </li>
+                <li>Meetings were conducted with vendors and households.</li>
+                <li>
+                  A community pledge was initiated towards waste segregation and
+                  responsible disposal.
+                </li>
+              </ul>
+
+              <!-- Thumbnail grid -->
+              <div class="pbjt-baj__thumbs-grid">
+                <div class="pbjt-baj__thumb-ph">
+                  <img
+                    src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70"
+                    alt="Waste segregation activity"
+                  />
+                </div>
+                <div class="pbjt-baj__thumb-ph">
+                  <img
+                    src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=300&q=70"
+                    alt="Compost preparation"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="pbjt-baj__col-right">
+              <!-- Top photo -->
+              <div class="pbjt-baj__hero-photo-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&q=70"
+                  alt="Waste dump site before"
+                />
+              </div>
+
+              <!-- Secondary photo -->
+              <div class="pbjt-baj__secondary-photo-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=70"
+                  alt="Community meeting"
+                />
+              </div>
+
+              <span class="pbjt-baj__period-label">Now (By February 2026)</span>
+              <ul class="pbjt-baj__bullet-list">
+                <li>
+                  Households are properly segregating milk packets and other
+                  plastic waste.
+                </li>
+                <li>
+                  Plastic waste is responsibly disposed of through structured
+                  collection systems.
+                </li>
+                <li>
+                  Hair waste from salons is being segregated and sent to farmers
+                  for use as organic manure.
+                </li>
+                <li>
+                  Community-level awareness has translated into consistent waste
+                  management practices.
+                </li>
+              </ul>
+
+              <!-- Impact box -->
+              <div class="pbjt-baj__impact-box">
+                <p>
+                  <strong>Impact:</strong> Shift from informal dumping to
+                  structured segregation and resource recovery.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- /.pbjt-baj__section-waste -->
+        </div>
+        <!-- /.pbjt-baj__container -->
+      </section>
+
+      <!-- CARD GRID -->
+      <section class="pbjt-baj__cards-section">
+        <div class="pbjt-baj__container">
+          <!-- Row 1 -->
+          <div class="pbjt-baj__cards-grid">
+            <div class="pbjt-baj__card">
+              <div class="pbjt-baj__card-img-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=300&q=60"
+                  alt="Plastic Accountability Model"
+                />
+              </div>
+              <div class="pbjt-baj__card-body">
+                <p class="pbjt-baj__card-title">Plastic Accountability Model</p>
+                <a href="#" class="pbjt-baj__card-link">Read More</a>
+              </div>
+            </div>
+
+            <div class="pbjt-baj__card">
+              <div class="pbjt-baj__card-img-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&q=60"
+                  alt="Water and Ecological Restoration"
+                />
+              </div>
+              <div class="pbjt-baj__card-body">
+                <p class="pbjt-baj__card-title">
+                  Water and Ecological Restoration
+                </p>
+                <a href="#" class="pbjt-baj__card-link">Read More</a>
+              </div>
+            </div>
+
+            <div class="pbjt-baj__card">
+              <div class="pbjt-baj__card-img-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=300&q=60"
+                  alt="Renewable Energy and Water Harvesting"
+                />
+              </div>
+              <div class="pbjt-baj__card-body">
+                <p class="pbjt-baj__card-title">
+                  Renewable Energy and Water Harvesting
+                </p>
+                <a href="#" class="pbjt-baj__card-link">Read More</a>
+              </div>
+            </div>
+
+            <div class="pbjt-baj__card">
+              <div class="pbjt-baj__card-img-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=300&q=60"
+                  alt="Child Protection & Kidsrun Business"
+                />
+              </div>
+              <div class="pbjt-baj__card-body">
+                <p class="pbjt-baj__card-title">
+                  Child Protection &amp; Kidsrun Business
+                </p>
+                <a href="#" class="pbjt-baj__card-link">Read More</a>
+              </div>
+            </div>
+          </div>
+          <!-- /.row-1 -->
+
+          <!-- Row 2 -->
+          <div class="pbjt-baj__cards-grid">
+            <div class="pbjt-baj__card">
+              <div class="pbjt-baj__card-img-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?w=300&q=60"
+                  alt="Social Cultural Practices"
+                />
+              </div>
+              <div class="pbjt-baj__card-body">
+                <p class="pbjt-baj__card-title">Social Cultural Practices</p>
+                <a href="#" class="pbjt-baj__card-link">Read More</a>
+              </div>
+            </div>
+
+            <div class="pbjt-baj__card">
+              <div class="pbjt-baj__card-img-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=300&q=60"
+                  alt="Cooperative Business Norms"
+                />
+              </div>
+              <div class="pbjt-baj__card-body">
+                <p class="pbjt-baj__card-title">Cooperative Business Norms</p>
+                <a href="#" class="pbjt-baj__card-link">Read More</a>
+              </div>
+            </div>
+
+            <div class="pbjt-baj__card">
+              <div class="pbjt-baj__card-img-ph">
+                <img
+                  src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=300&q=60"
+                  alt="Labour Dignity & Work Prospects"
+                />
+              </div>
+              <div class="pbjt-baj__card-body">
+                <p class="pbjt-baj__card-title">
+                  Labour Dignity &amp; Work Prospects
+                </p>
+                <a href="#" class="pbjt-baj__card-link">Read More</a>
+              </div>
+            </div>
+
+            <!-- Empty card placeholder to maintain grid -->
+            <div class="pbjt-baj__card" style="background: transparent"></div>
+          </div>
+          <!-- /.row-2 -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="pbjt-baj__footer">
+        <div class="pbjt-baj__footer-logo">
+          <div class="pbjt-baj__logo-badge">
+            <span>PLACE</span>
+            <span>BASED</span>
+            <span>JUST</span>
+            <span>TRANS.</span>
+          </div>
+        </div>
+        <ul class="pbjt-baj__footer-links">
+          <li><a href="#">Partnerships</a></li>
+          <li><a href="#">Funding</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </footer>
+    </div>
+    <!-- /.pbjt-baj__wrap -->
+  </body>
+</html>
